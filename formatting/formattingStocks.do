@@ -3,7 +3,7 @@
 * Formatting file for Spanish LFS - Stocks version
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-cd rawfiles_stocks
+cd rawfiles
 
 * 1 Lower case conversion * * * * * * * * * * * * * * * * * * 
 use EPA_2020T4, clear

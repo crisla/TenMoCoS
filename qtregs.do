@@ -131,13 +131,14 @@ replace period_t = "t17_20" if (ciclo>=178&ciclo<190)
 // gen t20Q3 = (ciclo==192)
 // gen t20Q4 = (ciclo==193)
 replace period_t = "t20" if (ciclo>=190&ciclo<194)
-replace period_t = "t21" if (ciclo>193)
+replace period_t = "t21" if (ciclo>=194&ciclo<198)
+replace period_t = "t22" if (ciclo>198)
 // gen t20_21 = (ciclo>=190)
 encode period_t, generate(period_y)
 
 gen yd = 0
 local yy = 2005
-forvalues t = 130(4)198  {
+forvalues t = 130(4)201  {
 
 	replace yd = `yy' if (ciclo>=`t'&ciclo<`t'+4)
 	local yy = `yy'+1

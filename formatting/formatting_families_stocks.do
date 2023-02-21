@@ -4,7 +4,7 @@
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 
-capture use "rawfiles_stocks/EPA_stocks20.dta", clear
+capture use "rawfiles/EPA_stocks20.dta", clear
 
 **#  Part 1: Generate labour market variables * * * * * * * * * 
 sort ciclo nvivi npers
@@ -133,4 +133,4 @@ replace father_ten_g5 = 35 if father_ten_y>30&father_ten_y!=.
 replace ten_g5 = 35 if dcom>360&dcom!=.
 
 * Save
-save "rawfiles_stocks/EPA_stocks20_parents.dta", replace
+save "rawfiles/EPA_stocks20_parents.dta", replace

@@ -1,9 +1,10 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 * README - formating the Spanish LFS microdata stock files
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-0. get a working folder. Create inside your working folder one called rawfiles_stocks
+In case you don't download the repository, get a working folder and create inside it one called 'rawfiles'
+
 1. Download the data here: https://www.ine.es/uc/pNpBaUUm
-2. Decompress the data into rawfiles_stocks
+2. Decompress the data into the 'rawfiles' folder.
 3. Harmonize the names:
    	- The data from 2005 on is in dta. format. Older data needs to be imported (code not there yet)
 	- Make sure the files are called EPA_yyyyTq.dta, with yyyy = year (ie. 2005, 2020) and q={1,2,3,4}
