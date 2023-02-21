@@ -160,75 +160,75 @@ capture log close
 log using "./results/sqtreg_mothers.log", replace nomsg
 sqreg wife_ten_y hub_ten_y hub_ten_y2 age age2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==1&wife==1&employed, q(.25 .5 .75) 
+		i.period_y if mother==1&wife==1&employed, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_mothers_0k.log", replace nomsg		
 eststo: sqreg wife_ten_y hub_ten_y hub_ten_y2 age age2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2* if mother==0&wife==1&employed, q(.25 .5 .75) 
+		i.period_y if mother==0&wife==1&employed, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers.log", replace nomsg
 eststo: sqreg hub_ten_y wife_ten_y wife_ten_y2 age age2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==1&husband==1&employed, q(.25 .5 .75) 
+		i.period_y  if father==1&husband==1&employed, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_0k.log", replace nomsg
 eststo: sqreg hub_ten_y wife_ten_y wife_ten_y2 age age2 part_time /// 
 		college less_hs wife_age wife_se  wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&employed, q(.25 .5 .75) 
+		i.period_y  if father==0&husband==1&employed, q(.25 .5 .75) 
 log close
 
 * Less than 45 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 log using "./results/sqtreg_mothers_45.log", replace nomsg
 eststo: sqreg wife_ten_y hub_ten_y hub_ten_y2 age age2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==1&wife==1&employed&edad5<45, q(.25 .5 .75) 
+		i.period_y  if mother==1&wife==1&employed&edad5<45, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_mothers_0k_45.log", replace nomsg		
 eststo: sqreg wife_ten_y hub_ten_y hub_ten_y2 age age2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2* if mother==0&wife==1&employed&edad5<45, q(.25 .5 .75) 
+		i.period_y if mother==0&wife==1&employed&edad5<45, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_45.log", replace nomsg
 eststo: sqreg hub_ten_y wife_ten_y wife_ten_y2 age age2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==1&husband==1&employed&edad5<45, q(.25 .5 .75) 
+		i.period_y  if father==1&husband==1&employed&edad5<45, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_0k_45.log", replace nomsg
 eststo: sqreg hub_ten_y wife_ten_y wife_ten_y2 age age2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&employed&edad5<45, q(.25 .5 .75) 
+		i.period_y  if father==0&husband==1&employed&edad5<45, q(.25 .5 .75) 
 log close
 
 * In their late 30s * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 log using "./results/sqtreg_mothers_3545.log", replace nomsg
 eststo: sqreg wife_ten_y hub_ten_y hub_ten_y2 age age2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==1&wife==1&employed&edad5>=35&edad5<45, q(.25 .5 .75) 
+		i.period_y  if mother==1&wife==1&employed&edad5>=35&edad5<45, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_mothers_0k_3545.log", replace nomsg		
 eststo: sqreg wife_ten_y hub_ten_y hub_ten_y2 age age2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2* if mother==0&wife==1&employed&edad5>=35&edad5<45, q(.25 .5 .75) 
+		i.period_y if mother==0&wife==1&employed&edad5>=35&edad5<45, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_3545.log", replace nomsg
 eststo: sqreg hub_ten_y wife_ten_y wife_ten_y2 age age2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==1&husband==1&employed&edad5>=35&edad5<45, q(.25 .5 .75) 
+		i.period_y  if father==1&husband==1&employed&edad5>=35&edad5<45, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_0k_3545.log", replace nomsg
 eststo: sqreg hub_ten_y wife_ten_y wife_ten_y2 age age2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&employed&edad5>=35&edad5<45, q(.25 .5 .75) 
+		i.period_y  if father==0&husband==1&employed&edad5>=35&edad5<45, q(.25 .5 .75) 
 log close
 
 * In their early 30s * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -241,19 +241,19 @@ log close
 log using "./results/sqtreg_mothers_0k_3035.log", replace nomsg		
 sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2* if mother==0&wife==1&employed&edad5>=30&edad5<35, q(.25 .5 .75) 
+		i.period_y if mother==0&wife==1&employed&edad5>=30&edad5<35, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_3035.log", replace nomsg
 sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==1&husband==1&employed&edad5>=30&edad5<35, q(.25 .5 .75) 
+		i.period_y  if father==1&husband==1&employed&edad5>=30&edad5<35, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_0k_3035.log", replace nomsg
 sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&employed&edad5>=30&edad5<35, q(.25 .5 .75) 
+		i.period_y  if father==0&husband==1&employed&edad5>=30&edad5<35, q(.25 .5 .75) 
 log close
 
 * More year detail * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -438,25 +438,25 @@ logit wife_emp hub_ten_y age i.ccaa i.act1 ///
 log using "./results/logit_mothers_45_noten.log", replace nomsg
 logit wife_emp age i.ccaa i.act1 /// 
 		college less_hs hub_age hub_age2  hub_emp hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==1&wife==1&age<45&state!="A" 
+		i.period_y  if mother==1&wife==1&age<45&state!="A" 
 log close
 
 log using "./results/logit_mothers_45_hemp_0k.log", replace nomsg
 logit wife_emp hub_ten_y age i.ccaa i.act1 /// 
 		college less_hs hub_age hub_age2  hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==0&wife==1&hub_emp&age<45&state!="A"  
+		i.period_y  if mother==0&wife==1&hub_emp&age<45&state!="A"  
 	log close
 	
 log using "./results/logit_mothers_45_hnemp_0k.log", replace nomsg
 logit wife_emp hub_ten_y age i.ccaa i.act1 /// 
 		college less_hs hub_age hub_age2  hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==0&wife==1&hub_emp==0&age<45&state!="A"  
+		i.period_y  if mother==0&wife==1&hub_emp==0&age<45&state!="A"  
 	log close
 	
 log using "./results/logit_mothers_45_noten_0k.log", replace nomsg
 logit wife_emp age age2 i.ccaa i.act1 /// 
 		college less_hs hub_age hub_age2 hub_emp hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==0&wife==1&age<45&state!="A"  
+		i.period_y  if mother==0&wife==1&age<45&state!="A"  
 log close
 
 * * * * * * * * * * * * * * * * 
@@ -471,19 +471,19 @@ eststo: logit hub_emp wife_ten_y age i.ccaa i.act1 i.ocup1 ///
 log using "./results/logit_fathers_45_noten.log", replace nomsg
 eststo: logit hub_emp age i.ccaa i.act1 i.ocup1 /// 
 		college less_hs wife_age wife_emp wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==1&husband==1&edad5>=35&edad5<45&state!="A"  
+		i.period_y  if father==1&husband==1&edad5>=35&edad5<45&state!="A"  
 log close
 
 log using "./results/logit_fathers_45_hemp_0k.log", replace nomsg
 eststo: logit hub_emp wife_ten_y age i.ccaa i.act1 i.ocup1 /// 
 		college less_hs wife_age wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&wife_emp&edad5>=35&edad5<45&state!="A"  
+		i.period_y  if father==0&husband==1&wife_emp&edad5>=35&edad5<45&state!="A"  
 	log close
 	
 log using "./results/logit_fathers_45_noten_0k.log", replace nomsg
 eststo: logit hub_emp age i.ccaa i.act1 i.ocup1 /// 
 		college less_hs wife_age wife_emp wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&edad5>=35&edad5<45&state!="A"  
+		i.period_y  if father==0&husband==1&edad5>=35&edad5<45&state!="A"  
 log close
 
 
@@ -504,25 +504,25 @@ logit wife_emp hub_ten_y i.ccaa i.act1 ///
 log using "./results/logit_mothers_3035_noten.log", replace nomsg
 logit wife_emp i.ccaa i.act1 /// 
 		college less_hs hub_age hub_age2  hub_emp hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==1&wife==1&age>=30&age<35&state!="A" 
+		i.period_y  if mother==1&wife==1&age>=30&age<35&state!="A" 
 log close
 
 log using "./results/logit_mothers_3035_hemp_0k.log", replace nomsg
 logit wife_emp hub_ten_y i.ccaa i.act1 /// 
 		college less_hs hub_age hub_age2  hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==0&wife==1&hub_emp&age>=30&age<35&state!="A"  
+		i.period_y  if mother==0&wife==1&hub_emp&age>=30&age<35&state!="A"  
 	log close
 	
 log using "./results/logit_mothers_3035_hnemp_0k.log", replace nomsg
 logit wife_emp hub_ten_y i.ccaa i.act1 /// 
 		college less_hs hub_age hub_age2  hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==0&wife==1&hub_emp==0&age>=30&age<35&state!="A"  
+		i.period_y  if mother==0&wife==1&hub_emp==0&age>=30&age<35&state!="A"  
 	log close
 	
 log using "./results/logit_mothers_3035_noten_0k.log", replace nomsg
 logit wife_emp age2 i.ccaa i.act1 /// 
 		college less_hs hub_age hub_age2 hub_emp hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==0&wife==1&age>=30&age<35&state!="A"  
+		i.period_y  if mother==0&wife==1&age>=30&age<35&state!="A"  
 log close
 
 * More year detail * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -624,25 +624,25 @@ eststo: logit hub_emp wife_ten_y i.ccaa i.act1 i.ocup1 ///
 log using "./results/logit_fathers_3035_noten.log", replace nomsg
 eststo: logit hub_emp i.ccaa i.act1 i.ocup1 /// 
 		college less_hs wife_age wife_emp wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==1&husband==1&edad5>=30&edad5<35&state!="A"  
+		i.period_y  if father==1&husband==1&edad5>=30&edad5<35&state!="A"  
 log close
 
 log using "./results/logit_fathers_3035_hemp_0k.log", replace nomsg
 eststo: logit hub_emp wife_ten_y i.ccaa i.act1 i.ocup1 /// 
 		college less_hs wife_age wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&wife_emp&edad5>=30&edad5<35&state!="A"  
+		i.period_y  if father==0&husband==1&wife_emp&edad5>=30&edad5<35&state!="A"  
 	log close
 	
 log using "./results/logit_fathers_3035_hnemp_0k.log", replace nomsg
 eststo: logit hub_emp wife_ten_y i.ccaa i.act1 i.ocup1 /// 
 		college less_hs wife_age wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&wife_emp==0&edad5>=30&edad5<35&state!="A"  
+		i.period_y  if father==0&husband==1&wife_emp==0&edad5>=30&edad5<35&state!="A"  
 log close
 	
 log using "./results/logit_fathers_3035_noten_0k.log", replace nomsg
 eststo: logit hub_emp i.ccaa i.act1 i.ocup1 /// 
 		college less_hs wife_age wife_emp wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&edad5>=30&edad5<35&state!="A"  
+		i.period_y  if father==0&husband==1&edad5>=30&edad5<35&state!="A"  
 log close
 
 * In their early 30s - Extensive margin * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -650,25 +650,25 @@ log close
 log using "./results/sqtreg_mothers_3035_ext.log", replace nomsg
 sqreg wife_ten0_y hub_ten0_y hub_ten0_y2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if mother==1&wife==1&edad5>=30&edad5<35, q(.25 .5 .75) 
+		i.period_y  if mother==1&wife==1&edad5>=30&edad5<35, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_mothers_0k_3035_ext.log", replace nomsg		
 sqreg wife_ten0_y hub_ten0_y hub_ten0_y2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2* if mother==0&wife==1&edad5>=30&edad5<35, q(.25 .5 .75) 
+		i.period_y if mother==0&wife==1&edad5>=30&edad5<35, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_3035_ext.log", replace nomsg
 sqreg hub_ten0_y wife_ten0_y wife_ten0_y2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==1&husband==1&edad5>=30&edad5<35, q(.25 .5 .75) 
+		i.period_y  if father==1&husband==1&edad5>=30&edad5<35, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_0k_3035_ext.log", replace nomsg
 sqreg hub_ten0_y wife_ten0_y wife_ten0_y2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		t08_11 t11_14 t14_17 t17_20 t2*  if father==0&husband==1&edad5>=30&edad5<35, q(.25 .5 .75) 
+		i.period_y  if father==0&husband==1&edad5>=30&edad5<35, q(.25 .5 .75) 
 log close
 
 **# Part 4: descriptive stats by group * * * * * * * * * 
