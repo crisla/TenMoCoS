@@ -134,3 +134,5 @@ replace ten_g5 = 35 if dcom>360&dcom!=.
 
 * Save
 save "rawfiles/EPA_stocks20_parents.dta", replace
+
+cd ..

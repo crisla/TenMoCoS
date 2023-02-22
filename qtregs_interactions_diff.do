@@ -180,7 +180,7 @@ gen ttrend = ciclo-130
 gen ttrend2 = ttrend^2
 
 * Add unemployment data
-merge m:1 ciclo using "/Users/cristina/Documents/Research/STW_EU/spain/other_data/urate_spain.dta"
+merge m:1 ciclo using "./other_data/urate_spain.dta"
 drop _merge
 
 **# Part 2: regressions * * * * * * * * *
