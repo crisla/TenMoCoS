@@ -1,2 +1,5 @@
 
 *.dta
+__pycache__/f_detrend.cpython-39.pyc
+.ipynb_checkpoints/QantRegs_coeffs_yearToyear-checkpoint.ipynb
+.ipynb_checkpoints/TablesQuantReg-checkpoint.ipynb

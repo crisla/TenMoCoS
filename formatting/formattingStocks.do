@@ -6,6 +6,7 @@
 cd rawfiles
 
 * 1 Lower case conversion * * * * * * * * * * * * * * * * * * 
+// (only needs to run once)
 use EPA_2020T4, clear
 
 foreach v of varlist _all{
@@ -26,7 +27,10 @@ forvalues Y = 21/22 {
 * 2 Appending * * * * * * * * * * * * * * * * * * 
 clear
 use EPA_2005T1
-forvalues Y = 5/22 {
+	forvalues Q = 2/4 {
+		append using EPA_2005T`Q'
+	}
+forvalues Y = 6/22 {
 	local year= 2000+`Y'
 	forvalues Q = 1/4 {
 		append using EPA_`year'T`Q'
