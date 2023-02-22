@@ -1,0 +1,8 @@
+
+. sqreg ten_y other_ten_y ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.covid##i.sexo1 ///
+>                 if ((mother==1&wife==1)|(father==1&husband==1))&employed&age>=30&age<35, ///
+>                 q(.25 .5 .75)
+(fitting base model)
+
+Bootstrap replications (20)
+----+--- 1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5 
