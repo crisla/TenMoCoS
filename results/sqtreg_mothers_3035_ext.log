@@ -1,0 +1,1042 @@
+
+. sqreg wife_ten0_y hub_ten0_y hub_ten0_y2 part_time /// 
+>                 college less_hs hub_age hub_se hub_college hub_less_hs ///
+>                 i.period_y  if mother==1&wife==1&edad5>=30&edad5<35, q(.25 .5 .75) 
+(fitting base model)
+ quantile:  0 coefs estimated
+.75 quantile:  17coefs estimated
+same model cannot be used to estimate both quantiles; sample size probably too small
+r(498);
+
+end of do-file
+
+r(498);
+
+. do "C:\Users\lafuentemart\Documents\LFS\TenMoCoS\regressions_stocks.do"
+
+. 
+. * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+. *
+. * Families in the Spanish LFS - Stocks version
+. *
+. * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+. 
+. use "rawfiles_stocks/EPA_stocks20.dta", clear
+file rawfiles_stocks/EPA_stocks20.dta not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. do "C:\Users\lafuentemart\Documents\LFS\TenMoCoS\regressions_stocks.do"
+
+. 
+. * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+. *
+. * Families in the Spanish LFS - Stocks version
+. *
+. * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+. 
+. use "./formatting/rawfiles/EPA_stocks20.dta", clear
+
+. 
+. * Part 1: Generate labour market variables * * * * * * * * * 
+. sort ciclo nvivi npers
+
+. 
+. * No discontinuous workers
+. by ciclo nvivi: gen disc = ducon2==6
+
+. by ciclo nvivi: replace disc = sum(disc)
+(92,626 real changes made)
+
+. by ciclo nvivi: replace disc = disc[_N]
+(42,823 real changes made)
+
+. drop if disc>0
+(190,716 observations deleted)
+
+. 
+. * erte variable
+. gen erte= (rznotb==11)
+
+. 
+. * Weak erte or hours erte variable
+. gen erteh = (rzdifh==11)
+
+. 
+. * (labour) state variable
+. gen state= ""
+(11,390,554 missing values generated)
+
+. replace state="P" if ducon1==1
+(2,603,427 real changes made)
+
+. replace state="T" if ducon1==6
+(915,067 real changes made)
+
+. replace state="A" if situ!=7&situ!=8&situ!=.
+(811,778 real changes made)
+
+. replace state="U" if aoi==6|aoi==5
+(873,827 real changes made)
+
+. replace state="I" if aoi>6
+(6,186,455 real changes made)
+
+. 
+. * Part 2: Generate key indicator variables * * * * * * * * * 
+. 
+. * Consider ONLY small children (10 or less)
+. replace nmadre = 0 if edad5>10
+(1,977,610 real changes made)
+
+. replace npadre = 0 if edad5>10
+(1,516,325 real changes made)
+
+. 
+. gen college = nforma=="SU"
+
+. 
+. sort ciclo nvivi npers
+
+. 
+. gen child_dummy = (edad5<=16)
+
+. 
+. gen baby_dummy = (edad5<10)
+
+. 
+. gen kid_dummy = (edad5>=10&edad5<16)
+
+. 
+. by ciclo nvivi: gen kids_in_house = sum(child_dummy)
+
+. by ciclo nvivi: replace kids_in_house = kids_in_house[_N]
+(3,827,554 real changes made)
+
+. 
+. by ciclo nvivi: gen baby_in_house = sum(baby_dummy)
+
+. by ciclo nvivi: replace baby_in_house = baby_dummy[_N]
+(2,134,568 real changes made)
+
+. 
+. gen mom_in = -(nmadre>0)
+
+. gen mom_no = nmadre
+
+. sort ciclo nvivi mom_in
+
+. by ciclo nvivi: replace mom_no = mom_no[_n-1] if mom_no==0
+(9,677,659 real changes made, 7,069,664 to missing)
+
+. gen mother = mom_no==npers
+
+. replace mom_no = 0 if  mom_no == .
+(7,069,664 real changes made)
+
+. 
+. gen dad_in = -(npadre>0)
+
+. gen dad_no = npadre
+
+. sort ciclo nvivi dad_in
+
+. by ciclo nvivi: replace dad_no = dad_no[_n-1] if dad_no==0
+(9,876,410 real changes made, 7,521,389 to missing)
+
+. gen father = dad_no==npers
+
+. replace dad_no = 0 if  dad_no == .
+(7,521,389 real changes made)
+
+. 
+. drop mom_in dad_in
+
+. 
+. * Drop weird cases and teen moms
+. replace mother = 0 if mother==1&(edad5<20|edad5>50)
+(13,120 real changes made)
+
+. replace father = 0 if father==1&(edad5<20|edad5>50)
+(43,263 real changes made)
+
+. 
+. gen single_mom = mother==1&dad_no==0
+
+. 
+. * Part 3: Generate labour market x motherhood variables * * * * * * * * *
+. 
+. sort ciclo nvivi mother
+
+. by ciclo nvivi: gen mother_state = state[_N] if mother[_N]==1
+(7,119,377 missing values generated)
+
+. by ciclo nvivi: gen mother_erte = erte[_N] if mother[_N]==1
+(7,119,377 missing values generated)
+
+. by ciclo nvivi: gen no_mother = mother[_N]==0
+
+. 
+. sort ciclo nvivi father
+
+. by ciclo nvivi: gen father_state = state[_N] if father[_N]==1
+(7,695,198 missing values generated)
+
+. by ciclo nvivi: gen father_erte = erte[_N] if father[_N]==1
+(7,695,198 missing values generated)
+
+. by ciclo nvivi: gen no_father = father[_N]==0
+
+. 
+. gen partner_perm = (father_state=="P"&mother==1)|(mother_state=="P"&father==1)
+
+. replace partner_perm = . if (father_state==""&mother==1)|(mother_state==""&father==1)
+(214,193 real changes made, 214,193 to missing)
+
+. gen partner_inac = (father_state=="I"&mother==1)|(mother_state=="I"&father==1)
+
+. replace partner_inac = . if (father_state==""&mother==1)|(mother_state==""&father==1)
+(214,193 real changes made, 214,193 to missing)
+
+. gen partner_erte = (father_erte==1&mother==1)|(mother_erte==1&father==1)
+
+. 
+. // gen father_perm = (father_state=="P")
+. // replace father_perm = . if father_state==""
+. // gen mother_perm = (mother_state=="P")
+. // replace mother_perm = . if mother_state==""
+. // gen mother_inac = (mother_state=="I")
+. // replace mother_inac = . if mother_state==""
+. // gen father_inac = (father_state=="I")
+. // replace father_inac = . if father_state==""
+. 
+. * Indicator variables and regressors * * * * * * * * * * * * * * * * * * * * *
+. gen working = (state!="U"&state!="I")
+
+. gen permanent = state=="P"
+
+. gen employee = (state=="P"|state=="T")
+
+. gen inactive = state=="I"
+
+. 
+. destring ocup1 ocupa act1 acta parco1, replace
+ocup1: all characters numeric; replaced as byte
+(7060282 missing values generated)
+ocupa: all characters numeric; replaced as byte
+(10622936 missing values generated)
+act1: all characters numeric; replaced as byte
+(7060282 missing values generated)
+acta: all characters numeric; replaced as byte
+(10622936 missing values generated)
+parco1: all characters numeric; replaced as byte
+(7060282 missing values generated)
+
+. gen occ = ocup1
+(7,060,282 missing values generated)
+
+. replace occ = ocupa if occ==.
+(767,618 real changes made)
+
+. gen act = act1
+(7,060,282 missing values generated)
+
+. replace act = acta if act==.
+(767,618 real changes made)
+
+. 
+. gen mili = occ==0
+
+. 
+. gen public_servant = situ==7
+
+. 
+. gen woman = sexo1==6
+
+. 
+. gen part_time = parco1==6
+
+. 
+. gen married = eciv1==2
+
+. gen divorced = eciv1==4
+
+. gen widowed = eciv1==3
+
+. 
+. gen parent = (mother==1|father==1)
+
+. 
+. rename dcom tenure
+
+. rename edad5 age
+
+. 
+. quietly do labels_mini
+file labels_mini.do not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. do "C:\Users\LAFUEN~1\AppData\Local\Temp\STD1e50_000000.tmp"
+
+. quietly do "./formatting/labels_mini.do"
+
+. label variable age "Age in 5 year groups"
+
+. 
+. gen prime_aged = (age>=30&age<=45)
+
+. 
+. gen married_parent = married*parent
+
+. 
+. gen one_year_before = (ciclo>191|(ciclo<190&ciclo>=184))
+
+. gen one_year_later = ciclo > 191
+
+. 
+. * Regressions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+. 
+. * Bloc 1: On permanent contract * * * * * * * * * * * * * * * * 
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure if mili==0&prime_aged&one_year_be
+> fore [pw=factorel], r 
+command eststo is unrecognized
+r(199);
+
+end of do-file
+
+r(199);
+
+. search eststo
+
+. do "C:\Users\LAFUEN~1\AppData\Local\Temp\STD1e50_000000.tmp"
+
+. 
+. * One less year
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==186&mili==0&pri
+> me_aged [pw=factorel], r 
+
+Logistic regression                                    Number of obs =  32,427
+                                                       Wald chi2(29) = 2769.13
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5932382.6                      Pseudo R2     =  0.1330
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   8.996145   1.224417    16.14   0.000     6.889758    11.74651
+     extractive and energy.  |   12.56948   1.700104    18.71   0.000     9.642438    16.38505
+         manufactures, sec.  |   9.908361   1.362384    16.68   0.000     7.567684    12.97301
+               construction  |   3.322603   .4370581     9.13   0.000     2.567501     4.29978
+      hospitality and sales  |   5.319647   .6350756    14.00   0.000     4.209822    6.722051
+ Transport, storage and IT.  |    7.32375   .9464173    15.41   0.000     5.685077    9.434757
+  Financial and prof. serv.  |   5.202186   .6257169    13.71   0.000     4.109639    6.585187
+   Education and healthcare  |   6.262914   .7916587    14.51   0.000     4.888561    8.023649
+             Other services  |     6.1098   .7741611    14.28   0.000     4.766207    7.832152
+                             |
+                         occ |
+       white collar - prof.  |   1.920254   .1689404     7.42   0.000     1.616112    2.281633
+white collar - tech. suport  |   2.788598   .2581332    11.08   0.000     2.325908    3.343331
+       white collar - other  |   4.688774   .4448617    16.29   0.000      3.89313    5.647024
+     blue collar - services  |   2.379438   .2150707     9.59   0.000     1.993135    2.840613
+  blue collar - agriculture  |    1.15185   .1908952     0.85   0.394     .8323898    1.593914
+     blue collar - artisans  |   1.745505   .1687291     5.76   0.000     1.444241    2.109611
+       blue collar - equip.  |   2.410336   .2467313     8.59   0.000     1.972174    2.945845
+                  unskilled  |   2.867956   .2762438    10.94   0.000     2.374565    3.463864
+                             |
+              public_servant |   .6606703   .0390143    -7.02   0.000     .5884629    .7417379
+                       woman |   1.076178   .0388255     2.03   0.042     1.002709     1.15503
+                      parent |   1.144875   .0582716     2.66   0.008     1.036177    1.264976
+                     married |    1.13239   .0607866     2.32   0.021     1.019303    1.258022
+              married_parent |   .8810769   .0629008    -1.77   0.076     .7660302    1.013402
+                    divorced |   1.145426   .0766832     2.03   0.043     1.004573    1.306029
+                     widowed |   1.237144   .3133561     0.84   0.401     .7530428    2.032456
+                   part_time |   .7211337   .0319123    -7.39   0.000     .6612225    .7864732
+                        erte |   1.069649   1.233291     0.06   0.953     .1116394    10.24862
+                         age |   .9831725   .0030603    -5.45   0.000     .9771928    .9891889
+                      tenure |   1.008847   .0002372    37.46   0.000     1.008382    1.009312
+                     college |   1.416021    .059119     8.33   0.000     1.304764    1.536765
+                       _cons |   .0932565   .0169249   -13.07   0.000     .0653427    .1330949
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est1 stored)
+
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==187&mili==0&pri
+> me_aged [pw=factorel], r 
+note: erte != 0 predicts success perfectly;
+      erte omitted and 3 obs not used.
+
+
+Logistic regression                                    Number of obs =  32,398
+                                                       Wald chi2(28) = 2814.55
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5982529.8                      Pseudo R2     =  0.1317
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   8.502497   1.131903    16.08   0.000     6.549822    11.03731
+     extractive and energy.  |   11.65758   1.537383    18.62   0.000     9.002292    15.09605
+         manufactures, sec.  |   9.895841   1.325066    17.12   0.000     7.611596    12.86559
+               construction  |   3.153377   .4018024     9.01   0.000     2.456496    4.047955
+      hospitality and sales  |   4.888037   .5643948    13.74   0.000     3.898082    6.129401
+ Transport, storage and IT.  |   7.001947   .8748394    15.58   0.000       5.4811    8.944785
+  Financial and prof. serv.  |   4.699544   .5458137    13.32   0.000     3.742791    5.900867
+   Education and healthcare  |   5.739862   .7039903    14.25   0.000     4.513383    7.299629
+             Other services  |   5.010937   .6208474    13.01   0.000     3.930577    6.388244
+                             |
+                         occ |
+       white collar - prof.  |   1.693073   .1560405     5.71   0.000     1.413271    2.028271
+white collar - tech. suport  |   2.394774   .2318838     9.02   0.000     1.980813    2.895247
+       white collar - other  |   4.288035   .4201274    14.86   0.000     3.538836    5.195845
+     blue collar - services  |   2.174323   .2060779     8.20   0.000     1.805714    2.618178
+  blue collar - agriculture  |   1.179053   .1970782     0.99   0.324     .8496799    1.636105
+     blue collar - artisans  |   1.402489   .1420517     3.34   0.001     1.149966    1.710463
+       blue collar - equip.  |   1.979564   .2106948     6.42   0.000     1.606837    2.438749
+                  unskilled  |   2.477735   .2475946     9.08   0.000     2.037024    3.013794
+                             |
+              public_servant |   .6161515   .0366642    -8.14   0.000     .5483232    .6923701
+                       woman |   1.028597   .0371069     0.78   0.434     .9583803    1.103958
+                      parent |   1.036923   .0531237     0.71   0.479     .9378591     1.14645
+                     married |   1.096856   .0589056     1.72   0.085     .9872714    1.218604
+              married_parent |   .9615757   .0687184    -0.55   0.584     .8358974     1.10615
+                    divorced |   1.116449   .0759472     1.62   0.105     .9770917    1.275682
+                     widowed |   1.123327   .3297568     0.40   0.692     .6318776    1.997007
+                   part_time |   .7029712   .0316295    -7.83   0.000     .6436333    .7677796
+                        erte |          1  (omitted)
+                         age |   .9799962   .0030606    -6.47   0.000     .9740159    .9860133
+                      tenure |   1.008958   .0002396    37.56   0.000     1.008488    1.009427
+                     college |   1.441302   .0608233     8.66   0.000     1.326887    1.565582
+                       _cons |   .1381033   .0251965   -10.85   0.000      .096584    .1974709
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est2 stored)
+
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==188&mili==0&pri
+> me_aged [pw=factorel], r 
+note: erte != 0 predicts success perfectly;
+      erte omitted and 1 obs not used.
+
+
+Logistic regression                                    Number of obs =  31,952
+                                                       Wald chi2(28) = 2734.36
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5936857.3                      Pseudo R2     =  0.1306
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |    6.25533   .8452562    13.57   0.000     4.799886    8.152099
+     extractive and energy.  |   8.946117   1.196238    16.39   0.000     6.883596    11.62663
+         manufactures, sec.  |   7.501999   1.025597    14.74   0.000     5.738645    9.807192
+               construction  |   2.307617   .3015888     6.40   0.000      1.78615    2.981327
+      hospitality and sales  |   3.790008   .4458166    11.33   0.000     3.009635    4.772726
+ Transport, storage and IT.  |   5.143088   .6568144    12.82   0.000     4.004226     6.60586
+  Financial and prof. serv.  |   3.758711    .446412    11.15   0.000     2.978132    4.743881
+   Education and healthcare  |    4.24791   .5305735    11.58   0.000      3.32551    5.426156
+             Other services  |   3.986468   .5016124    10.99   0.000     3.115176    5.101454
+                             |
+                         occ |
+       white collar - prof.  |   2.090444   .1953822     7.89   0.000      1.74053    2.510705
+white collar - tech. suport  |   3.122417   .3063734    11.60   0.000     2.576146    3.784524
+       white collar - other  |   4.815749   .4748108    15.94   0.000     3.969532    5.842362
+     blue collar - services  |   2.449134   .2317105     9.47   0.000     2.034609    2.948112
+  blue collar - agriculture  |   1.269272   .2105749     1.44   0.151     .9169353    1.756996
+     blue collar - artisans  |   1.701822   .1733623     5.22   0.000     1.393809    2.077901
+       blue collar - equip.  |   2.519264   .2704996     8.61   0.000     2.041165    3.109348
+                  unskilled  |   2.687736   .2681109     9.91   0.000     2.210427    3.268111
+                             |
+              public_servant |   .6467823   .0386821    -7.29   0.000     .5752416    .7272202
+                       woman |   1.036606   .0374945     0.99   0.320     .9656621    1.112761
+                      parent |   1.023131   .0523394     0.45   0.655     .9255223    1.131033
+                     married |   1.050549   .0571672     0.91   0.365     .9442715    1.168788
+              married_parent |   1.032997   .0745091     0.45   0.653     .8968151    1.189859
+                    divorced |   1.191234    .081388     2.56   0.010     1.041935    1.361925
+                     widowed |   .8062108   .2305297    -0.75   0.451      .460314    1.412027
+                   part_time |     .79549   .0365389    -4.98   0.000      .727004    .8704276
+                        erte |          1  (omitted)
+                         age |   .9778143   .0030908    -7.10   0.000     .9717752    .9838909
+                      tenure |   1.009304   .0002409    38.79   0.000     1.008831    1.009776
+                     college |   1.356254   .0568335     7.27   0.000     1.249314    1.472348
+                       _cons |   .1628053   .0299165    -9.88   0.000     .1135676    .2333901
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est3 stored)
+
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==189&mili==0&pri
+> me_aged [pw=factorel], r
+
+Logistic regression                                    Number of obs =  31,830
+                                                       Wald chi2(29) = 2830.92
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5895301.3                      Pseudo R2     =  0.1371
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   6.953103   .9429315    14.30   0.000     5.330214    9.070113
+     extractive and energy.  |   10.19052   1.382876    17.11   0.000     7.810639    13.29555
+         manufactures, sec.  |   8.450765   1.175325    15.35   0.000     6.434453    11.09891
+               construction  |   2.878038   .3774588     8.06   0.000     2.225667    3.721627
+      hospitality and sales  |   4.445464   .5287566    12.54   0.000     3.521054    5.612567
+ Transport, storage and IT.  |   6.667804   .8601203    14.71   0.000     5.178228    8.585873
+  Financial and prof. serv.  |   4.368865   .5256046    12.26   0.000     3.451145    5.530623
+   Education and healthcare  |   4.835358   .6094205    12.50   0.000      3.77701    6.190264
+             Other services  |   4.518121   .5771207    11.81   0.000     3.517466    5.803444
+                             |
+                         occ |
+       white collar - prof.  |   2.112492   .1953655     8.09   0.000      1.76228    2.532299
+white collar - tech. suport  |    3.68226   .3568972    13.45   0.000     3.045181    4.452622
+       white collar - other  |   5.471591   .5371214    17.31   0.000     4.513932    6.632423
+     blue collar - services  |   2.698063   .2530412    10.58   0.000     2.245024    3.242523
+  blue collar - agriculture  |   1.302507   .2253266     1.53   0.127      .927955    1.828241
+     blue collar - artisans  |    1.79304   .1808854     5.79   0.000     1.471361    2.185048
+       blue collar - equip.  |   2.417179     .25648     8.32   0.000     1.963317    2.975963
+                  unskilled  |   2.846137   .2804372    10.62   0.000     2.346307    3.452446
+                             |
+              public_servant |   .6655465   .0397805    -6.81   0.000      .591972    .7482654
+                       woman |   1.011139   .0369133     0.30   0.762     .9413185    1.086139
+                      parent |   1.021195    .052983     0.40   0.686     .9224556    1.130503
+                     married |    1.13649   .0621449     2.34   0.019     1.020988    1.265059
+              married_parent |   .9534825   .0695271    -0.65   0.514     .8265018    1.099972
+                    divorced |   1.115066    .077801     1.56   0.119      .972546    1.278472
+                     widowed |   .9875502   .2798996    -0.04   0.965     .5666366     1.72113
+                   part_time |   .7169198   .0328503    -7.26   0.000     .6553409     .784285
+                        erte |   .4287148   .4477522    -0.81   0.417     .0553565    3.320231
+                         age |   .9754742   .0030985    -7.82   0.000     .9694202     .981566
+                      tenure |   1.009464   .0002451    38.79   0.000     1.008984    1.009944
+                     college |   1.328453   .0558114     6.76   0.000     1.223447    1.442471
+                       _cons |   .1488097   .0274484   -10.33   0.000     .1036632     .213618
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est4 stored)
+
+. 
+. * 2020
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==190&mili==0&pri
+> me_aged [pw=factorel], r
+
+Logistic regression                                    Number of obs =  30,367
+                                                       Wald chi2(29) = 2664.22
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5789711                        Pseudo R2     =  0.1334
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   6.962734   .9675998    13.96   0.000      5.30261    9.142604
+     extractive and energy.  |   10.17612   1.396042    16.91   0.000     7.776914    13.31548
+         manufactures, sec.  |   8.347803   1.155817    15.33   0.000     6.363805    10.95034
+               construction  |   2.671301   .3537012     7.42   0.000     2.060711    3.462809
+      hospitality and sales  |    4.52017   .5439486    12.54   0.000     3.570449    5.722513
+ Transport, storage and IT.  |   6.763332   .8862929    14.59   0.000     5.231377    8.743905
+  Financial and prof. serv.  |   4.300494   .5213537    12.03   0.000     3.390988    5.453941
+   Education and healthcare  |   4.872726   .6241617    12.36   0.000     3.790872    6.263324
+             Other services  |   3.820106   .4936514    10.37   0.000     2.965373    4.921206
+                             |
+                         occ |
+       white collar - prof.  |   2.175979   .2032051     8.33   0.000     1.812027    2.613032
+white collar - tech. suport  |   3.371127   .3297647    12.42   0.000     2.782981    4.083569
+       white collar - other  |   5.972722   .5959631    17.91   0.000     4.911778     7.26283
+     blue collar - services  |   2.704321   .2570322    10.47   0.000     2.244687    3.258072
+  blue collar - agriculture  |   1.220872   .2157575     1.13   0.259     .8634601    1.726227
+     blue collar - artisans  |    1.97373   .2006277     6.69   0.000     1.617201     2.40886
+       blue collar - equip.  |   2.681085   .2870961     9.21   0.000     2.173513    3.307189
+                  unskilled  |   3.311263   .3344575    11.85   0.000     2.716547    4.036177
+                             |
+              public_servant |   .6763291   .0423892    -6.24   0.000     .5981481    .7647288
+                       woman |   1.012836    .038248     0.34   0.736     .9405786    1.090645
+                      parent |   1.030722   .0554491     0.56   0.574     .9275775    1.145337
+                     married |   1.010188   .0574659     0.18   0.859     .9036092    1.129338
+              married_parent |   .9894937   .0747673    -0.14   0.889     .8532872    1.147442
+                    divorced |   1.001284   .0722985     0.02   0.986     .8691516    1.153503
+                     widowed |   .7899295   .2143898    -0.87   0.385     .4640546    1.344645
+                   part_time |    .754547   .0367878    -5.78   0.000      .685782    .8302072
+                        erte |   2.352686   .4539368     4.43   0.000     1.611869    3.433984
+                         age |   .9767979   .0032496    -7.06   0.000     .9704495    .9831877
+                      tenure |   1.009072   .0002474    36.83   0.000     1.008587    1.009557
+                     college |   1.377005   .0601373     7.33   0.000     1.264041    1.500063
+                       _cons |    .146813   .0278689   -10.11   0.000     .1012008    .2129829
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est5 stored)
+
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==191&mili==0&pri
+> me_aged [pw=factorel], r 
+
+Logistic regression                                    Number of obs =  27,457
+                                                       Wald chi2(29) = 2458.75
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5391428.2                      Pseudo R2     =  0.1366
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   6.733398   .9608595    13.36   0.000     5.090581    8.906379
+     extractive and energy.  |   10.32672   1.500931    16.06   0.000     7.766856     13.7303
+         manufactures, sec.  |   9.664958    1.43429    15.29   0.000     7.225714    12.92764
+               construction  |   2.870898    .397902     7.61   0.000     2.187976    3.766977
+      hospitality and sales  |   4.001497   .5005495    11.09   0.000     3.131448    5.113282
+ Transport, storage and IT.  |   6.038943   .8194801    13.25   0.000     4.628642    7.878951
+  Financial and prof. serv.  |   3.878567   .4855629    10.83   0.000     3.034648    4.957176
+   Education and healthcare  |   4.565248    .601772    11.52   0.000     3.525839    5.911072
+             Other services  |   3.360055   .4594167     8.86   0.000     2.570174    4.392687
+                             |
+                         occ |
+       white collar - prof.  |   1.984118   .1904699     7.14   0.000     1.643821    2.394862
+white collar - tech. suport  |   3.291234   .3335417    11.75   0.000     2.698335    4.014409
+       white collar - other  |    6.29168   .6645838    17.41   0.000     5.115111    7.738882
+     blue collar - services  |   2.706585   .2702088     9.97   0.000     2.225579     3.29155
+  blue collar - agriculture  |     1.0744   .1981594     0.39   0.697     .7484674    1.542266
+     blue collar - artisans  |   1.760781   .1874151     5.32   0.000     1.429238    2.169232
+       blue collar - equip.  |    2.49608   .2821699     8.09   0.000      2.00002    3.115177
+                  unskilled  |   3.564629   .3849598    11.77   0.000     2.884625    4.404933
+                             |
+              public_servant |   .6917933   .0447528    -5.70   0.000     .6094124    .7853106
+                       woman |   .9805021   .0398665    -0.48   0.628     .9053975    1.061837
+                      parent |   .9779665   .0565301    -0.39   0.700     .8732154    1.095284
+                     married |   .9875456   .0606086    -0.20   0.838     .8756214    1.113776
+              married_parent |    1.07387   .0872226     0.88   0.380     .9158299    1.259182
+                    divorced |   1.115646   .0876701     1.39   0.164     .9563939    1.301415
+                     widowed |   1.042498   .3241946     0.13   0.894     .5667213      1.9177
+                   part_time |   .7728729   .0420771    -4.73   0.000     .6946508    .8599033
+                        erte |   2.061396   .1375272    10.84   0.000     1.808727    2.349361
+                         age |   .9712417   .0034645    -8.18   0.000     .9644751    .9780557
+                      tenure |   1.008938   .0002577    34.84   0.000     1.008433    1.009443
+                     college |   1.395213   .0666515     6.97   0.000     1.270508    1.532159
+                       _cons |   .1993735   .0396699    -8.10   0.000       .13499    .2944647
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est6 stored)
+
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==192&mili==0&pri
+> me_aged [pw=factorel], r 
+
+Logistic regression                                    Number of obs =  27,703
+                                                       Wald chi2(29) = 2380.64
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5573008.5                      Pseudo R2     =  0.1327
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   4.429009    .644957    10.22   0.000     3.329306    5.891955
+     extractive and energy.  |   6.907457   1.005383    13.28   0.000     5.193087    9.187786
+         manufactures, sec.  |   5.973447   .8889107    12.01   0.000     4.462287    7.996365
+               construction  |   1.802086   .2520853     4.21   0.000     1.369951    2.370534
+      hospitality and sales  |   2.833129   .3606548     8.18   0.000     2.207543    3.635997
+ Transport, storage and IT.  |   3.914797   .5384341     9.92   0.000     2.989761    5.126039
+  Financial and prof. serv.  |   2.631374   .3383466     7.52   0.000      2.04519    3.385568
+   Education and healthcare  |   3.227351   .4338563     8.72   0.000     2.479809    4.200241
+             Other services  |   2.516143   .3465739     6.70   0.000     1.920838    3.295945
+                             |
+                         occ |
+       white collar - prof.  |   1.990706   .1923793     7.12   0.000     1.647207    2.405837
+white collar - tech. suport  |   3.468676   .3577894    12.06   0.000     2.833762    4.245844
+       white collar - other  |   5.129464   .5323999    15.75   0.000     4.185271    6.286665
+     blue collar - services  |   2.299734   .2283474     8.39   0.000     1.893037    2.793804
+  blue collar - agriculture  |   .7876913   .1544094    -1.22   0.223       .53641    1.156685
+     blue collar - artisans  |   1.885983     .20029     5.97   0.000     1.531584    2.322387
+       blue collar - equip.  |   2.304997   .2595237     7.42   0.000     1.848553    2.874145
+                  unskilled  |   2.765236   .2938236     9.57   0.000     2.245364    3.405475
+                             |
+              public_servant |   .6185159   .0400552    -7.42   0.000     .5447871    .7022227
+                       woman |   1.043176   .0417037     1.06   0.290      .964558    1.128201
+                      parent |   1.071765   .0616167     1.21   0.228     .9575543    1.199599
+                     married |   1.060146   .0648754     0.95   0.340     .9403222    1.195239
+              married_parent |   .9758275   .0793628    -0.30   0.764     .8320433    1.144459
+                    divorced |   1.109798   .0847213     1.36   0.172     .9555729    1.288915
+                     widowed |   .8145476    .271237    -0.62   0.538     .4241056     1.56444
+                   part_time |   .7882389   .0422892    -4.44   0.000     .7095625    .8756388
+                        erte |    2.57036   .4519212     5.37   0.000     1.821107    3.627875
+                         age |   .9718909    .003443    -8.05   0.000     .9651662    .9786625
+                      tenure |   1.009307     .00026    35.96   0.000     1.008797    1.009817
+                     college |   1.363568   .0629304     6.72   0.000     1.245641     1.49266
+                       _cons |   .2877402   .0581915    -6.16   0.000     .1935783     .427705
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est7 stored)
+
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==193&mili==0&pri
+> me_aged [pw=factorel], r
+
+Logistic regression                                    Number of obs =  27,945
+                                                       Wald chi2(29) = 2388.07
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5652360.5                      Pseudo R2     =  0.1337
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   5.981649   .8107577    13.20   0.000     4.586151    7.801776
+     extractive and energy.  |   7.928483   1.055626    15.55   0.000     6.107426    10.29253
+         manufactures, sec.  |   7.297483   1.006774    14.41   0.000     5.568519     9.56327
+               construction  |   2.440689   .3172129     6.87   0.000     1.891834    3.148777
+      hospitality and sales  |   3.565536   .4093774    11.07   0.000     2.847043    4.465351
+ Transport, storage and IT.  |   4.760253    .597005    12.44   0.000     3.722862    6.086717
+  Financial and prof. serv.  |    2.99821   .3449773     9.54   0.000     2.392886    3.756663
+   Education and healthcare  |    3.66314   .4484551    10.61   0.000     2.881684    4.656512
+             Other services  |   3.195688   .4063811     9.14   0.000     2.490698    4.100227
+                             |
+                         occ |
+       white collar - prof.  |   1.658192   .1613073     5.20   0.000     1.370347    2.006498
+white collar - tech. suport  |   2.716132   .2807599     9.67   0.000     2.218013    3.326116
+       white collar - other  |   4.265183   .4479934    13.81   0.000     3.471617    5.240149
+     blue collar - services  |   2.088958   .2098453     7.33   0.000     1.715626    2.543529
+  blue collar - agriculture  |   .9541806   .1745246    -0.26   0.798     .6667169    1.365588
+     blue collar - artisans  |   1.489044   .1608638     3.69   0.000     1.204899    1.840196
+       blue collar - equip.  |   1.843228   .2072081     5.44   0.000     1.478736    2.297564
+                  unskilled  |   2.196547   .2352963     7.35   0.000      1.78057    2.709705
+                             |
+              public_servant |   .6140031   .0393499    -7.61   0.000     .5415259    .6961805
+                       woman |   1.064689   .0426712     1.56   0.118     .9842559    1.151696
+                      parent |   1.087512   .0610019     1.50   0.135     .9742884    1.213893
+                     married |   1.059157   .0640807     0.95   0.342     .9407217    1.192502
+              married_parent |   .9627613   .0772978    -0.47   0.636     .8225792    1.126833
+                    divorced |   1.124718   .0831012     1.59   0.112     .9730865    1.299977
+                     widowed |   .8162806   .2403934    -0.69   0.491     .4583128    1.453841
+                   part_time |   .6970549   .0365018    -6.89   0.000     .6290615    .7723974
+                        erte |   2.788414   .5316741     5.38   0.000     1.918918    4.051894
+                         age |   .9690201   .0034221    -8.91   0.000      .962336    .9757505
+                      tenure |   1.009238   .0002611    35.54   0.000     1.008726     1.00975
+                     college |   1.413632   .0654562     7.48   0.000      1.29099    1.547925
+                       _cons |   .3100611   .0599955    -6.05   0.000      .212199    .4530552
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est8 stored)
+
+. 
+. * 2020
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==194&mili==0&pri
+> me_aged [pw=factorel], r
+
+Logistic regression                                    Number of obs =  26,629
+                                                       Wald chi2(29) = 2194.17
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5579728.7                      Pseudo R2     =  0.1313
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   7.325269   1.079318    13.52   0.000     5.487898      9.7778
+     extractive and energy.  |   10.36498   1.486131    16.31   0.000     7.825698     13.7282
+         manufactures, sec.  |    9.50233     1.4199    15.07   0.000     7.089866    12.73568
+               construction  |    2.99869   .4172169     7.89   0.000     2.282976    3.938782
+      hospitality and sales  |    4.33388    .538154    11.81   0.000      3.39766    5.528072
+ Transport, storage and IT.  |   5.914069   .7961776    13.20   0.000      4.54249    7.699789
+  Financial and prof. serv.  |   3.742671   .4620171    10.69   0.000     2.938355    4.767151
+   Education and healthcare  |    4.34212   .5723081    11.14   0.000     3.353592    5.622034
+             Other services  |   3.804324   .5217468     9.74   0.000     2.907628    4.977556
+                             |
+                         occ |
+       white collar - prof.  |   1.480956   .1489228     3.91   0.000     1.216036     1.80359
+white collar - tech. suport  |   2.212247   .2361009     7.44   0.000      1.79469    2.726953
+       white collar - other  |    3.79549   .4142685    12.22   0.000     3.064511    4.700828
+     blue collar - services  |   1.778368    .184991     5.53   0.000     1.450365     2.18055
+  blue collar - agriculture  |    .650551   .1196398    -2.34   0.019     .4536708    .9328715
+     blue collar - artisans  |   1.196658   .1345322     1.60   0.110     .9600089    1.491643
+       blue collar - equip.  |   1.673027   .1973704     4.36   0.000     1.327654    2.108244
+                  unskilled  |   2.187539    .245523     6.97   0.000     1.755575    2.725788
+                             |
+              public_servant |   .6207933   .0415267    -7.13   0.000     .5445121    .7077606
+                       woman |   1.039497   .0438396     0.92   0.358      .957028    1.129072
+                      parent |   1.036885   .0619207     0.61   0.544     .9223559    1.165635
+                     married |    1.00554   .0643841     0.09   0.931     .8869468    1.139991
+              married_parent |   1.006737   .0855549     0.08   0.937     .8522735    1.189195
+                    divorced |   1.017635   .0786698     0.23   0.821      .874558    1.184119
+                     widowed |   .7143765   .1964678    -1.22   0.221      .416706    1.224686
+                   part_time |   .7342294   .0392197    -5.78   0.000     .6612472    .8152667
+                        erte |   4.448219   .9026147     7.36   0.000     2.988572    6.620771
+                         age |   .9722571   .0036602    -7.47   0.000     .9651097    .9794575
+                      tenure |   1.008789   .0002623    33.65   0.000     1.008275    1.009303
+                     college |   1.298273   .0629416     5.38   0.000     1.180589    1.427687
+                       _cons |   .2958531   .0604166    -5.96   0.000     .1982672    .4414701
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est9 stored)
+
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==195&mili==0&pri
+> me_aged [pw=factorel], r
+
+Logistic regression                                    Number of obs =  26,065
+                                                       Wald chi2(29) = 2161.80
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5698166.4                      Pseudo R2     =  0.1360
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   5.296638   .7789964    11.33   0.000     3.970186    7.066261
+     extractive and energy.  |   7.177097   1.012604    13.97   0.000       5.4432    9.463314
+         manufactures, sec.  |   6.133945   .9169603    12.13   0.000     4.576086    8.222153
+               construction  |   2.019979   .2750338     5.16   0.000     1.546857    2.637811
+      hospitality and sales  |    3.18258   .3840043     9.59   0.000     2.512319    4.031658
+ Transport, storage and IT.  |   4.242073   .5579909    10.99   0.000     3.278034    5.489628
+  Financial and prof. serv.  |   3.130247   .3808686     9.38   0.000     2.466095    3.973264
+   Education and healthcare  |   2.972822   .3830625     8.46   0.000     2.309338    3.826929
+             Other services  |   2.766444   .3644974     7.72   0.000     2.136833     3.58157
+                             |
+                         occ |
+       white collar - prof.  |   1.918251   .2012824     6.21   0.000     1.561668    2.356254
+white collar - tech. suport  |   2.901272   .3190675     9.69   0.000     2.338716    3.599145
+       white collar - other  |   4.703161    .528559    13.78   0.000     3.773363    5.862071
+     blue collar - services  |   2.132281   .2269043     7.12   0.000     1.730871    2.626782
+  blue collar - agriculture  |   .5366453   .1005887    -3.32   0.001     .3716535    .7748834
+     blue collar - artisans  |   1.618618   .1864272     4.18   0.000     1.291534    2.028538
+       blue collar - equip.  |   2.105013   .2549028     6.15   0.000     1.660275    2.668883
+                  unskilled  |   2.413548   .2762262     7.70   0.000     1.928579    3.020469
+                             |
+              public_servant |   .6385701   .0435979    -6.57   0.000     .5585904    .7300014
+                       woman |   .9970756   .0432125    -0.07   0.946     .9158781    1.085472
+                      parent |     .92348   .0544935    -1.35   0.177     .8226196    1.036707
+                     married |   .9650444   .0639893    -0.54   0.592     .8474355    1.098975
+              married_parent |   1.210461   .1045274     2.21   0.027      1.02199    1.433689
+                    divorced |   1.058981   .0828095     0.73   0.464     .9085028    1.234382
+                     widowed |   1.073506   .3108524     0.24   0.806     .6085892    1.893585
+                   part_time |   .6978077    .038413    -6.54   0.000      .626439    .7773074
+                        erte |    2.92431   .7288115     4.31   0.000     1.794248    4.766111
+                         age |   .9768535   .0037317    -6.13   0.000     .9695669    .9841949
+                      tenure |   1.009194   .0002734    33.78   0.000     1.008658     1.00973
+                     college |   1.264186   .0622931     4.76   0.000     1.147805    1.392369
+                       _cons |   .2743272   .0558615    -6.35   0.000     .1840509    .4088838
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est10 stored)
+
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==196&mili==0&pri
+> me_aged [pw=factorel], r
+
+Logistic regression                                    Number of obs =  25,193
+                                                       Wald chi2(29) = 2046.63
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5755094.1                      Pseudo R2     =  0.1329
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   3.787433   .5622898     8.97   0.000     2.831222    5.066593
+     extractive and energy.  |   4.986197    .725623    11.04   0.000     3.748842    6.631956
+         manufactures, sec.  |   5.303046   .8501015    10.41   0.000     3.873237    7.260671
+               construction  |    1.61402   .2287374     3.38   0.001     1.222581    2.130789
+      hospitality and sales  |   2.200906   .2803059     6.19   0.000      1.71472    2.824945
+ Transport, storage and IT.  |   3.140413   .4320449     8.32   0.000     2.398182    4.112364
+  Financial and prof. serv.  |   2.410407   .3139968     6.75   0.000     1.867268    3.111529
+   Education and healthcare  |   2.624581   .3585226     7.06   0.000     2.008095    3.430329
+             Other services  |   2.178457   .3063225     5.54   0.000     1.653704    2.869724
+                             |
+                         occ |
+       white collar - prof.  |   2.218049   .2435768     7.25   0.000     1.788528     2.75072
+white collar - tech. suport  |   3.430448   .3915674    10.80   0.000     2.742778     4.29053
+       white collar - other  |   5.362071   .6192254    14.54   0.000      4.27596    6.724058
+     blue collar - services  |    2.30895   .2531964     7.63   0.000       1.8624     2.86257
+  blue collar - agriculture  |   .6381162   .1261012    -2.27   0.023     .4332014    .9399607
+     blue collar - artisans  |   1.810546   .2138205     5.03   0.000     1.436432    2.282097
+       blue collar - equip.  |   2.338707   .2888232     6.88   0.000     1.835925    2.979179
+                  unskilled  |   2.385857   .2796707     7.42   0.000     1.896122    3.002081
+                             |
+              public_servant |   .5387351   .0390815    -8.53   0.000     .4673331    .6210463
+                       woman |   .9721205   .0430779    -0.64   0.523     .8912519    1.060327
+                      parent |   .9031235   .0550533    -1.67   0.095     .8014178    1.017737
+                     married |   1.078101   .0717257     1.13   0.258     .9463015    1.228258
+              married_parent |   1.090577   .0960137     0.98   0.325     .9177347    1.295972
+                    divorced |   1.087956   .0849378     1.08   0.280     .9335921    1.267843
+                     widowed |   2.412617   .9029199     2.35   0.019     1.158582    5.024003
+                   part_time |   .7405009   .0440176    -5.05   0.000      .659064    .8320005
+                        erte |   11.86251   7.356335     3.99   0.000     3.518183    39.99768
+                         age |   .9774297   .0038001    -5.87   0.000     .9700099    .9849063
+                      tenure |   1.009065   .0002788    32.66   0.000     1.008519    1.009612
+                     college |   1.323362   .0663701     5.59   0.000     1.199468    1.460053
+                       _cons |   .3146564   .0672955    -5.41   0.000     .2069141     .478501
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est11 stored)
+
+. 
+. eststo: logistic permanent i.act i.occ public_servant woman parent married married_parent divorced widowed part_time erte age tenure college if ciclo==197&mili==0&pri
+> me_aged [pw=factorel], r
+
+Logistic regression                                    Number of obs =  25,367
+                                                       Wald chi2(29) = 1971.07
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -5812778.1                      Pseudo R2     =  0.1296
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   4.993747   .7371414    10.89   0.000     3.739196    6.669217
+     extractive and energy.  |   6.743248   .9763519    13.18   0.000     5.077198    8.956003
+         manufactures, sec.  |   6.746657   1.065145    12.09   0.000     4.951117    9.193357
+               construction  |   2.355158   .3299441     6.11   0.000     1.789664    3.099335
+      hospitality and sales  |   3.258656   .4066033     9.47   0.000     2.551694    4.161485
+ Transport, storage and IT.  |   4.411465   .6022107    10.87   0.000     3.375864    5.764752
+  Financial and prof. serv.  |   3.404005   .4281254     9.74   0.000     2.660318    4.355587
+   Education and healthcare  |   3.530628     .47153     9.45   0.000     2.717506     4.58705
+             Other services  |    3.05546   .4246993     8.04   0.000     2.326818    4.012278
+                             |
+                         occ |
+       white collar - prof.  |   2.013987   .2203589     6.40   0.000      1.62526    2.495688
+white collar - tech. suport  |   2.893086   .3277339     9.38   0.000     2.317052    3.612326
+       white collar - other  |   4.927316   .5666514    13.87   0.000     3.932969    6.173057
+     blue collar - services  |   2.302761   .2536108     7.57   0.000     1.855681    2.857555
+  blue collar - agriculture  |   .7879724   .1519175    -1.24   0.216     .5400117    1.149791
+     blue collar - artisans  |   1.877388   .2235601     5.29   0.000     1.486595    2.370912
+       blue collar - equip.  |   2.342671    .293398     6.80   0.000     1.832762    2.994446
+                  unskilled  |   2.438183   .2882673     7.54   0.000     1.933875    3.074002
+                             |
+              public_servant |   .5938869   .0421061    -7.35   0.000     .5168379    .6824223
+                       woman |   .9909136   .0440969    -0.21   0.837     .9081473    1.081223
+                      parent |   .9335106   .0559972    -1.15   0.251     .8299643    1.049975
+                     married |   1.109686   .0743179     1.55   0.120     .9731809    1.265339
+              married_parent |   1.069145   .0929198     0.77   0.442     .9016927    1.267696
+                    divorced |   1.156404   .0927382     1.81   0.070      .988205    1.353231
+                     widowed |   1.385886   .4594809     0.98   0.325     .7236318    2.654223
+                   part_time |   .7459762   .0440013    -4.97   0.000     .6645335    .8374001
+                        erte |   15.35017   15.49687     2.71   0.007     2.122153    111.0324
+                         age |   .9741681   .0038018    -6.71   0.000     .9667452    .9816481
+                      tenure |   1.009219   .0002832    32.70   0.000     1.008664    1.009774
+                     college |   1.356012   .0688908     5.99   0.000     1.227494    1.497987
+                       _cons |   .2517318   .0537328    -6.46   0.000     .1656712    .3824979
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est12 stored)
+
+. 
+. esttab using "./regtabs/prob_perm_all.tex", eform replace
+(file ./regtabs/prob_perm_all.tex not found)
+(output written to ./regtabs/prob_perm_all.tex)
+
+. eststo clear 
+
+. 
+. * * * * * * * * * * * * * * * * 
+. * Bloc 1b: On permanent contract, repeated cross-section * * * * * * * * * * 
+. 
+. log using "./regtabs/prob_perm_stocks_w.log", replace nomsg
+log file already open
+r(604);
+
+end of do-file
+
+r(604);
+
+. tab ciclo
+
+      ciclo |      Freq.     Percent        Cum.
+------------+-----------------------------------
+        130 |    153,771        1.35        1.35
+        131 |    151,709        1.33        2.68
+        132 |    147,904        1.30        3.98
+        133 |    148,870        1.31        5.29
+        134 |    153,333        1.35        6.63
+        135 |    159,341        1.40        8.03
+        136 |    157,385        1.38        9.41
+        137 |    158,736        1.39       10.81
+        138 |    162,371        1.43       12.23
+        139 |    163,909        1.44       13.67
+        140 |    163,342        1.43       15.11
+        141 |    163,809        1.44       16.54
+        142 |    164,962        1.45       17.99
+        143 |    165,515        1.45       19.45
+        144 |    164,388        1.44       20.89
+        145 |    164,343        1.44       22.33
+        146 |    164,279        1.44       23.77
+        147 |    163,937        1.44       25.21
+        148 |    172,975        1.52       26.73
+        149 |    173,100        1.52       28.25
+        150 |    172,612        1.52       29.77
+        151 |    169,712        1.49       31.26
+        152 |    168,599        1.48       32.74
+        153 |    168,469        1.48       34.22
+        154 |    169,019        1.48       35.70
+        155 |    168,176        1.48       37.18
+        156 |    166,675        1.46       38.64
+        157 |    164,550        1.44       40.09
+        158 |    168,776        1.48       41.57
+        159 |    168,209        1.48       43.04
+        160 |    167,395        1.47       44.51
+        161 |    168,030        1.48       45.99
+        162 |    168,401        1.48       47.47
+        163 |    169,030        1.48       48.95
+        164 |    168,324        1.48       50.43
+        165 |    168,322        1.48       51.91
+        166 |    168,361        1.48       53.39
+        167 |    167,191        1.47       54.85
+        168 |    165,411        1.45       56.31
+        169 |    165,498        1.45       57.76
+        170 |    164,994        1.45       59.21
+        171 |    163,127        1.43       60.64
+        172 |    160,517        1.41       62.05
+        173 |    160,120        1.41       63.45
+        174 |    158,930        1.40       64.85
+        175 |    157,937        1.39       66.24
+        176 |    157,353        1.38       67.62
+        177 |    156,058        1.37       68.99
+        178 |    156,826        1.38       70.37
+        179 |    156,240        1.37       71.74
+        180 |    156,108        1.37       73.11
+        181 |    156,343        1.37       74.48
+        182 |    158,091        1.39       75.87
+        183 |    158,184        1.39       77.26
+        184 |    158,489        1.39       78.65
+        185 |    159,896        1.40       80.05
+        186 |    161,443        1.42       81.47
+        187 |    161,211        1.42       82.88
+        188 |    160,279        1.41       84.29
+        189 |    159,827        1.40       85.70
+        190 |    155,568        1.37       87.06
+        191 |    145,393        1.28       88.34
+        192 |    144,634        1.27       89.61
+        193 |    144,586        1.27       90.88
+        194 |    140,354        1.23       92.11
+        195 |    135,016        1.19       93.29
+        196 |    128,940        1.13       94.43
+        197 |    129,655        1.14       95.56
+        198 |    129,048        1.13       96.70
+        199 |    127,171        1.12       97.81
+        200 |    124,980        1.10       98.91
+        201 |    123,981        1.09      100.00
+------------+-----------------------------------
+      Total | 11,390,038      100.00
+
+. do "C:\Users\LAFUEN~1\AppData\Local\Temp\STD1e50_000000.tmp"
+
+. log close
