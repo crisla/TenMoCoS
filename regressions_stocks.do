@@ -5,7 +5,7 @@
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 
-use "./formatting/rawfiles_stocks/EPA_stocks20.dta", clear
+use "./formatting/rawfiles/EPA_stocks20.dta", clear
 
 * Part 1: Generate labour market variables * * * * * * * * * 
 sort ciclo nvivi npers
@@ -190,7 +190,7 @@ eststo clear
 * * * * * * * * * * * * * * * * 
 * Bloc 1b: On permanent contract, repeated cross-section * * * * * * * * * * 
 
-log using "./regtabs/prob_perm_stocks_w.log", replace nomsg
+log using "./results/prob_perm_stocks_w.log", replace nomsg
 * Women
 forvalues i=186/201{ 
 	eststo: logistic permanent i.act i.occ public_servant parent married married_parent divorced 	widowed part_time erte age college tenure if ciclo==`i'&mili==0&prime_aged&woman==1 [pw=factorel], vce(robust)
@@ -201,7 +201,7 @@ esttab using "prob_perm_stocks_w_margins.tex", se margin mtitles label replace
 log close
 eststo clear
 
-// log using "./regtabs/prob_perm_stocks_w_margins.log", replace nomsg
+// log using "./results/prob_perm_stocks_w_margins.log", replace nomsg
 // forvalues i=186/201{ 
 // 	eststo: logit permanent i.act i.occ public_servant i.parent##i.married divorced 	widowed part_time erte age college tenure if ciclo==`i'&mili==0&prime_aged&woman==1 [pw=factorel]
 // }
@@ -210,7 +210,7 @@ eststo clear
 // eststo clear
 
 * Men
-log using "./regtabs/prob_perm_stocks_m.log", replace nomsg
+log using "./results/prob_perm_stocks_m.log", replace nomsg
 forvalues i=186/201{ 
 	eststo: logistic permanent i.act i.occ public_servant parent married married_parent divorced 	widowed part_time erte age college tenure if ciclo==`i'&mili==0&prime_aged&woman==0 [pw=factorel], vce(robust)
 }
@@ -222,7 +222,7 @@ eststo clear
 
 * * * * * * * * * * * * * * * * 
 * Bloc 2: On permanent contract, time aggregated * * * * * * * * * * 
-log using "./regtabs/prob_perm_stocks_agg.log", replace nomsg
+log using "./results/prob_perm_stocks_agg.log", replace nomsg
 eststo reg1: logistic permanent i.act i.occ public_servant i.parent##i.married divorced widowed part_time erte age college tenure if mili==0&woman==1&prime_aged&one_year_before [pw=factorel], vce(robust)
 // eststo mar1: margins parent##married, at(divorced=0 widowed=0 part_time=0 public_servant=0 erte=0 (mean) age tenure occ act )
 
@@ -257,7 +257,7 @@ log close
 * * * * * * * * * * * * * * * * 
 * Bloc 3a: On inactivity, q by q * * * * * * * * * * 
 
-log using "./regtabs/prob_inac_stocks_w.log", replace nomsg
+log using "./results/prob_inac_stocks_w.log", replace nomsg
 * Women
 forvalues i=186/201{ 
 	eststo: logistic inactive i.act i.occ parent married married_parent divorced widowed age college if mili==0&woman==1&prime_aged&ciclo==`i' [pw=factorel], vce(robust)
@@ -267,7 +267,7 @@ esttab using "prob_inac_stocks_w_margins.tex", se margin mtitles label replace
 log close
 eststo clear
 
-log using "./regtabs/prob_inac_stocks_m.log", replace nomsg
+log using "./results/prob_inac_stocks_m.log", replace nomsg
 * Men
 forvalues i=186/201{ 
 	eststo: logistic inactive i.act i.occ parent married married_parent divorced widowed age college if mili==0&woman==0&prime_aged&ciclo==`i' [pw=factorel], vce(robust)
@@ -278,7 +278,7 @@ log close
 eststo clear
 
 * Bloc 3b: On inactivity, time aggregated * * * * * * * * * * 
-log using "./regtabs/prob_inac_stocks_agg.log", replace nomsg
+log using "./results/prob_inac_stocks_agg.log", replace nomsg
 eststo: logistic inactive i.act i.occ parent married married_parent divorced widowed age college if mili==0&woman&prime_aged&kids&partner&one_year_before [pw=factorel], vce(robust) 
 
 eststo: logistic inactive i.act i.occ parent married married_parent divorced widowed age college if mili==0&woman&prime_aged&kids&partner&one_year_later [pw=factorel], vce(robust) 
@@ -302,7 +302,7 @@ log close
 * * * * * * * * * * * * * * * * 
 * Bloc 4: On temporary and unemployment, q by q * * * * * * * * * * 
 
-log using "./regtabs/prob_temp_stocks_w.log", replace nomsg
+log using "./results/prob_temp_stocks_w.log", replace nomsg
 * Women
 forvalues i=186/201{ 
 	eststo: logistic temporary i.act i.occ public_servant parent married married_parent divorced 	widowed part_time erte age college tenure if ciclo==`i'&mili==0&prime_aged&woman==1 [pw=factorel], vce(robust)
@@ -312,7 +312,7 @@ esttab using "prob_temp_stocks_w_margins.tex", se margin mtitles label replace
 log close
 eststo clear
 
-log using "./regtabs/prob_temp_stocks_m.log", replace nomsg
+log using "./results/prob_temp_stocks_m.log", replace nomsg
 * Men
 forvalues i=186/201{ 
 	eststo: logistic temporary i.act i.occ public_servant parent married married_parent divorced 	widowed part_time erte age college tenure if ciclo==`i'&mili==0&prime_aged&woman==0 [pw=factorel], vce(robust)
@@ -323,7 +323,7 @@ log close
 eststo clear
 
 * Unemployment * * * * * *
-log using "./regtabs/prob_unemp_stocks_w.log", replace nomsg
+log using "./results/prob_unemp_stocks_w.log", replace nomsg
 * Women
 forvalues i=186/201{ 
 	eststo: logistic unemployed i.act i.occ parent married married_parent divorced widowed age college if mili==0&woman==1&prime_aged&ciclo==`i' [pw=factorel], vce(robust) 
@@ -334,7 +334,7 @@ log close
 eststo clear
 
 
-log using "./regtabs/prob_unemp_stocks_m.log", replace nomsg
+log using "./results/prob_unemp_stocks_m.log", replace nomsg
 * Men
 forvalues i=186/201{ 
 	eststo: logistic unemployed i.act i.occ parent married married_parent divorced widowed age college if mili==0&woman==0&prime_aged&ciclo==`i' [pw=factorel], vce(robust) 
@@ -345,7 +345,7 @@ log close
 eststo clear
 
 * Non-Employed * * * * * *
-log using "./regtabs/prob_ne_stocks_w.log", replace nomsg
+log using "./results/prob_ne_stocks_w.log", replace nomsg
 * Women
 forvalues i=186/201{ 
 	eststo: logistic ne i.act i.occ parent married married_parent divorced widowed age college if mili==0&woman==1&prime_aged&ciclo==`i' [pw=factorel], vce(robust)
@@ -357,7 +357,7 @@ log close
 eststo clear
 
 
-log using "./regtabs/prob_ne_stocks_m.log", replace nomsg
+log using "./results/prob_ne_stocks_m.log", replace nomsg
 * Men
 forvalues i=186/201{ 
 	eststo: logistic ne i.act i.occ parent married married_parent divorced widowed age college if mili==0&woman==0&prime_aged&ciclo==`i' [pw=factorel], vce(robust)

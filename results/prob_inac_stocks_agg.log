@@ -1,0 +1,11 @@
+
+. eststo: logistic inactive i.act i.occ parent married married_parent divorced widowed age college
+>  if mili==0&woman&prime_aged&kids&partner&one_year_before [pw=factorel], vce(robust) 
+partner ambiguous abbreviation
+r(111);
+
+end of do-file
+
+r(111);
+
+. log close
