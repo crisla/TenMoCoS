@@ -9,6 +9,9 @@ use "formatting/rawfiles/EPA_stocks20_parents.dta", clear
 
 **# Regressions * * * * * * * * * 
 
+* Old restriction
+drop if disc>0
+
 * All * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 capture log close
 log using "./results/sqtreg_mothers.log", replace nomsg

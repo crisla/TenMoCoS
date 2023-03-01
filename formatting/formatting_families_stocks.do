@@ -11,9 +11,9 @@ sort ciclo nvivi npers
 
 * No discontinuous workers
 by ciclo nvivi: gen disc = ducon2==6
-by ciclo nvivi: replace disc = sum(disc)
-by ciclo nvivi: replace disc = disc[_N]
-drop if disc>0
+*by ciclo nvivi: replace disc = sum(disc)
+*by ciclo nvivi: replace disc = disc[_N]
+*drop if disc>0
 
 * ERTE variable
 gen erte= (rznotb==11)

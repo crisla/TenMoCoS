@@ -137,6 +137,8 @@ quietly do "./formatting/labels_mini.do"
 label variable age "Age in 5 year groups"
 
 gen prime_aged = (age>=25&age<=50)
+gen in_thirties = (age>=30&age<=35)
+gen la_flor_de_la_vida = (age>=30&age<=40)
 
 gen married_parent = married*parent
 
@@ -200,6 +202,20 @@ esttab using "prob_perm_stocks_w.tex", se eform label replace
 esttab using "prob_perm_stocks_w_margins.tex", se margin mtitles label replace
 log close
 eststo clear
+
+* Women in their 30s
+log using "./results/prob_perm_stocks_w_3035.log", replace nomsg
+forvalues i=186/201{ 
+	eststo: logistic permanent i.act i.occ public_servant parent married married_parent divorced 	widowed part_time erte age college tenure if ciclo==`i'&mili==0&in_thirties&woman==1 [pw=factorel], vce(robust)
+}
+log close
+
+* Women 30-45
+log using "./results/prob_perm_stocks_w_3045.log", replace nomsg
+forvalues i=186/201{ 
+	eststo: logistic permanent i.act i.occ public_servant parent married married_parent divorced 	widowed part_time erte age college tenure if ciclo==`i'&mili==0&la_flor_de_la_vida&woman==1 [pw=factorel], vce(robust)
+}
+log close
 
 // log using "./results/prob_perm_stocks_w_margins.log", replace nomsg
 // forvalues i=186/201{ 
