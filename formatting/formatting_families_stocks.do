@@ -456,7 +456,7 @@ gen parent_18 = (mother_18==1|father_18==1)
 rename dcom tenure
 *rename edad5 age
 
-quietly do labels_mini
+quietly do "./formatting/labels_mini.do"
 label variable age "Age in 5 year groups"
 
 gen prime_aged = (age>=30&age<=45)
