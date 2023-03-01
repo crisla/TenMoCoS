@@ -30,7 +30,8 @@ replace state="U" if aoi==6|aoi==5
 replace state="I" if aoi>6
 
 **# Part 2: Generate key indicator variables * * * * * * * * * 
-
+gen nmadre_help = nmadre
+gen npadre_help = npadre 
 * Consider ONLY small children (10 or less)
 replace nmadre = 0 if edad5>10
 replace npadre = 0 if edad5>10
@@ -70,6 +71,130 @@ replace mother = 0 if mother==1&(edad5<20|edad5>50)
 replace father = 0 if father==1&(edad5<20|edad5>50)
 
 gen single_mom = mother==1&dad_no==0
+
+* Consider ONLY very small children (5 or less)
+gen nmadre_5 = nmadre_help
+gen npadre_5 = npadre_help
+
+replace nmadre_5 = 0 if edad5>5
+replace npadre_5 = 0 if edad5>5
+
+sort ciclo nvivi npers
+
+gen mom_in_5 = -(nmadre_5>0)
+gen mom_no_5 = nmadre_5
+sort ciclo nvivi mom_in_5
+by ciclo nvivi: replace mom_no_5 = mom_no_5[_n-1] if mom_no_5==0
+gen mother_5 = mom_no_5==npers
+replace mom_no_5 = 0 if  mom_no_5 == .
+
+gen dad_in_5 = -(npadre_5>0)
+gen dad_no_5 = npadre_5
+sort ciclo nvivi dad_in_5
+by ciclo nvivi: replace dad_no_5 = dad_no_5[_n-1] if dad_no_5==0
+gen father_5 = dad_no_5==npers
+replace dad_no_5 = 0 if  dad_no_5 == .
+
+drop mom_in_5 dad_in_5
+
+* Drop weird cases and teen moms
+replace mother_5 = 0 if mother_5==1&(edad5<20|edad5>50)
+replace father_5 = 0 if father_5==1&(edad5<20|edad5>50)
+
+gen single_mom_5 = mother_5==1&dad_no_5==0
+
+* Consider ONLY small children (10 or less)
+gen nmadre_10 = nmadre_help
+gen npadre_10 = npadre_help
+
+replace nmadre_10 = 0 if edad5>10
+replace npadre_10 = 0 if edad5>10
+
+sort ciclo nvivi npers
+
+gen mom_in_10 = -(nmadre_10>0)
+gen mom_no_10 = nmadre_10
+sort ciclo nvivi mom_in_10
+by ciclo nvivi: replace mom_no_10 = mom_no_10[_n-1] if mom_no_10==0
+gen mother_10 = mom_no_10==npers
+replace mom_no_10 = 0 if  mom_no_10 == .
+
+gen dad_in_10 = -(npadre_10>0)
+gen dad_no_10 = npadre_10
+sort ciclo nvivi dad_in_10
+by ciclo nvivi: replace dad_no_10 = dad_no_10[_n-1] if dad_no_10==0
+gen father_10 = dad_no_10==npers
+replace dad_no_10 = 0 if  dad_no_10 == .
+
+drop mom_in_10 dad_in_10
+
+* Drop weird cases and teen moms
+replace mother_10 = 0 if mother_10==1&(edad5<20|edad5>50)
+replace father_10 = 0 if father_10==1&(edad5<20|edad5>50)
+
+gen single_mom_10 = mother_10==1&dad_no_10==0
+
+* Consider young children (15 or less)
+gen nmadre_15 = nmadre_help
+gen npadre_15 = npadre_help
+
+replace nmadre_15 = 0 if edad5>15
+replace npadre_15 = 0 if edad5>15
+
+sort ciclo nvivi npers
+
+gen mom_in_15 = -(nmadre_15>0)
+gen mom_no_15 = nmadre_15
+sort ciclo nvivi mom_in_15
+by ciclo nvivi: replace mom_no_15 = mom_no_15[_n-1] if mom_no_15==0
+gen mother_15 = mom_no_15==npers
+replace mom_no_15 = 0 if  mom_no_15 == .
+
+gen dad_in_15 = -(npadre_15>0)
+gen dad_no_15 = npadre_15
+sort ciclo nvivi dad_in_15
+by ciclo nvivi: replace dad_no_15 = dad_no_15[_n-1] if dad_no_15==0
+gen father_15 = dad_no_15==npers
+replace dad_no_15 = 0 if  dad_no_15 == .
+
+drop mom_in_15 dad_in_15
+
+* Drop weird cases and teen moms
+replace mother_15 = 0 if mother_15==1&(edad5<20|edad5>50)
+replace father_15 = 0 if father_15==1&(edad5<20|edad5>50)
+
+gen single_mom_15 = mother_15==1&dad_no_15==0
+
+* Consider all children (18 or less)
+gen nmadre_18 = nmadre_help
+gen npadre_18 = npadre_help
+
+replace nmadre_18 = 0 if edad5>18
+replace npadre_18 = 0 if edad5>18
+
+sort ciclo nvivi npers
+
+gen mom_in_18 = -(nmadre_18>0)
+gen mom_no_18 = nmadre_18
+sort ciclo nvivi mom_in_18
+by ciclo nvivi: replace mom_no_18 = mom_no_18[_n-1] if mom_no_18==0
+gen mother_18 = mom_no_18==npers
+replace mom_no_18 = 0 if  mom_no_18 == .
+
+gen dad_in_18 = -(npadre_18>0)
+gen dad_no_18 = npadre_18
+sort ciclo nvivi dad_in_18
+by ciclo nvivi: replace dad_no_18 = dad_no_18[_n-1] if dad_no_18==0
+gen father_18 = dad_no_18==npers
+replace dad_no_18 = 0 if  dad_no_18 == .
+
+drop mom_in_18 dad_in_18
+
+* Drop weird cases and teen moms
+replace mother_18 = 0 if mother_18==1&(edad5<20|edad5>50)
+replace father_18 = 0 if father_18==1&(edad5<20|edad5>50)
+
+gen single_mom_18 = mother_18==1&dad_no_18==0
 
 * Part-time and hours
 gen state_pt = state
@@ -239,6 +364,23 @@ gen wife_emp = (wife_state=="P"|wife_state=="T")
 
 gen wife_se = (wife_state=="A")
 
+gen ten_y = wife_ten_y if wife==1
+replace ten_y = hub_ten_y if husband==1
+
+gen other_ten_y = hub_ten_y if wife==1
+replace other_ten_y = wife_ten_y if husband==1
+
+gen other_se = hub_se if wife==1
+replace other_se = wife_se if husband==1
+
+gen ciclo_2 = ciclo*ciclo
+
+gen other_college = hub_college if wife==1
+replace other_college = wife_college if husband==1
+
+gen other_less_hs = hub_less_hs if wife==1
+replace other_less_hs = wife_less_hs if husband==1
+
 * For descriptive stats
 gen educ_level = 1 if nforma!=""
 replace educ_level = 0 if less_hs==1
@@ -280,6 +422,58 @@ replace yd_mean = 2005 if yd_mean<2008
 * logs
 gen lwife_ten_y = log(wife_ten_y) 
 gen lhub_ten_y = log(hub_ten_y)
+
+gen working = (state!="U"&state!="I")
+gen permanent = state=="P"
+gen employee = (state=="P"|state=="T")
+gen inactive = state=="I"
+
+destring ocup1 ocupa act1 acta parco1, replace
+gen occ = ocup1
+replace occ = ocupa if occ==.
+gen act = act1
+replace act = acta if act==.
+
+gen mili = occ==0
+
+gen public_servant = situ==7
+
+gen woman = sexo1==6
+
+replace sexo1 = 0 if sexo1 == 1
+replace sexo1 = 1 if sexo1 == 6
+
+gen married = eciv1==2
+gen divorced = eciv1==4
+gen widowed = eciv1==3
+
+gen parent = (mother==1|father==1)
+gen parent_5 = (mother_5==1|father_5==1)
+gen parent_10 = (mother_10==1|father_10==1)
+gen parent_15 = (mother_15==1|father_15==1)
+gen parent_18 = (mother_18==1|father_18==1)
+
+rename dcom tenure
+*rename edad5 age
+
+quietly do labels_mini
+label variable age "Age in 5 year groups"
+
+gen prime_aged = (age>=30&age<=45)
+
+gen married_parent = married*parent
+gen married_parent_5 = married*parent_5
+gen married_parent_10 = married*parent_10
+gen married_parent_15 = married*parent_15
+gen married_parent_18 = married*parent_18
+
+gen covid = 0
+replace covid = 1 if ciclo>=190
+replace covid = 2 if ciclo>=194
+replace covid = 3 if ciclo>=198
+
+gen ttrend = ciclo-130
+gen ttrend2 = ttrend^2
 
 **# Part 7: Save * * * * * * * * * 
 save "formatting/rawfiles/EPA_stocks20_parents.dta", replace
