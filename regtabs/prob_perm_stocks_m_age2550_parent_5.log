@@ -1472,3 +1472,53 @@ Note: _cons estimates baseline odds.
 note: erte != 0 predicts success perfectly;
       erte omitted and 6 obs not used.
 
+
+Logistic regression                                    Number of obs =  18,377
+                                                       Wald chi2(27) = 1215.35
+                                                       Prob > chi2   =  0.0000
+Log pseudolikelihood = -4285402                        Pseudo R2     =  0.0902
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                   permanent | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   6.769654   1.003546    12.90   0.000     5.062707    9.052118
+     extractive and energy.  |   7.288811   1.067701    13.56   0.000     5.469763    9.712812
+         manufactures, sec.  |   7.169623   1.058697    13.34   0.000     5.367898    9.576094
+               construction  |   2.085423   .2628247     5.83   0.000     1.628987     2.66975
+      hospitality and sales  |   3.016595   .3540496     9.41   0.000       2.3967    3.796822
+ Transport, storage and IT.  |   4.237883   .5417827    11.30   0.000     3.298595    5.444637
+  Financial and prof. serv.  |   2.705252   .3296273     8.17   0.000     2.130548    3.434981
+   Education and healthcare  |   2.869622   .4023765     7.52   0.000     2.180067    3.777284
+             Other services  |   1.863087   .2828091     4.10   0.000     1.383643    2.508662
+                             |
+                         occ |
+       white collar - prof.  |    1.97128   .2164535     6.18   0.000     1.589583     2.44463
+white collar - tech. suport  |   3.300829   .3691325    10.68   0.000     2.651142    4.109729
+       white collar - other  |   6.481812   .9391143    12.90   0.000     4.879445    8.610381
+     blue collar - services  |   2.721038   .3081058     8.84   0.000     2.179476    3.397167
+  blue collar - agriculture  |   1.280499   .2108094     1.50   0.133     .9273532    1.768125
+     blue collar - artisans  |    2.18355   .2423723     7.04   0.000     1.756631    2.714225
+       blue collar - equip.  |   3.051484   .3655854     9.31   0.000     2.412861    3.859135
+                  unskilled  |   3.236204   .4095313     9.28   0.000     2.525335    4.147178
+                             |
+              public_servant |   .9564888   .0927645    -0.46   0.646     .7909091    1.156733
+                    parent_5 |   1.158584   .1045783     1.63   0.103     .9707218    1.382803
+                     married |   1.130061   .0720679     1.92   0.055     .9972813    1.280518
+            married_parent_5 |   .8131373   .0907404    -1.85   0.064      .653395    1.011933
+                    divorced |   1.057554   .1090048     0.54   0.587     .8641061    1.294309
+                     widowed |   .9573034   .3961357    -0.11   0.916     .4254213     2.15417
+                   part_time |   .4638243   .0422072    -8.44   0.000     .3880572    .5543848
+                        erte |          1  (omitted)
+                         age |   .9811737   .0035239    -5.29   0.000     .9742913    .9881047
+                     college |   1.373327   .0791919     5.50   0.000     1.226564    1.537651
+                      tenure |   1.003589   .0002595    13.85   0.000      1.00308    1.004097
+                       _cons |   .3932658   .0780622    -4.70   0.000      .266517    .5802932
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est32 stored)
+(file ./regtabs/prob_age_perm_stocks_m.tex not found)
+(output written to ./regtabs/prob_age_perm_stocks_m.tex)
+(file ./regtabs/prob_age_perm_stocks_m_margins.tex not found)
+(output written to ./regtabs/prob_age_perm_stocks_m_margins.tex)
