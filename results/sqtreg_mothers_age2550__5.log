@@ -1,0 +1,48 @@
+mother__5 not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\LAFUEN~1\AppData\Local\Temp\STD4b60_000000.tmp"
+
+. * Figure 5 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
+. global child_string "5 10 15 18"
+
+. 
+. foreach ag of global age_group {
+  2. foreach par of global child_string {
+  3. log using "./results/sqtreg_mothers_`ag'_`par'.log", replace nomsg
+  4. sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+>                 college less_hs hub_age hub_se hub_college hub_less_hs ///
+>                 i.period_y  if mother_`par'==1&wife==1&employed&`ag'==1, q(.25 .5 .75) 
+  5. log close
+  6. 
+. log using "./results/sqtreg_mothers_0k_`ag'_`par'.log", replace nomsg           
+  7. sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+>                 college less_hs hub_age hub_se hub_college hub_less_hs ///
+>                 i.period_y if mother_`par'==0&wife==1&employed&`ag'==1, q(.25 .5 .75) 
+  8. log close
+  9. 
+. log using "./results/sqtreg_fathers_`ag'_`par'.log", replace nomsg
+ 10. sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+>                 college less_hs wife_age wife_se wife_college wife_less_hs ///
+>                 i.period_y  if father_`par'==1&husband==1&employed&`ag'==1, q(.25 .5 .75) 
+ 11. log close
+ 12. 
+. log using "./results/sqtreg_fathers_0k_`ag'_`par'.log", replace nomsg
+ 13. sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+>                 college less_hs wife_age wife_se wife_college wife_less_hs ///
+>                 i.period_y  if father_`par'==0&husband==1&employed&`ag'==1, q(.25 .5 .75) 
+ 14. log close
+ 15. }
+ 16. }
+log file already open
+r(604);
+
+end of do-file
+
+r(604);
+
+. log close

@@ -76,7 +76,7 @@ eststo clear
 }
 
 * Figure 5 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
-global child_string "_5 _10 _15 _18"
+global child_string "5 10 15 18"
 
 foreach ag of global age_group {
 foreach par of global child_string {

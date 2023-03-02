@@ -43,7 +43,7 @@ white collar - tech. suport  |   2.653386   .3846947     6.73   0.000     1.9970
                        _cons |   .0464274   .0134438   -10.60   0.000     .0263205    .0818944
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est33 stored)
+(est2 stored)
 note: erte omitted because of collinearity.
 
 Logistic regression                                    Number of obs =  20,744
@@ -90,7 +90,7 @@ white collar - tech. suport  |    3.02817   .4419239     7.59   0.000     2.2748
                        _cons |   .0470671   .0128536   -11.19   0.000     .0275589    .0803847
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est34 stored)
+(est3 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 1 obs not used.
 
@@ -139,7 +139,7 @@ white collar - tech. suport  |   3.115995   .4526696     7.82   0.000     2.3439
                        _cons |   .0591686   .0162947   -10.27   0.000     .0344885    .1015099
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est35 stored)
+(est4 stored)
 note: erte omitted because of collinearity.
 
 Logistic regression                                    Number of obs =  20,655
@@ -186,7 +186,7 @@ white collar - tech. suport  |   3.244104   .4549413     8.39   0.000      2.464
                        _cons |   .0455639   .0122902   -11.45   0.000     .0268548    .0773071
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est36 stored)
+(est5 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 1 obs not used.
 
@@ -235,7 +235,7 @@ white collar - tech. suport  |   3.097942   .4512386     7.76   0.000      2.328
                        _cons |   .0505181   .0133028   -11.34   0.000      .030151    .0846432
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est37 stored)
+(est6 stored)
 note: erte omitted because of collinearity.
 
 Logistic regression                                    Number of obs =  20,534
@@ -282,7 +282,7 @@ white collar - tech. suport  |   2.755066   .4028054     6.93   0.000     2.0686
                        _cons |   .0390122   .0106648   -11.87   0.000       .02283    .0666644
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est38 stored)
+(est7 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 1 obs not used.
 
@@ -331,7 +331,7 @@ white collar - tech. suport  |    2.79322    .422135     6.80   0.000     2.0771
                        _cons |   .0676066   .0184537    -9.87   0.000     .0395957    .1154331
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est39 stored)
+(est8 stored)
 note: erte omitted because of collinearity.
 
 Logistic regression                                    Number of obs =  20,607
@@ -378,7 +378,7 @@ white collar - tech. suport  |   2.902089   .4171973     7.41   0.000     2.1894
                        _cons |   .0441587    .011696   -11.78   0.000     .0262763     .074211
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est40 stored)
+(est9 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 2 obs not used.
 
@@ -427,7 +427,7 @@ white collar - tech. suport  |   2.639304   .3799399     6.74   0.000     1.9904
                        _cons |   .0614257   .0160091   -10.70   0.000     .0368558    .1023752
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est41 stored)
+(est10 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 1 obs not used.
 
@@ -476,7 +476,7 @@ white collar - tech. suport  |   2.565937   .3678315     6.57   0.000     1.9374
                        _cons |   .0610118    .015787   -10.81   0.000      .036742    .1013131
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est42 stored)
+(est11 stored)
 note: erte omitted because of collinearity.
 
 Logistic regression                                    Number of obs =  20,846
@@ -523,7 +523,7 @@ white collar - tech. suport  |   2.499348   .3609175     6.34   0.000     1.8832
                        _cons |   .0722861   .0207227    -9.16   0.000     .0412132    .1267867
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est43 stored)
+(est12 stored)
 note: erte omitted because of collinearity.
 
 Logistic regression                                    Number of obs =  20,903
@@ -570,7 +570,7 @@ white collar - tech. suport  |   2.503906   .3499673     6.57   0.000     1.9039
                        _cons |   .0583411   .0159268   -10.41   0.000     .0341666    .0996203
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est44 stored)
+(est13 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 1 obs not used.
 
@@ -619,7 +619,7 @@ white collar - tech. suport  |   2.499739   .3533075     6.48   0.000     1.8949
                        _cons |   .0576714   .0147377   -11.16   0.000     .0349494    .0951658
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est45 stored)
+(est14 stored)
 note: erte != 0 predicts failure perfectly;
       erte omitted and 1 obs not used.
 
@@ -668,7 +668,7 @@ white collar - tech. suport  |   2.495495   .3654408     6.24   0.000     1.8728
                        _cons |   .0683685   .0178169   -10.29   0.000     .0410235    .1139409
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est46 stored)
+(est15 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 1 obs not used.
 
@@ -717,7 +717,7 @@ white collar - tech. suport  |   3.001459   .4356496     7.57   0.000     2.2583
                        _cons |    .081284   .0213354    -9.56   0.000     .0485939    .1359653
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est47 stored)
+(est16 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 2 obs not used.
 
@@ -766,7 +766,7 @@ white collar - tech. suport  |   3.055771    .431589     7.91   0.000     2.3168
                        _cons |   .0663608   .0167942   -10.72   0.000     .0404105    .1089756
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est48 stored)
+(est17 stored)
 
 Logistic regression                                    Number of obs =  21,952
                                                        Wald chi2(28) = 1747.13
@@ -812,7 +812,7 @@ white collar - tech. suport  |   2.318664   .3174525     6.14   0.000     1.7729
                        _cons |   .0676359   .0173092   -10.53   0.000     .0409582    .1116899
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est49 stored)
+(est18 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 1 obs not used.
 
@@ -861,7 +861,7 @@ white collar - tech. suport  |    2.36596   .3228101     6.31   0.000     1.8107
                        _cons |   .0698108   .0179071   -10.38   0.000     .0422262    .1154154
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est50 stored)
+(est19 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 1 obs not used.
 
@@ -910,7 +910,7 @@ white collar - tech. suport  |   2.695059   .3747583     7.13   0.000     2.0521
                        _cons |   .0958704   .0243435    -9.23   0.000     .0582836    .1576966
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est51 stored)
+(est20 stored)
 note: erte omitted because of collinearity.
 
 Logistic regression                                    Number of obs =  22,021
@@ -957,7 +957,7 @@ white collar - tech. suport  |   2.979453   .4075103     7.98   0.000     2.2788
                        _cons |   .0633799    .016934   -10.32   0.000     .0375427    .1069983
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est52 stored)
+(est21 stored)
 
 Logistic regression                                    Number of obs =  20,942
                                                        Wald chi2(28) = 1763.03
@@ -1003,7 +1003,7 @@ white collar - tech. suport  |   2.464866   .3275021     6.79   0.000     1.8997
                        _cons |   .0711413   .0179745   -10.46   0.000     .0433568     .116731
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est53 stored)
+(est22 stored)
 
 Logistic regression                                    Number of obs =  18,791
                                                        Wald chi2(28) = 1631.30
@@ -1049,7 +1049,7 @@ white collar - tech. suport  |   2.653034    .384734     6.73   0.000     1.9966
                        _cons |   .0903829   .0248826    -8.73   0.000     .0526925     .155033
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est54 stored)
+(est23 stored)
 
 Logistic regression                                    Number of obs =  19,092
                                                        Wald chi2(28) = 1580.15
@@ -1095,7 +1095,7 @@ white collar - tech. suport  |   2.639071   .3839916     6.67   0.000     1.9842
                        _cons |   .1225501   .0351447    -7.32   0.000     .0698567    .2149907
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est55 stored)
+(est24 stored)
 
 Logistic regression                                    Number of obs =  19,286
                                                        Wald chi2(28) = 1495.03
@@ -1141,7 +1141,7 @@ white collar - tech. suport  |   1.994912   .2876388     4.79   0.000     1.5038
                        _cons |   .1383828   .0356193    -7.68   0.000     .0835575    .2291809
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est56 stored)
+(est25 stored)
 
 Logistic regression                                    Number of obs =  18,396
                                                        Wald chi2(28) = 1517.23
@@ -1187,7 +1187,7 @@ white collar - tech. suport  |   2.081857   .3157579     4.83   0.000     1.5464
                        _cons |   .1061799    .029563    -8.05   0.000     .0615244     .183247
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est57 stored)
+(est26 stored)
 
 Logistic regression                                    Number of obs =  17,984
                                                        Wald chi2(28) = 1423.02
@@ -1233,7 +1233,7 @@ white collar - tech. suport  |   1.892249   .3086898     3.91   0.000     1.3744
                        _cons |   .1214904   .0335097    -7.64   0.000     .0707558    .2086038
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est58 stored)
+(est27 stored)
 
 Logistic regression                                    Number of obs =  17,405
                                                        Wald chi2(28) = 1334.11
@@ -1279,7 +1279,7 @@ white collar - tech. suport  |   2.718908   .4628791     5.88   0.000     1.9475
                        _cons |   .1222468   .0365775    -7.02   0.000     .0680063    .2197486
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est59 stored)
+(est28 stored)
 
 Logistic regression                                    Number of obs =  17,728
                                                        Wald chi2(28) = 1403.18
@@ -1325,7 +1325,7 @@ white collar - tech. suport  |   2.411234    .390701     5.43   0.000     1.7551
                        _cons |    .085531    .023405    -8.99   0.000     .0500262    .1462344
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est60 stored)
+(est29 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 21 obs not used.
 
@@ -1374,7 +1374,7 @@ white collar - tech. suport  |   2.104613   .3228438     4.85   0.000     1.5581
                        _cons |   .1688536   .0457597    -6.56   0.000     .0992734    .2872022
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est61 stored)
+(est30 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 3 obs not used.
 
@@ -1423,7 +1423,7 @@ white collar - tech. suport  |   1.681688   .2649464     3.30   0.001     1.2349
                        _cons |   .2711549   .0721817    -4.90   0.000     .1609261    .4568864
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est62 stored)
+(est31 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 1 obs not used.
 
@@ -1472,7 +1472,7 @@ white collar - tech. suport  |   1.781416   .2738732     3.76   0.000     1.3179
                        _cons |   .3049306   .0891196    -4.06   0.000       .17196    .5407229
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est63 stored)
+(est32 stored)
 note: erte != 0 predicts success perfectly;
       erte omitted and 2 obs not used.
 
@@ -1521,8 +1521,6 @@ white collar - tech. suport  |   2.066209   .3201067     4.68   0.000     1.5251
                        _cons |   .2172549   .0585871    -5.66   0.000     .1280637    .3685642
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est64 stored)
-(file ./regtabs/prob_age_perm_stocks_w.tex not found)
+(est33 stored)
 (output written to ./regtabs/prob_age_perm_stocks_w.tex)
-(file ./regtabs/prob_age_perm_stocks_w_margins.tex not found)
 (output written to ./regtabs/prob_age_perm_stocks_w_margins.tex)
