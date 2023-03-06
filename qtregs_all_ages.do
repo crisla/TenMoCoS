@@ -27,6 +27,7 @@ global parent_string "parent_5 parent_10 parent_15 parent_18"
 drop woman
 gen woman = sexo1==1
 
+log close _all
 **# Regressions * * * * * * * * * 
 * Figure 2 & 3 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
 * 170 - 201 = 2015Q1 = 2022Q4

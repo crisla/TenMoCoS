@@ -1,0 +1,46 @@
+mother__5 not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\LAFUEN~1\AppData\Local\Temp\STD3894_00000
+> 0.tmp"
+
+. global parent_string "5 10 15 18"
+
+. 
+. **# Regressions * * * * * * * * * 
+. * Table 2 & 4 different age groups (parents and childr
+> en) * * * * * * * * * * * * * * * * * * * *
+. foreach ag of global age_group{
+  2. foreach par of global parent_string {
+  3. log using "./results/sqtreg_table_simple_`ag'_`par'
+> .log", replace nomsg
+  4. sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate
+>  i.covid##i.sexo1 ///
+>                 if ((mother_`par'==1&wife==1)|(father_
+> `par'==1&husband==1))&employed&`ag'==1, ///
+>                 q(.25 .5 .75)
+  5. log close
+  6. 
+. log using "./results/sqtreg_table_advanced_simple_`ag'
+> _`par'.log", replace nomsg
+  7. sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate
+>  i.occgroup i.covid##i.sexo1#i.occgroup ///
+>                if ((mother_`par'==1&wife==1)|(father_`
+> par'==1&husband==1))&employed&`ag'==1, ///
+>                  q(.25 .5 .75)                        
+>           
+  8. log close       
+  9. }
+ 10. }
+log file already open
+r(604);
+
+end of do-file
+
+r(604);
+
+. log close

@@ -1,0 +1,11 @@
+(fitting base model)
+ quantile:  12 coefs estimated
+.75 quantile:  0coefs estimated
+same model cannot be used to estimate both quantiles; sample size probably too small
+r(498);
+
+end of do-file
+
+r(498);
+
+. log close

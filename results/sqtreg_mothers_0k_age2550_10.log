@@ -1,0 +1,10 @@
+(fitting base model)
+--Break--
+r(1);
+
+end of do-file
+
+--Break--
+r(1);
+
+. exit, clear

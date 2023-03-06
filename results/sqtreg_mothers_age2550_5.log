@@ -2,74 +2,80 @@
 
 Bootstrap replications (20)
 ----+--- 1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5 
-.--Break--
-r(1);
+....................
 
-end of do-file
+Simultaneous quantile regression                    Number of obs =    301,821
+  bootstrap(20) SEs                                 .25 Pseudo R2 =     0.0652
+                                                    .50 Pseudo R2 =     0.1116
+                                                    .75 Pseudo R2 =     0.1334
 
---Break--
-r(1);
-
-. do "C:\Users\LAFUEN~1\AppData\Local\Temp\STD4b60_000000.tmp"
-
-. **# Regressions * * * * * * * * * 
-. * Figure 2 & 3 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
-. * 170 - 201 = 2015Q1 = 2022Q4
-. * age = age
-. foreach ag of global age_group {
-  2. foreach par of global parent_string {
-  3. * Women
-. log using "./regtabs/prob_perm_stocks_w_`ag'_`par'.log", replace nomsg
-  4. forvalues i=170/201{ 
-  5.         eststo: logistic permanent i.act i.occ public_servant `par' married married_`par' divorced widowed p
-> art_time erte age college tenure if ciclo==`i'&mili==0&`ag'==1&woman==1 [pw=factorel], vce(robust)
-  6. }
-  7. esttab using "./regtabs/prob_age_perm_stocks_w.tex", se eform label replace
-  8. esttab using "./regtabs/prob_age_perm_stocks_w_margins.tex", se margin mtitles label replace
-  9. log close
- 10. eststo clear
- 11. 
-. * Men
-. log using "./regtabs/prob_perm_stocks_m_`ag'_`par'.log", replace nomsg
- 12. forvalues i=170/201{ 
- 13.         eststo: logistic permanent i.act i.occ public_servant `par' married married_`par' divorced widowed p
-> art_time erte age college tenure if ciclo==`i'&mili==0&`ag'==1&woman==0 [pw=factorel], vce(robust)
- 14. }
- 15. esttab using "./regtabs/prob_age_perm_stocks_m.tex", se eform label replace
- 16. esttab using "./regtabs/prob_age_perm_stocks_m_margins.tex", se margin mtitles label replace
- 17. log close
- 18. eststo clear
- 19. 
-. * Women
-. log using "./regtabs/prob_inac_stocks_w_`ag'_`par'.log", replace nomsg
- 20. forvalues i=170/201{ 
- 21.         eststo: logistic inactive i.act i.occ `par' married married_`par' divorced widowed age college if mi
-> li==0&woman==1&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
- 22. }
- 23. esttab using "./regtabs/prob_age_inac_stocks_w.tex", se eform label replace
- 24. esttab using "./regtabs/prob_age_inac_stocks_w_margins.tex", se margin mtitles label replace
- 25. log close
- 26. eststo clear
- 27. 
-. * Men
-. log using "./regtabs/prob_inac_stocks_m_`ag'_`par'.log", replace nomsg
- 28. forvalues i=170/201{ 
- 29.         eststo: logistic inactive i.act i.occ `par' married married_`par' divorced widowed age college if mi
-> li==0&woman==0&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
- 30. }
- 31. esttab using "./regtabs/prob_age_inac_stocks_m.tex", se eform label replace
- 32. esttab using "./regtabs/prob_age_inac_stocks_m_margins.tex", se margin mtitles label replace
- 33. log close
- 34. eststo clear
- 35. }
- 36. }
-log file already open
-r(604);
-
-end of do-file
-
-r(604);
-
-. do "C:\Users\LAFUEN~1\AppData\Local\Temp\STD4b60_000000.tmp"
-
-. log close _all
+------------------------------------------------------------------------------
+             |              Bootstrap
+  wife_ten_y | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+q25          |
+   hub_ten_y |   .1654952   .0030178    54.84   0.000     .1595804    .1714101
+  hub_ten_y2 |  -.0025276   .0001699   -14.87   0.000    -.0028607   -.0021946
+   part_time |  -1.294283   .0279577   -46.29   0.000    -1.349079   -1.239486
+     college |   1.719722   .0355062    48.43   0.000     1.650131    1.789313
+     less_hs |   -.646002   .0380249   -16.99   0.000    -.7205296   -.5714743
+     hub_age |   .0914359   .0021313    42.90   0.000     .0872587    .0956132
+      hub_se |  -.0814132   .0333904    -2.44   0.015    -.1468574    -.015969
+ hub_college |   .7322742   .0248641    29.45   0.000     .6835412    .7810073
+ hub_less_hs |  -.5400403   .0338414   -15.96   0.000    -.6063685   -.4737122
+             |
+    period_y |
+     t08_11  |   .1715433   .0342282     5.01   0.000     .1044571    .2386296
+     t11_14  |   .8410249   .0380584    22.10   0.000     .7664315    .9156184
+     t14_17  |   1.082208   .0412988    26.20   0.000     1.001263    1.163152
+     t17_20  |   .3032208   .0442455     6.85   0.000     .2165009    .3899408
+        t20  |   .1994769   .0712311     2.80   0.005     .0598659     .339088
+        t21  |  -.0602936   .0670191    -0.90   0.368    -.1916492    .0710621
+        t22  |  -.2018138   .0599295    -3.37   0.001    -.3192741   -.0843536
+             |
+       _cons |  -2.357161   .0760585   -30.99   0.000    -2.506234   -2.208089
+-------------+----------------------------------------------------------------
+q50          |
+   hub_ten_y |   .2525286   .0087883    28.73   0.000     .2353039    .2697533
+  hub_ten_y2 |  -.0018864   .0003737    -5.05   0.000    -.0026189   -.0011539
+   part_time |  -1.940491   .0374738   -51.78   0.000    -2.013939   -1.867043
+     college |   1.953291   .0426562    45.79   0.000     1.869686    2.036895
+     less_hs |  -1.791736   .0762802   -23.49   0.000    -1.941243   -1.642229
+     hub_age |   .2681908   .0026922    99.62   0.000     .2629142    .2734674
+      hub_se |    .085337    .046763     1.82   0.068    -.0063172    .1769912
+ hub_college |   .7946119    .027681    28.71   0.000     .7403579    .8488658
+ hub_less_hs |  -1.221419   .0762274   -16.02   0.000    -1.370823   -1.072015
+             |
+    period_y |
+     t08_11  |  -.1508896   .0598722    -2.52   0.012    -.2682374   -.0335417
+     t11_14  |   .3850111   .0638382     6.03   0.000       .25989    .5101321
+     t14_17  |   .9169695   .0700822    13.08   0.000     .7796104    1.054329
+     t17_20  |    .841648   .0698967    12.04   0.000     .7046526    .9786435
+        t20  |   .8965114   .1303661     6.88   0.000     .6409976    1.152025
+        t21  |   .4580316   .0832242     5.50   0.000     .2949145    .6211487
+        t22  |   .2896447   .1139166     2.54   0.011     .0663715     .512918
+             |
+       _cons |  -5.194393   .0771949   -67.29   0.000    -5.345693   -5.043093
+-------------+----------------------------------------------------------------
+q75          |
+   hub_ten_y |   .1582857   .0074304    21.30   0.000     .1437223    .1728492
+  hub_ten_y2 |    .000604   .0003036     1.99   0.047     8.96e-06     .001199
+   part_time |  -1.492959   .0326052   -45.79   0.000    -1.556864   -1.429054
+     college |    .241479   .0410031     5.89   0.000     .1611141    .3218438
+     less_hs |  -3.372647   .1628271   -20.71   0.000    -3.691784    -3.05351
+     hub_age |    .470486   .0035517   132.47   0.000     .4635249    .4774472
+      hub_se |   .1359518   .0369516     3.68   0.000     .0635277    .2083759
+ hub_college |    .357802   .0341896    10.47   0.000     .2907912    .4248127
+ hub_less_hs |  -1.790203   .1268779   -14.11   0.000     -2.03888   -1.541525
+             |
+    period_y |
+     t08_11  |  -.3124983   .0512901    -6.09   0.000    -.4130255   -.2119711
+     t11_14  |  -.3203569   .0563711    -5.68   0.000    -.4308426   -.2098711
+     t14_17  |   .0563412    .051797     1.09   0.277    -.0451794    .1578618
+     t17_20  |   .2485883   .0583158     4.26   0.000      .134291    .3628857
+        t20  |   .4159314   .0752798     5.53   0.000     .2683851    .5634777
+        t21  |   .2564212   .0890195     2.88   0.004     .0819455    .4308968
+        t22  |   .2219486   .1253373     1.77   0.077     -.023709    .4676063
+             |
+       _cons |  -5.919629   .1264931   -46.80   0.000    -6.167552   -5.671706
+------------------------------------------------------------------------------
