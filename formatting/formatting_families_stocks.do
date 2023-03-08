@@ -451,7 +451,7 @@ gen parent = (mother==1|father==1)
 gen parent_5 = (mother_5==1|father_5==1)
 gen parent_10 = (mother_10==1|father_10==1)
 gen parent_15 = (mother_15==1|father_15==1)
-gen parent_18 = (mother_18==1|father_18==1)
+// gen parent_18 = (mother_18==1|father_18==1)
 
 rename dcom tenure
 *rename edad5 age
@@ -465,7 +465,7 @@ gen married_parent = married*parent
 gen married_parent_5 = married*parent_5
 gen married_parent_10 = married*parent_10
 gen married_parent_15 = married*parent_15
-gen married_parent_18 = married*parent_18
+// gen married_parent_18 = married*parent_18
 
 gen covid = 0
 replace covid = 1 if ciclo>=190
