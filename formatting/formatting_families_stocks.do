@@ -32,9 +32,9 @@ replace state="I" if aoi>6
 **# Part 2: Generate key indicator variables * * * * * * * * * 
 gen nmadre_help = nmadre
 gen npadre_help = npadre 
-* Consider ONLY small children (10 or less)
-replace nmadre = 0 if edad5>10
-replace npadre = 0 if edad5>10
+* Consider ONLY children (18 or less)
+replace nmadre = 0 if edad5>18
+replace npadre = 0 if edad5>18
 
 sort ciclo nvivi npers
 
@@ -67,8 +67,8 @@ replace dad_no = 0 if  dad_no == .
 drop mom_in dad_in
 
 * Drop weird cases and teen moms
-replace mother = 0 if mother==1&(edad5<20|edad5>50)
-replace father = 0 if father==1&(edad5<20|edad5>50)
+replace mother = 0 if mother==1&(edad5<20|edad5>55)
+replace father = 0 if father==1&(edad5<20|edad5>55)
 
 gen single_mom = mother==1&dad_no==0
 
@@ -98,8 +98,8 @@ replace dad_no_5 = 0 if  dad_no_5 == .
 drop mom_in_5 dad_in_5
 
 * Drop weird cases and teen moms
-replace mother_5 = 0 if mother_5==1&(edad5<20|edad5>50)
-replace father_5 = 0 if father_5==1&(edad5<20|edad5>50)
+replace mother_5 = 0 if mother_5==1&(edad5<20|edad5>55)
+replace father_5 = 0 if father_5==1&(edad5<20|edad5>55)
 
 gen single_mom_5 = mother_5==1&dad_no_5==0
 
@@ -129,17 +129,17 @@ replace dad_no_10 = 0 if  dad_no_10 == .
 drop mom_in_10 dad_in_10
 
 * Drop weird cases and teen moms
-replace mother_10 = 0 if mother_10==1&(edad5<20|edad5>50)
-replace father_10 = 0 if father_10==1&(edad5<20|edad5>50)
+replace mother_10 = 0 if mother_10==1&(edad5<20|edad5>55)
+replace father_10 = 0 if father_10==1&(edad5<20|edad5>55)
 
 gen single_mom_10 = mother_10==1&dad_no_10==0
 
-* Consider young children (15 or less)
+* Consider young children (16 or less)
 gen nmadre_15 = nmadre_help
 gen npadre_15 = npadre_help
 
-replace nmadre_15 = 0 if edad5>15
-replace npadre_15 = 0 if edad5>15
+replace nmadre_15 = 0 if edad5>16
+replace npadre_15 = 0 if edad5>16
 
 sort ciclo nvivi npers
 
@@ -160,41 +160,41 @@ replace dad_no_15 = 0 if  dad_no_15 == .
 drop mom_in_15 dad_in_15
 
 * Drop weird cases and teen moms
-replace mother_15 = 0 if mother_15==1&(edad5<20|edad5>50)
-replace father_15 = 0 if father_15==1&(edad5<20|edad5>50)
+replace mother_15 = 0 if mother_15==1&(edad5<20|edad5>55)
+replace father_15 = 0 if father_15==1&(edad5<20|edad5>55)
 
 gen single_mom_15 = mother_15==1&dad_no_15==0
 
-* Consider all children (18 or less)
-gen nmadre_18 = nmadre_help
-gen npadre_18 = npadre_help
-
-replace nmadre_18 = 0 if edad5>18
-replace npadre_18 = 0 if edad5>18
-
-sort ciclo nvivi npers
-
-gen mom_in_18 = -(nmadre_18>0)
-gen mom_no_18 = nmadre_18
-sort ciclo nvivi mom_in_18
-by ciclo nvivi: replace mom_no_18 = mom_no_18[_n-1] if mom_no_18==0
-gen mother_18 = mom_no_18==npers
-replace mom_no_18 = 0 if  mom_no_18 == .
-
-gen dad_in_18 = -(npadre_18>0)
-gen dad_no_18 = npadre_18
-sort ciclo nvivi dad_in_18
-by ciclo nvivi: replace dad_no_18 = dad_no_18[_n-1] if dad_no_18==0
-gen father_18 = dad_no_18==npers
-replace dad_no_18 = 0 if  dad_no_18 == .
-
-drop mom_in_18 dad_in_18
-
-* Drop weird cases and teen moms
-replace mother_18 = 0 if mother_18==1&(edad5<20|edad5>50)
-replace father_18 = 0 if father_18==1&(edad5<20|edad5>50)
-
-gen single_mom_18 = mother_18==1&dad_no_18==0
+// * Consider all children (18 or less) This doesn't work because of how age typed in data (<20 only)
+// gen nmadre_18 = nmadre_help
+// gen npadre_18 = npadre_help
+//
+// replace nmadre_18 = 0 if edad5>18
+// replace npadre_18 = 0 if edad5>18
+//
+// sort ciclo nvivi npers
+//
+// gen mom_in_18 = -(nmadre_18>0)
+// gen mom_no_18 = nmadre_18
+// sort ciclo nvivi mom_in_18
+// by ciclo nvivi: replace mom_no_18 = mom_no_18[_n-1] if mom_no_18==0
+// gen mother_18 = mom_no_18==npers
+// replace mom_no_18 = 0 if  mom_no_18 == .
+//
+// gen dad_in_18 = -(npadre_18>0)
+// gen dad_no_18 = npadre_18
+// sort ciclo nvivi dad_in_18
+// by ciclo nvivi: replace dad_no_18 = dad_no_18[_n-1] if dad_no_18==0
+// gen father_18 = dad_no_18==npers
+// replace dad_no_18 = 0 if  dad_no_18 == .
+//
+// drop mom_in_18 dad_in_18
+//
+// * Drop weird cases and teen moms
+// replace mother_18 = 0 if mother_18==1&(edad5<20|edad5>50)
+// replace father_18 = 0 if father_18==1&(edad5<20|edad5>50)
+//
+// gen single_mom_18 = mother_18==1&dad_no_18==0
 
 * Part-time and hours
 gen state_pt = state

@@ -4,7 +4,7 @@
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 
-*use "formatting/rawfiles/EPA_stocks20_parents.dta", clear
+use "formatting/rawfiles/EPA_stocks20_parents.dta", clear
 
 **# Regressions * * * * * * * * * 
 
@@ -12,17 +12,20 @@
 drop if disc>0
 
 * Age variables
-gen age2550 = 0
-replace age2550 = 1 if age>=25&age<=50
+gen age2550 = (age>=25&age<=50)
 
-gen age3045 = 0
-replace age3045 = 1 if age>=30&age<=45
+gen age2530 = (age>=25&age<30)
 
-gen age3035 = 0
-replace age3035 = 1 if age>=30&age<=35
+gen age3035 = (age>=30&age<35)
 
-global age_group "age2550 age3045 age3035"
-global parent_string "parent_5 parent_10 parent_15 parent_18"
+gen age3540 = (age>=35&age<40)
+
+gen age4045 = (age>=40&age<45)
+
+gen age3045 = (age>=35&age<40)
+
+global age_group "age2530 age3035" "age3540" "age3545" 
+global parent_string "parent_5 parent_10 parent_15"
 
 drop woman
 gen woman = sexo1==1
@@ -77,6 +80,21 @@ eststo clear
 }
 
 * Figure 5 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
+
+* First run no children
+log using "./results/sqtreg_mothers_0k.log", replace nomsg		
+sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+		college less_hs hub_age hub_se hub_college hub_less_hs ///
+		i.period_y if mother==0&wife==1&employed&`ag'==1, q(.25 .5 .75) 
+log close
+
+log using "./results/sqtreg_fathers_0k.log", replace nomsg
+sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+		college less_hs wife_age wife_se wife_college wife_less_hs ///
+		i.period_y  if father==0&husband==1&employed&`ag'==1, q(.25 .5 .75) 
+log close
+
+* Now by ages
 global child_string "5 10 15 18"
 
 foreach ag of global age_group {
