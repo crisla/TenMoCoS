@@ -1,4 +1,4 @@
-# Guvenen-type plot readme, figure 4 first version of paper
+# Guvenen-type plot readme, figure 4, v2 (first submission) version of paper
 
 The guvenen-type plots in the paper (v2) are:
 
