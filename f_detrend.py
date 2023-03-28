@@ -4,7 +4,7 @@ import statsmodels.api as sm
 from statsmodels.formula.api import ols
 
 
-def detrend_fuction(df,variable,date_cuts,date0,dateT,date_dict,extended=False):
+def detrend_fuction(df,variable,date_cuts,date0,dateT,date_dict,extended=False,test=False):
     # Unpack
     date_cuts_t,date_cuts_t1 = date_cuts
     n_chunks = len(date_cuts_t)
@@ -14,6 +14,7 @@ def detrend_fuction(df,variable,date_cuts,date0,dateT,date_dict,extended=False):
 
     linear_trends_down, linear_trends_up = [], []
     predict_all_down, predict_all_up = [], []
+    covs = []
 
     # Peprate dependent variables
     qt_dict = {}
@@ -36,6 +37,7 @@ def detrend_fuction(df,variable,date_cuts,date0,dateT,date_dict,extended=False):
         b0, b_q2, b_q3, b_q4, trend_coeff = fit.params
         sd_b0, sd_b_q2, sd_b_q3, sd_b_q4, sd_trend_coeff = fit.bse
         trend_coefs.append(trend_coeff)
+        covs.append(fit.mse_resid)
         
         if date_cuts_t1[date] == dateT:
             data_buff = df.loc[date_dict[date_cuts_t[date]]:date_dict[date_cuts_t1[date]]].copy()
@@ -64,5 +66,8 @@ def detrend_fuction(df,variable,date_cuts,date0,dateT,date_dict,extended=False):
 
     if extended==0:
         return series_trend,series_predicted
+
+    elif test:
+        return series_trend,series_predicted, covs
     else:
         return series_trend,series_predicted, series_predicted_up, series_predicted_down
