@@ -4,7 +4,6 @@ note: public_servant != 0 predicts failure perfectly;
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 11 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 21,522
                                                         Wald chi2(22) = 252.00
@@ -42,19 +41,16 @@ white collar - tech. suport  |   3.601231   1.671865     2.76   0.006     1.4497
            married_parent_15 |   .8037984   .2283094    -0.77   0.442     .4606525    1.402558
                     divorced |   .8553822   .2359039    -0.57   0.571     .4982064    1.468626
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   .5502877   .0828031    -3.97   0.000     .4097392     .739047
                        _cons |   .0174235   .0079716    -8.85   0.000     .0071071    .0427146
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est1 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1655 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 4 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 18,360
                                                         Wald chi2(22) = 211.35
@@ -92,19 +88,16 @@ white collar - tech. suport  |   1.975459   .7042645     1.91   0.056     .98222
            married_parent_15 |   1.756415   .5603344     1.77   0.077     .9398866    3.282304
                     divorced |   1.558334   .4253327     1.63   0.104     .9127101    2.660652
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   .9874154   .1475166    -0.08   0.932     .7367722    1.323325
                        _cons |   .0223546   .0091074    -9.33   0.000     .0100596    .0496767
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est2 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1817 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 7 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 19,436
                                                         Wald chi2(22) = 204.85
@@ -142,19 +135,16 @@ white collar - tech. suport  |   1.641508   .5734969     1.42   0.156     .82766
            married_parent_15 |   1.217275   .4111699     0.58   0.561     .6278712    2.359971
                     divorced |   1.205274   .3424773     0.66   0.511     .6905861    2.103554
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   .8537377   .1203654    -1.12   0.262     .6476146    1.125466
                        _cons |   .0189242   .0074124   -10.13   0.000     .0087824    .0407778
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est3 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1719 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 2 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 19,363
                                                         Wald chi2(22) = 228.26
@@ -192,17 +182,14 @@ white collar - tech. suport  |   .6750051   .2570897    -1.03   0.302       .319
            married_parent_15 |   .9764358   .2815369    -0.08   0.934     .5549013    1.718192
                     divorced |   .3443796   .1329972    -2.76   0.006     .1615507    .7341184
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   .6814483    .107466    -2.43   0.015     .5002607    .9282596
                        _cons |   .0336935   .0135196    -8.45   0.000     .0153461    .0739765
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est4 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1834 obs not used.
 
 note: widowed omitted because of collinearity.
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 19,105
                                                         Wald chi2(22) = 129.11
@@ -240,19 +227,16 @@ white collar - tech. suport  |   2.385416    .828397     2.50   0.012     1.2077
            married_parent_15 |   1.459707   .4140954     1.33   0.182     .8371314    2.545294
                     divorced |   .6910834   .2210639    -1.16   0.248     .3691883    1.293639
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   .6899213   .1069108    -2.40   0.017     .5092096     .934765
                        _cons |    .021568   .0085749    -9.65   0.000     .0098945    .0470139
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est5 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1883 obs not used.
 
 note: widowed != 0 predicts success perfectly;
       widowed omitted and 1 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 18,379
                                                         Wald chi2(22) = 155.49
@@ -290,19 +274,16 @@ white collar - tech. suport  |   3.539682   1.531728     2.92   0.003     1.5157
            married_parent_15 |   1.316553   .3968883     0.91   0.362     .7291807    2.377069
                     divorced |   .5268405    .173191    -1.95   0.051     .2766045    1.003458
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |    .750525   .1098786    -1.96   0.050     .5633097     .999961
                        _cons |   .0177793   .0083368    -8.59   0.000     .0070922    .0445707
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est6 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1640 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 8 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 16,844
                                                         Wald chi2(22) = 177.50
@@ -340,19 +321,16 @@ white collar - tech. suport  |   4.472207   2.766472     2.42   0.015     1.3303
            married_parent_15 |   2.897497   1.153647     2.67   0.008     1.327745    6.323122
                     divorced |   1.290301    .541234     0.61   0.543     .5670782    2.935884
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   .8403761   .1530008    -0.96   0.339     .5881688     1.20073
                        _cons |    .013778   .0091829    -6.43   0.000     .0037314    .0508751
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est7 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1367 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 10 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 15,761
                                                         Wald chi2(22) = 137.82
@@ -390,19 +368,16 @@ white collar - tech. suport  |   5.452344   3.379421     2.74   0.006     1.6180
            married_parent_15 |   1.615188   .5775401     1.34   0.180     .8014207    3.255261
                     divorced |   .8581749   .3292536    -0.40   0.690     .4045737    1.820346
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   .9055479   .1591361    -0.56   0.572     .6416909      1.2779
                        _cons |   .0074202   .0047053    -7.73   0.000     .0021411    .0257148
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est8 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1305 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 1 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 14,377
                                                         Wald chi2(22) = 192.27
@@ -440,19 +415,16 @@ white collar - tech. suport  |   5.743986   4.278413     2.35   0.019      1.334
            married_parent_15 |   1.811744   .7274017     1.48   0.139     .8247947    3.979678
                     divorced |   1.210573   .5187805     0.45   0.656      .522656    2.803922
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |    .793463   .1699847    -1.08   0.280     .5214019    1.207482
                        _cons |   .0039061   .0030895    -7.01   0.000     .0008289    .0184071
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est9 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1295 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 4 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 13,693
                                                         Wald chi2(22) = 142.46
@@ -490,19 +462,16 @@ white collar - tech. suport  |   .2771613   .1446775    -2.46   0.014      .0996
            married_parent_15 |   1.080713   .4328699     0.19   0.846     .4929119    2.369471
                     divorced |   1.336568   .4965803     0.78   0.435     .6452692    2.768479
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   .8923895   .1705904    -0.60   0.551     .6135326     1.29799
                        _cons |   .0846582   .0458016    -4.56   0.000     .0293193    .2444467
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est10 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 1021 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 4 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 12,974
                                                         Wald chi2(22) = 102.80
@@ -540,19 +509,16 @@ white collar - tech. suport  |   1.097975   .6915186     0.15   0.882     .31951
            married_parent_15 |    3.42405   1.696557     2.48   0.013     1.296535     9.04265
                     divorced |   .6286412   .2270632    -1.29   0.199     .3097074     1.27601
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   1.123189   .2237392     0.58   0.560     .7601404    1.659634
                        _cons |   .0348034   .0221455    -5.28   0.000          .01    .1211275
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est11 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 945 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 3 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 12,080
                                                         Wald chi2(22) = 110.76
@@ -590,19 +556,16 @@ white collar - tech. suport  |   .2609583   .1202019    -2.92   0.004     .10580
            married_parent_15 |   1.480586   .5982901     0.97   0.331     .6706124    3.268856
                     divorced |   .8098402   .5358513    -0.32   0.750     .2214013    2.962227
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |    1.11234   .2071394     0.57   0.568     .7721957    1.602315
                        _cons |   .1486197   .0694992    -4.08   0.000      .059433    .3716421
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est12 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 944 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 1 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 11,566
                                                         Wald chi2(22) = 125.71
@@ -640,19 +603,16 @@ white collar - tech. suport  |   1.483377   .8417243     0.69   0.487     .48780
            married_parent_15 |   .4855048   .1752527    -2.00   0.045     .2392958    .9850355
                     divorced |    .520397   .2994052    -1.14   0.256     .1685018    1.607182
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   1.104902   .1820624     0.61   0.545     .7999548    1.526097
                        _cons |   .0392515   .0228001    -5.57   0.000     .0125723    .1225452
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est13 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 936 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 4 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 11,772
                                                         Wald chi2(22) = 158.96
@@ -690,19 +650,16 @@ white collar - tech. suport  |   .9833913   .5036534    -0.03   0.974     .36039
            married_parent_15 |   1.666326   .6888418     1.24   0.217     .7411094    3.746604
                     divorced |   2.230047   1.051231     1.70   0.089     .8852428    5.617789
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   1.030875   .1586433     0.20   0.843     .7624531    1.393796
                        _cons |   .0576046     .03161    -5.20   0.000     .0196502    .1688677
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est14 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 976 obs not used.
 
 note: widowed != 0 predicts failure perfectly;
       widowed omitted and 2 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 11,640
                                                         Wald chi2(22) = 155.44
@@ -740,17 +697,14 @@ white collar - tech. suport  |    2.94717   1.608184     1.98   0.048     1.0114
            married_parent_15 |   3.383714   1.356473     3.04   0.002     1.542274    7.423793
                     divorced |   1.671153   .9710808     0.88   0.377     .5350526    5.219586
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   1.291949   .2093889     1.58   0.114     .9403493    1.775012
                        _cons |   .0112791   .0064817    -7.80   0.000     .0036569    .0347883
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est15 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 778 obs not used.
 
 note: widowed omitted because of collinearity.
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs = 10,071
                                                         Wald chi2(22) = 186.05
@@ -788,16 +742,13 @@ white collar - tech. suport  |   1.805839   1.404864     0.76   0.447     .39308
            married_parent_15 |    1.21365   .3801983     0.62   0.537     .6568088    2.242581
                     divorced |   1.561287   .5066897     1.37   0.170     .8264931    2.949348
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |    .783349   .1167457    -1.64   0.101     .5849209    1.049092
                        _cons |   .0354309   .0273929    -4.32   0.000     .0077855    .1612413
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est16 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 719 obs not used.
 
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs =  8,242
                                                         Wald chi2(23) = 148.38
@@ -835,17 +786,14 @@ white collar - tech. suport  |   .9584098   .5641776    -0.07   0.942     .30233
            married_parent_15 |   3.383932   1.530054     2.70   0.007     1.394918    8.209083
                     divorced |   1.918669   .9256126     1.35   0.177     .7453489    4.939016
                      widowed |   15.86848   19.91847     2.20   0.028     1.355466    185.7729
-                         age |          1  (omitted)
                      college |   .8758867   .1846196    -0.63   0.530     .5794708    1.323928
                        _cons |   .0367589   .0222324    -5.46   0.000     .0112342     .120277
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est17 stored)
 note: public_servant != 0 predicts failure perfectly;
       public_servant omitted and 726 obs not used.
 
 note: widowed omitted because of collinearity.
-note: age omitted because of collinearity.
 
 Logistic regression                                     Number of obs =  7,668
                                                         Wald chi2(22) = 105.53
@@ -883,9 +831,7 @@ white collar - tech. suport  |   4.050334   4.184546     1.35   0.176     .53466
            married_parent_15 |   1.332062   .5243558     0.73   0.466     .6158229    2.881332
                     divorced |   .6552104    .368658    -0.75   0.452      .217494    1.973851
                      widowed |          1  (omitted)
-                         age |          1  (omitted)
                      college |   .7231973   .1587718    -1.48   0.140     .4703084    1.112067
                        _cons |   .0106302   .0110436    -4.37   0.000     .0013875    .0814412
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
-(est18 stored)

@@ -1,0 +1,13 @@
+
+. forvalues i=130/201{ 
+  2.         eststo m`i': logistic permanent i.act i.occ public_servant parent10 married married_parent10 divorced part_time college erte i.age if ciclo==`i'&mili==0&age3
+> 040==1&woman==1 [pw=factorel], vce(robust)
+  3. }
+variable parent10 not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. log close

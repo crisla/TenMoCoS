@@ -1,0 +1,1498 @@
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 6 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,524
+                                                        Wald chi2(22) =  65.24
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -226641.05                       Pseudo R2     = 0.0471
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .1267372   .0735358    -3.56   0.000      .040646    .3951759
+     extractive and energy.  |   .0151051   .0160259    -3.95   0.000     .0018881    .1208418
+         manufactures, sec.  |   .1230545   .0787398    -3.27   0.001     .0351102    .4312825
+               construction  |   .0986705    .077728    -2.94   0.003     .0210693    .4620878
+      hospitality and sales  |   .2016766   .0809725    -3.99   0.000     .0918122    .4430068
+ Transport, storage and IT.  |   .2657301   .1351704    -2.61   0.009     .0980517    .7201553
+  Financial and prof. serv.  |   .1993534   .0787629    -4.08   0.000     .0919011    .4324408
+   Education and healthcare  |   .1551599   .0626218    -4.62   0.000     .0703459    .3422317
+             Other services  |   .2196286   .0807195    -4.12   0.000     .1068684    .4513657
+                             |
+                         occ |
+       white collar - prof.  |    1.62418   1.281661     0.61   0.539     .3458921    7.626544
+white collar - tech. suport  |   3.537029   2.798576     1.60   0.110     .7501518    16.67739
+       white collar - other  |   3.111726   2.382889     1.48   0.138     .6936979    13.95829
+     blue collar - services  |   3.696101   2.839292     1.70   0.089     .8200931    16.65807
+  blue collar - agriculture  |   1.063061   1.072676     0.06   0.952     .1471153    7.681719
+     blue collar - artisans  |   2.924654   2.615034     1.20   0.230     .5069742    16.87186
+       blue collar - equip.  |    5.02381   4.447515     1.82   0.068     .8860851    28.48335
+                  unskilled  |   2.683896   2.074373     1.28   0.201     .5900317    12.20832
+                             |
+                   parent_15 |    1.53611   .4773499     1.38   0.167     .8354286    2.824459
+                     married |   1.288054   .5674166     0.57   0.566     .5432012    3.054269
+           married_parent_15 |   .7353797   .3770091    -0.60   0.549     .2692302    2.008628
+                    divorced |   .3864886   .1602138    -2.29   0.022     .1715071    .8709459
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   .8600239   .2136235    -0.61   0.544     .5285407    1.399403
+                       _cons |   .0599028   .0495395    -3.40   0.001     .0118442    .3029625
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est1 stored)
+note: 1.occ != 0 predicts failure perfectly;
+      1.occ omitted and 88 obs not used.
+
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 10 obs not used.
+
+note: 9.occ omitted because of collinearity.
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,358
+                                                        Wald chi2(21) =  79.03
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -207355.7                        Pseudo R2     = 0.0614
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .5990568   .3507621    -0.88   0.382     .1901381    1.887413
+     extractive and energy.  |   .3568705   .3849838    -0.96   0.340     .0430778    2.956429
+         manufactures, sec.  |   .4941224   .3229013    -1.08   0.281     .1372738    1.778613
+               construction  |   .5348418   .4105684    -0.82   0.415     .1187969     2.40794
+      hospitality and sales  |   .7387544   .3304569    -0.68   0.498     .3074283    1.775237
+ Transport, storage and IT.  |   1.706084   .9538245     0.96   0.339      .570318    5.103683
+  Financial and prof. serv.  |   .5953464    .308319    -1.00   0.317     .2157486    1.642825
+   Education and healthcare  |   .6010663   .2786002    -1.10   0.272     .2423159    1.490949
+             Other services  |   .6606728   .3100227    -0.88   0.377     .2633647    1.657354
+                             |
+                         occ |
+                   managers  |          1  (empty)
+       white collar - prof.  |   .4601515    .201161    -1.78   0.076     .1953382    1.083963
+white collar - tech. suport  |   .8980966   .5133915    -0.19   0.851     .2929131    2.753641
+       white collar - other  |   .4229977   .1520004    -2.39   0.017     .2091541    .8554793
+     blue collar - services  |   .8532956    .252631    -0.54   0.592     .4776265    1.524441
+  blue collar - agriculture  |    .936301   .6601768    -0.09   0.926     .2350939    3.728975
+     blue collar - artisans  |   .6060686   .3932479    -0.77   0.440     .1699101    2.161844
+       blue collar - equip.  |   .3146643   .1782589    -2.04   0.041     .1036663     .955119
+                  unskilled  |          1  (omitted)
+                             |
+                   parent_15 |   2.535377   1.014655     2.32   0.020     1.157158    5.555108
+                     married |   1.552893   .7065818     0.97   0.333     .6365556     3.78832
+           married_parent_15 |   1.038887    .569441     0.07   0.945     .3548157    3.041823
+                    divorced |    .846902   .3558415    -0.40   0.692     .3716937    1.929662
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |    .697634   .2102363    -1.19   0.232     .3864674    1.259338
+                       _cons |   .0326152   .0149784    -7.45   0.000     .0132589    .0802291
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est2 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 11 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,342
+                                                        Wald chi2(22) =  88.19
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -257170.45                       Pseudo R2     = 0.0616
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .2342893   .1245969    -2.73   0.006     .0826184    .6643978
+     extractive and energy.  |   .0270078   .0221353    -4.41   0.000     .0054182    .1346243
+         manufactures, sec.  |   .3827971   .3070776    -1.20   0.231     .0794584    1.844156
+               construction  |     .11735   .1061334    -2.37   0.018     .0199362    .6907564
+      hospitality and sales  |   .3030511   .1258009    -2.88   0.004      .134329    .6836943
+ Transport, storage and IT.  |   .1531362   .0948644    -3.03   0.002     .0454756     .515677
+  Financial and prof. serv.  |   .1756531   .0855013    -3.57   0.000     .0676586    .4560248
+   Education and healthcare  |   .2113209    .084239    -3.90   0.000     .0967448    .4615912
+             Other services  |   .1743596   .0752351    -4.05   0.000     .0748441    .4061945
+                             |
+                         occ |
+       white collar - prof.  |   2.720217   2.084408     1.31   0.192     .6058392    12.21377
+white collar - tech. suport  |   4.233867   3.549267     1.72   0.085     .8187887    21.89287
+       white collar - other  |   1.405296   1.155756     0.41   0.679     .2803594    7.044018
+     blue collar - services  |   3.529248   2.648252     1.68   0.093      .810893    15.36034
+  blue collar - agriculture  |   1.653633   1.845227     0.45   0.652     .1856158    14.73205
+     blue collar - artisans  |   5.359149   4.660232     1.93   0.054     .9747751     29.4637
+       blue collar - equip.  |   6.272144   5.715585     2.01   0.044     1.051346    37.41848
+                  unskilled  |   3.830483   2.989107     1.72   0.085     .8298905    17.68017
+                             |
+                   parent_15 |   2.650185    .864487     2.99   0.003     1.398348    5.022698
+                     married |   1.312936   .6730035     0.53   0.595     .4807537    3.585623
+           married_parent_15 |   .7680844    .427411    -0.47   0.635     .2580752    2.285976
+                    divorced |   .8078042   .2866455    -0.60   0.548     .4029594    1.619388
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   1.026661    .281844     0.10   0.924     .5994473    1.758341
+                       _cons |   .0296084    .025778    -4.04   0.000     .0053744    .1631168
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est3 stored)
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 26 obs not used.
+
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 10 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,358
+                                                        Wald chi2(21) =  79.84
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -214495.48                       Pseudo R2     = 0.0629
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .1388396   .0947338    -2.89   0.004     .0364516    .5288228
+     extractive and energy.  |   .0624069   .0529897    -3.27   0.001     .0118162    .3296002
+         manufactures, sec.  |   .3510423   .2611615    -1.41   0.159     .0816769    1.508758
+               construction  |   .9037747   .7164663    -0.13   0.898     .1911046    4.274144
+      hospitality and sales  |   .5497148   .2660251    -1.24   0.216     .2129183     1.41926
+ Transport, storage and IT.  |   .1121961   .0803778    -3.05   0.002     .0275533    .4568594
+  Financial and prof. serv.  |   .1919497   .1028979    -3.08   0.002     .0671253    .5488942
+   Education and healthcare  |   .4618335   .2244864    -1.59   0.112     .1781297    1.197387
+             Other services  |   .4193003   .1914121    -1.90   0.057     .1713755    1.025892
+                             |
+                         occ |
+       white collar - prof.  |   1.158418   .9634667     0.18   0.860     .2269412    5.913128
+white collar - tech. suport  |   1.032394    .857571     0.04   0.969     .2026673    5.259044
+       white collar - other  |   1.107004   .8994137     0.13   0.900        .2252    5.441639
+     blue collar - services  |   1.752131   1.369418     0.72   0.473     .3786961    8.106667
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   2.758937   2.531994     1.11   0.269     .4566232    16.66962
+       blue collar - equip.  |    8.73166   7.929239     2.39   0.017     1.472716    51.76959
+                  unskilled  |   3.250854   2.697426     1.42   0.155     .6393006    16.53064
+                             |
+                   parent_15 |    2.39802   .7439232     2.82   0.005     1.305539    4.404696
+                     married |   2.002005   .8633908     1.61   0.107     .8597523    4.661835
+           married_parent_15 |   .3562665   .1731279    -2.12   0.034     .1374463    .9234573
+                    divorced |   .5869719   .2444604    -1.28   0.201     .2594844    1.327771
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   1.076445   .2851104     0.28   0.781     .6405307    1.809021
+                       _cons |   .0309092   .0300924    -3.57   0.000     .0045854    .2083509
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est4 stored)
+note: 3.act != 0 predicts failure perfectly;
+      3.act omitted and 97 obs not used.
+
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 21 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,276
+                                                        Wald chi2(21) =  50.36
+                                                        Prob > chi2   = 0.0003
+Log pseudolikelihood = -223321.87                       Pseudo R2     = 0.0387
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |    .451797   .2536646    -1.42   0.157     .1503247    1.357864
+     extractive and energy.  |   .1911532   .2052338    -1.54   0.123     .0233066    1.567776
+         manufactures, sec.  |          1  (empty)
+               construction  |   .6093212   .4479727    -0.67   0.500     .1442259    2.574242
+      hospitality and sales  |   .3640928   .1513786    -2.43   0.015      .161179    .8224616
+ Transport, storage and IT.  |   .2963216   .1811827    -1.99   0.047     .0893934    .9822487
+  Financial and prof. serv.  |   .2135908   .0960329    -3.43   0.001     .0884856    .5155758
+   Education and healthcare  |   .3172837   .1378308    -2.64   0.008     .1354186    .7433906
+             Other services  |   .1896179   .0859192    -3.67   0.000     .0780162    .4608651
+                             |
+                         occ |
+       white collar - prof.  |   .6498061    .426938    -0.66   0.512     .1792768    2.355284
+white collar - tech. suport  |   .4423665   .3279932    -1.10   0.271     .1034327    1.891937
+       white collar - other  |   .8371606   .5580694    -0.27   0.790     .2266623    3.091991
+     blue collar - services  |   .7850167   .5462521    -0.35   0.728     .2007115    3.070334
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   .5045885    .495447    -0.70   0.486     .0736473    3.457148
+       blue collar - equip.  |   .3133325   .3388542    -1.07   0.283     .0376246    2.609393
+                  unskilled  |   1.200557   .8573595     0.26   0.798     .2961488    4.866934
+                             |
+                   parent_15 |   1.627311    .597737     1.33   0.185     .7921564    3.342953
+                     married |   1.506232   .6013313     1.03   0.305     .6887595    3.293943
+           married_parent_15 |   .6781478   .3365454    -0.78   0.434     .2563878    1.793707
+                    divorced |   1.018324   .4542399     0.04   0.968     .4248091    2.441058
+                     widowed |   1.378153    1.18867     0.37   0.710     .2541719    7.472521
+                         age |          1  (omitted)
+                     college |   .8233826   .2259899    -0.71   0.479     .4808134    1.410025
+                       _cons |   .1196521    .096012    -2.65   0.008     .0248252    .5766964
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est5 stored)
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 21 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,365
+                                                        Wald chi2(22) =  74.23
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -218565.64                       Pseudo R2     = 0.0651
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .4862106   .2604547    -1.35   0.178     .1701572    1.389308
+     extractive and energy.  |   .2043666    .138447    -2.34   0.019     .0541711    .7709954
+         manufactures, sec.  |   .1752301   .1320411    -2.31   0.021     .0400132    .7673872
+               construction  |   .5251894   .3650925    -0.93   0.354     .1344596    2.051352
+      hospitality and sales  |   .3208218   .1256374    -2.90   0.004       .14891    .6912001
+ Transport, storage and IT.  |   .3213805   .1893547    -1.93   0.054     .1012742     1.01986
+  Financial and prof. serv.  |   .1298736   .0659702    -4.02   0.000     .0479896    .3514754
+   Education and healthcare  |    .220294   .0967457    -3.44   0.001     .0931502    .5209808
+             Other services  |    .291391   .1190081    -3.02   0.003     .1308681    .6488115
+                             |
+                         occ |
+       white collar - prof.  |   .6850926   .4032963    -0.64   0.521     .2161071    2.171849
+white collar - tech. suport  |   .1218833   .0839488    -3.06   0.002     .0315986    .4701329
+       white collar - other  |    .580688   .3489317    -0.90   0.366     .1788386     1.88549
+     blue collar - services  |   .7075376   .4125588    -0.59   0.553     .2256429    2.218592
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   .2845661   .2431991    -1.47   0.141     .0532991    1.519311
+       blue collar - equip.  |   .9770395    .951452    -0.02   0.981      .144878    6.589034
+                  unskilled  |   .8768853    .524793    -0.22   0.826     .2713444    2.833771
+                             |
+                   parent_15 |   3.022379   1.098318     3.04   0.002     1.482609    6.161287
+                     married |   3.563772   1.377146     3.29   0.001     1.671016    7.600449
+           married_parent_15 |   .2440877    .114436    -3.01   0.003     .0973814     .611809
+                    divorced |   .3241631   .1594357    -2.29   0.022     .1236262    .8499958
+                     widowed |   1.514301   1.245377     0.50   0.614     .3021173    7.590129
+                         age |          1  (omitted)
+                     college |   .9384034    .210502    -0.28   0.777     .6045728    1.456567
+                       _cons |   .0958122   .0681312    -3.30   0.001      .023776    .3861025
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est6 stored)
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 31 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,386
+                                                        Wald chi2(22) =  99.43
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -287568.46                       Pseudo R2     = 0.0674
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .1816261    .104875    -2.95   0.003       .05857    .5632242
+     extractive and energy.  |   .1125092   .0751848    -3.27   0.001     .0303647    .4168762
+         manufactures, sec.  |   .2027179   .1214535    -2.66   0.008     .0626492    .6559471
+               construction  |   .2934702   .1943258    -1.85   0.064     .0801544    1.074485
+      hospitality and sales  |   .2041182   .0686429    -4.73   0.000      .105592    .3945775
+ Transport, storage and IT.  |   .2039788   .1080591    -3.00   0.003     .0722197     .576122
+  Financial and prof. serv.  |   .1855232    .069502    -4.50   0.000     .0890256    .3866174
+   Education and healthcare  |   .1502719   .0589858    -4.83   0.000     .0696239    .3243376
+             Other services  |   .1875378   .0707114    -4.44   0.000     .0895658    .3926771
+                             |
+                         occ |
+       white collar - prof.  |   1.083435   .7709375     0.11   0.910     .2686055    4.370092
+white collar - tech. suport  |   .3714456   .3026266    -1.22   0.224     .0752313    1.833968
+       white collar - other  |   1.179519   .8663938     0.22   0.822     .2795574    4.976674
+     blue collar - services  |   1.319699    .988068     0.37   0.711     .3042103    5.725001
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   .4911771   .4901337    -0.71   0.476     .0694776    3.472414
+       blue collar - equip.  |   5.569418   5.077735     1.88   0.060     .9327268    33.25562
+                  unskilled  |   1.929313   1.438673     0.88   0.378      .447372    8.320259
+                             |
+                   parent_15 |    2.32971   .6817294     2.89   0.004     1.312864    4.134129
+                     married |   2.539408   .9024096     2.62   0.009     1.265458    5.095858
+           married_parent_15 |   .2854383    .121983    -2.93   0.003     .1235232    .6595929
+                    divorced |   .6186763   .2171171    -1.37   0.171     .3109886    1.230786
+                     widowed |   .5444153   .5876039    -0.56   0.573     .0656451    4.515003
+                         age |          1  (omitted)
+                     college |    1.07085   .2484692     0.30   0.768     .6795548    1.687458
+                       _cons |   .1295304   .1041642    -2.54   0.011     .0267832     .626442
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est7 stored)
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 29 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,333
+                                                        Wald chi2(22) =  90.96
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -250598.35                       Pseudo R2     = 0.0640
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .1613628   .1093504    -2.69   0.007     .0427534    .6090257
+     extractive and energy.  |    .097973   .0809266    -2.81   0.005     .0194091    .4945463
+         manufactures, sec.  |   .2407638   .2052948    -1.67   0.095     .0452676    1.280545
+               construction  |   .2556862   .2132595    -1.64   0.102     .0498595    1.311194
+      hospitality and sales  |   .2559716   .0979459    -3.56   0.000     .1209163    .5418746
+ Transport, storage and IT.  |   .1583875   .1128081    -2.59   0.010     .0392167    .6396919
+  Financial and prof. serv.  |   .2296942   .0959195    -3.52   0.000     .1013191    .5207253
+   Education and healthcare  |   .3083987   .1242872    -2.92   0.004     .1399817    .6794443
+             Other services  |   .1999392    .087277    -3.69   0.000     .0849832    .4703949
+                             |
+                         occ |
+       white collar - prof.  |   .8417361   .6979416    -0.21   0.835     .1657242    4.275294
+white collar - tech. suport  |   1.277053   1.145157     0.27   0.785     .2202523    7.404526
+       white collar - other  |   1.145117   1.036779     0.15   0.881     .1941685    6.753371
+     blue collar - services  |   1.666336   1.460725     0.58   0.560     .2989453     9.28824
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   2.925919    3.64933     0.86   0.389     .2538678    33.72228
+       blue collar - equip.  |   2.102107    2.46275     0.63   0.526     .2115531    20.88769
+                  unskilled  |    2.60577    2.33722     1.07   0.286     .4492204    15.11516
+                             |
+                   parent_15 |   1.747743   .6303284     1.55   0.122     .8619642    3.543772
+                     married |   3.064565   1.143158     3.00   0.003     1.475197    6.366311
+           married_parent_15 |   .3553591   .1695401    -2.17   0.030     .1394966    .9052561
+                    divorced |    .834438   .3682373    -0.41   0.682     .3513654     1.98166
+                     widowed |   2.089626    1.97254     0.78   0.435     .3285197    13.29155
+                         age |          1  (omitted)
+                     college |   .8243459   .1940175    -0.82   0.412     .5197221    1.307518
+                       _cons |   .0754123   .0737664    -2.64   0.008     .0110871    .5129396
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est8 stored)
+note: 4.act != 0 predicts failure perfectly;
+      4.act omitted and 55 obs not used.
+
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 32 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,335
+                                                        Wald chi2(21) =  76.19
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -252412.98                       Pseudo R2     = 0.0546
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .6563726   .3479124    -0.79   0.427     .2322568    1.854952
+     extractive and energy.  |   .4260823    .289844    -1.25   0.210     .1123209    1.616316
+         manufactures, sec.  |   .3445614    .316205    -1.16   0.246     .0570317    2.081693
+               construction  |          1  (empty)
+      hospitality and sales  |   .5732935   .2492437    -1.28   0.201     .2445179    1.344137
+ Transport, storage and IT.  |   1.143151   .6475502     0.24   0.813      .376644    3.469572
+  Financial and prof. serv.  |   .5702649    .258116    -1.24   0.215     .2348561    1.384687
+   Education and healthcare  |   .6283114    .294322    -0.99   0.321     .2508671    1.573643
+             Other services  |   .3335412    .158497    -2.31   0.021     .1314205    .8465174
+                             |
+                         occ |
+       white collar - prof.  |   1.282485   .8331194     0.38   0.702     .3590047    4.581463
+white collar - tech. suport  |   .8834578   .6939892    -0.16   0.875     .1894677    4.119424
+       white collar - other  |   1.521702   1.029614     0.62   0.535     .4040074    5.731519
+     blue collar - services  |   3.602473   2.290211     2.02   0.044     1.036248    12.52385
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   4.486341   3.748366     1.80   0.072      .872385    23.07153
+       blue collar - equip.  |   5.502775   4.519572     2.08   0.038      1.10019      27.523
+                  unskilled  |   4.257444   2.780848     2.22   0.027     1.183497    15.31549
+                             |
+                   parent_15 |   1.777441   .6031953     1.69   0.090     .9139659     3.45669
+                     married |   3.269865   1.264457     3.06   0.002     1.532393    6.977334
+           married_parent_15 |   .4131037   .1943288    -1.88   0.060     .1643025    1.038662
+                    divorced |   1.268333   .5264522     0.57   0.567     .5622399    2.861179
+                     widowed |     1.8993   2.077462     0.59   0.558     .2226105    16.20472
+                         age |          1  (omitted)
+                     college |   .9209077    .211674    -0.36   0.720     .5869002       1.445
+                       _cons |   .0168173   .0128543    -5.34   0.000     .0037596    .0752266
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est9 stored)
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,312
+                                                        Wald chi2(23) =  58.80
+                                                        Prob > chi2   = 0.0001
+Log pseudolikelihood = -255734.87                       Pseudo R2     = 0.0488
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .8045087   .4125037    -0.42   0.671     .2945004    2.197737
+     extractive and energy.  |   1.967469   1.303449     1.02   0.307     .5370151    7.208242
+         manufactures, sec.  |   .7543066    .524981    -0.41   0.685     .1928102    2.950976
+               construction  |   .4211769   .3694452    -0.99   0.324     .0754767     2.35026
+      hospitality and sales  |   .6947883    .308068    -0.82   0.411     .2913608    1.656814
+ Transport, storage and IT.  |   .5970006   .4263298    -0.72   0.470     .1472702    2.420106
+  Financial and prof. serv.  |   .5853645   .2697857    -1.16   0.245     .2372031     1.44455
+   Education and healthcare  |    .736226   .3451875    -0.65   0.514     .2937082    1.845467
+             Other services  |   .4224646   .1919328    -1.90   0.058     .1734104    1.029214
+                             |
+                         occ |
+       white collar - prof.  |   1.981788   1.538496     0.88   0.378     .4327675    9.075269
+white collar - tech. suport  |   1.085026   .9841646     0.09   0.928     .1833851     6.41972
+       white collar - other  |    2.68159   2.105044     1.26   0.209     .5757057    12.49063
+     blue collar - services  |   4.749551   3.576739     2.07   0.039     1.085523    20.78098
+  blue collar - agriculture  |   2.284501   2.698834     0.70   0.484     .2255329     23.1405
+     blue collar - artisans  |   4.679682   4.105701     1.76   0.079     .8383358     26.1225
+       blue collar - equip.  |   2.192077   2.098433     0.82   0.412     .3357508    14.31181
+                  unskilled  |   5.819782   4.392217     2.33   0.020      1.32587    25.54539
+                             |
+                   parent_15 |   2.425687   .8424713     2.55   0.011      1.22801    4.791458
+                     married |    1.48089   .7115319     0.82   0.414     .5774854     3.79756
+           married_parent_15 |   .5333341   .2861323    -1.17   0.241     .1863511    1.526394
+                    divorced |   .5473823   .2691976    -1.23   0.220     .2087745    1.435172
+                     widowed |   .4212321   .4584059    -0.79   0.427     .0499116    3.555016
+                         age |          1  (omitted)
+                     college |   .8711291   .2078366    -0.58   0.563     .5457582     1.39048
+                       _cons |   .0131935   .0112116    -5.09   0.000     .0024947    .0697746
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est10 stored)
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,284
+                                                        Wald chi2(23) =  81.69
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -260348.39                       Pseudo R2     = 0.0707
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .6481931   .3124856    -0.90   0.368     .2519712    1.667469
+     extractive and energy.  |   .6272865   .4617023    -0.63   0.526     .1482366    2.654463
+         manufactures, sec.  |   .3927372   .2503576    -1.47   0.143     .1125868    1.369987
+               construction  |     .88752   .6820481    -0.16   0.877     .1968069    4.002359
+      hospitality and sales  |   .9050856      .3376    -0.27   0.789      .435701    1.880142
+ Transport, storage and IT.  |    .685249   .4663953    -0.56   0.579     .1805104    2.601325
+  Financial and prof. serv.  |   .3286228   .1313611    -2.78   0.005     .1501222    .7193667
+   Education and healthcare  |   1.062081   .4146685     0.15   0.877     .4941092    2.282929
+             Other services  |   .3750357   .1584519    -2.32   0.020     .1638481    .8584274
+                             |
+                         occ |
+       white collar - prof.  |    2.39043   2.475252     0.84   0.400     .3141019    18.19204
+white collar - tech. suport  |    2.17957   2.448364     0.69   0.488     .2410988    19.70364
+       white collar - other  |   1.699711   1.799543     0.50   0.616     .2133922    13.53854
+     blue collar - services  |   3.301896   3.529167     1.12   0.264     .4064182    26.82585
+  blue collar - agriculture  |   9.940969   12.93043     1.77   0.077     .7766995    127.2344
+     blue collar - artisans  |   10.04795   11.32455     2.05   0.041     1.103393    91.50078
+       blue collar - equip.  |   11.17262   12.56792     2.15   0.032     1.232114    101.3116
+                  unskilled  |   8.425479   8.994109     2.00   0.046     1.039791     68.2721
+                             |
+                   parent_15 |   2.305984   .6840729     2.82   0.005     1.289277    4.124452
+                     married |   1.119956   .4437574     0.29   0.775     .5151477     2.43484
+           married_parent_15 |   .6155377   .2771583    -1.08   0.281     .2546737    1.487734
+                    divorced |   1.075804   .3666332     0.21   0.830     .5516255     2.09808
+                     widowed |   1.417792   1.266992     0.39   0.696     .2460068     8.17105
+                         age |          1  (omitted)
+                     college |    .921701   .2213253    -0.34   0.734     .5756965    1.475661
+                       _cons |   .0121894   .0135456    -3.97   0.000     .0013806    .1076198
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est11 stored)
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,251
+                                                        Wald chi2(23) =  84.09
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -231063.77                       Pseudo R2     = 0.0601
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .2054207   .1321301    -2.46   0.014     .0582287    .7246889
+     extractive and energy.  |   .2747511   .2401152    -1.48   0.139     .0495499    1.523478
+         manufactures, sec.  |   .2289109   .1687447    -2.00   0.045     .0539749    .9708251
+               construction  |    .724868   .6007343    -0.39   0.698     .1428321    3.678681
+      hospitality and sales  |   .4857345   .2125644    -1.65   0.099      .206016    1.145241
+ Transport, storage and IT.  |   .2958135   .2000067    -1.80   0.072      .078614    1.113105
+  Financial and prof. serv.  |   .5776028   .2565101    -1.24   0.216     .2418887     1.37925
+   Education and healthcare  |    .572996   .2577629    -1.24   0.216     .2372672    1.383775
+             Other services  |   .3652319   .1604916    -2.29   0.022     .1543585    .8641856
+                             |
+                         occ |
+       white collar - prof.  |   2.609336   2.764173     0.91   0.365     .3272039    20.80854
+white collar - tech. suport  |   4.204671   4.585812     1.32   0.188     .4958745     35.6527
+       white collar - other  |   2.215374   2.348669     0.75   0.453     .2773515    17.69553
+     blue collar - services  |    7.17309   7.587631     1.86   0.063     .9022206    57.02953
+  blue collar - agriculture  |   .8888149   1.314086    -0.08   0.936     .0490158     16.1171
+     blue collar - artisans  |   23.60618   27.07767     2.76   0.006     2.492572    223.5649
+       blue collar - equip.  |   21.35917     25.448     2.57   0.010     2.067453    220.6648
+                  unskilled  |    12.0353   12.79796     2.34   0.019     1.497326    96.73813
+                             |
+                   parent_15 |   1.205841   .3249538     0.69   0.487     .7110586    2.044911
+                     married |   .6957506   .2957485    -0.85   0.393      .302431    1.600593
+           married_parent_15 |   1.190004   .5680052     0.36   0.716     .4669366    3.032764
+                    divorced |   .9450307   .3200034    -0.17   0.867     .4866478    1.835174
+                     widowed |   .8023872   .8272982    -0.21   0.831     .1063545    6.053577
+                         age |          1  (omitted)
+                     college |   .9937829   .2816272    -0.02   0.982     .5702566     1.73186
+                       _cons |   .0151051   .0167294    -3.79   0.000     .0017234    .1323913
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est12 stored)
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 34 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,214
+                                                        Wald chi2(22) =  69.97
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -252130.31                       Pseudo R2     = 0.0642
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |    .124056   .0913179    -2.84   0.005      .029312     .525036
+     extractive and energy.  |   .3486646   .2697707    -1.36   0.173     .0765264    1.588562
+         manufactures, sec.  |   .0518488   .0557569    -2.75   0.006     .0063005    .4266784
+               construction  |    .520007   .4630494    -0.73   0.463     .0907908    2.978355
+      hospitality and sales  |   .5310831   .2271705    -1.48   0.139     .2296474    1.228184
+ Transport, storage and IT.  |   .3630159   .2586924    -1.42   0.155     .0898137    1.467266
+  Financial and prof. serv.  |   .4912979   .2233391    -1.56   0.118     .2015567    1.197547
+   Education and healthcare  |   .4248759   .1887691    -1.93   0.054     .1778606     1.01495
+             Other services  |   .2840295   .1300224    -2.75   0.006     .1157984    .6966658
+                             |
+                         occ |
+       white collar - prof.  |   1.628602   1.248228     0.64   0.525     .3625926    7.314945
+white collar - tech. suport  |   2.794038   2.187094     1.31   0.189     .6024707    12.95773
+       white collar - other  |   .9347749   .7646619    -0.08   0.934      .188109    4.645201
+     blue collar - services  |   3.790243   2.942423     1.72   0.086     .8276879    17.35672
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   9.066519   7.933516     2.52   0.012     1.631586    50.38151
+       blue collar - equip.  |   4.601557   4.708968     1.49   0.136     .6192045    34.19601
+                  unskilled  |   3.644579   2.831813     1.66   0.096     .7948214    16.71187
+                             |
+                   parent_15 |    .740777   .2007231    -1.11   0.268     .4355554    1.259887
+                     married |   1.222242   .3890994     0.63   0.528     .6549047    2.281058
+           married_parent_15 |    .955745   .3762145    -0.11   0.908     .4418547    2.067305
+                    divorced |   .6747797   .2252961    -1.18   0.239     .3507212    1.298261
+                     widowed |   2.846796   2.670761     1.12   0.265     .4526782    17.90288
+                         age |          1  (omitted)
+                     college |   .6880332   .1692037    -1.52   0.128     .4248922    1.114141
+                       _cons |   .0548657   .0473178    -3.37   0.001     .0101205    .2974415
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est13 stored)
+note: 1.occ != 0 predicts failure perfectly;
+      1.occ omitted and 100 obs not used.
+
+note: 9.occ omitted because of collinearity.
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,098
+                                                        Wald chi2(22) = 107.08
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -227183.94                       Pseudo R2     = 0.0798
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .0788855   .0497838    -4.02   0.000     .0228988    .2717574
+     extractive and energy.  |   .2733024   .1701144    -2.08   0.037     .0806903    .9256896
+         manufactures, sec.  |    .234322   .1560891    -2.18   0.029      .063504    .8646189
+               construction  |   .4983328   .3441111    -1.01   0.313      .128749    1.928835
+      hospitality and sales  |   .2120502   .0842887    -3.90   0.000     .0972951    .4621537
+ Transport, storage and IT.  |   .2726109   .1688159    -2.10   0.036     .0809901    .9176026
+  Financial and prof. serv.  |   .2140373   .0955013    -3.46   0.001     .0892673    .5132003
+   Education and healthcare  |   .1858712   .0812256    -3.85   0.000     .0789291    .4377104
+             Other services  |   .2012279   .0836683    -3.86   0.000     .0890776    .4545776
+                             |
+                         occ |
+                   managers  |          1  (empty)
+       white collar - prof.  |   .2911185   .1373086    -2.62   0.009     .1155029    .7337474
+white collar - tech. suport  |   .3845958   .1845777    -1.99   0.046     .1501379     .985187
+       white collar - other  |   .2875172    .119514    -3.00   0.003     .1273033    .6493635
+     blue collar - services  |    .553139    .157027    -2.09   0.037     .3170971    .9648866
+  blue collar - agriculture  |   .0230806   .0249321    -3.49   0.000     .0027782    .1917487
+     blue collar - artisans  |   2.679963   1.196026     2.21   0.027     1.117508     6.42698
+       blue collar - equip.  |   .5101397   .3303438    -1.04   0.299     .1433801    1.815053
+                  unskilled  |          1  (omitted)
+                             |
+                   parent_15 |   .9182521   .2674804    -0.29   0.770     .5188155    1.625216
+                     married |   .8756395   .3563426    -0.33   0.744     .3943917    1.944119
+           married_parent_15 |   1.204793    .568233     0.40   0.693     .4780229    3.036521
+                    divorced |   .7210682   .3040958    -0.78   0.438     .3155001    1.647985
+                     widowed |   2.213957   1.894347     0.93   0.353      .413855    11.84378
+                         age |          1  (omitted)
+                     college |   .8986045   .2396884    -0.40   0.689     .5327508    1.515699
+                       _cons |   .4266484   .1571658    -2.31   0.021     .2072576    .8782736
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est14 stored)
+note: 1.occ != 0 predicts failure perfectly;
+      1.occ omitted and 97 obs not used.
+
+note: 9.occ omitted because of collinearity.
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,040
+                                                        Wald chi2(22) = 105.78
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -289445.71                       Pseudo R2     = 0.0760
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .2405716   .1407324    -2.44   0.015     .0764361    .7571646
+     extractive and energy.  |    .298367   .1902269    -1.90   0.058     .0855182    1.040981
+         manufactures, sec.  |   .3162868   .2283681    -1.59   0.111     .0768227    1.302185
+               construction  |   .8855692    .727079    -0.15   0.882     .1771578    4.426746
+      hospitality and sales  |    .369883   .1370949    -2.68   0.007     .1788841    .7648164
+ Transport, storage and IT.  |   .3552767   .2164748    -1.70   0.089     .1076263    1.172776
+  Financial and prof. serv.  |   .2160312   .0927636    -3.57   0.000     .0931132    .5012124
+   Education and healthcare  |   .3875985   .1482377    -2.48   0.013     .1831634    .8202111
+             Other services  |   .3871298   .1492279    -2.46   0.014     .1818619    .8240837
+                             |
+                         occ |
+                   managers  |          1  (empty)
+       white collar - prof.  |   .4325753   .1757633    -2.06   0.039     .1950756     .959225
+white collar - tech. suport  |   .4532781   .2121912    -1.69   0.091     .1810903    1.134578
+       white collar - other  |   .3048877   .1103537    -3.28   0.001     .1499853    .6197708
+     blue collar - services  |   .5248766    .135837    -2.49   0.013     .3160589    .8716586
+  blue collar - agriculture  |   .0910628   .0984432    -2.22   0.027     .0109434    .7577568
+     blue collar - artisans  |   2.744052   1.234912     2.24   0.025     1.135858    6.629191
+       blue collar - equip.  |   .4100718   .2398237    -1.52   0.127     .1303313    1.290242
+                  unskilled  |          1  (omitted)
+                             |
+                   parent_15 |   1.176778   .3039414     0.63   0.529     .7093226    1.952293
+                     married |   1.871889   .6355904     1.85   0.065     .9621859    3.641676
+           married_parent_15 |   .6045221   .2332702    -1.30   0.192     .2837622    1.287864
+                    divorced |   .6294776   .2439888    -1.19   0.232     .2944762    1.345583
+                     widowed |   .9167618    1.05739    -0.08   0.940     .0956055    8.790832
+                         age |          1  (omitted)
+                     college |   .6215493   .1595934    -1.85   0.064      .375764    1.028102
+                       _cons |   .3049914   .1164155    -3.11   0.002     .1443388    .6444543
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est15 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 12 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,236
+                                                        Wald chi2(22) =  89.87
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -246243.34                       Pseudo R2     = 0.0615
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .4671122   .2782582    -1.28   0.201     .1453321    1.501346
+     extractive and energy.  |   .6149448   .3850316    -0.78   0.437     .1802514    2.097943
+         manufactures, sec.  |   .6583088   .4621095    -0.60   0.551     .1663091    2.605812
+               construction  |   .3324606   .3609156    -1.01   0.310     .0395991    2.791229
+      hospitality and sales  |   .6401945    .254745    -1.12   0.262     .2934968    1.396434
+ Transport, storage and IT.  |   .2910077   .2189072    -1.64   0.101     .0666189    1.271192
+  Financial and prof. serv.  |   .4300838   .1994609    -1.82   0.069     .1732964    1.067374
+   Education and healthcare  |   .5252376   .2108856    -1.60   0.109     .2391079    1.153766
+             Other services  |   .5423334     .21744    -1.53   0.127      .247167    1.189987
+                             |
+                         occ |
+       white collar - prof.  |   6.888425   7.105595     1.87   0.061     .9121843    52.01843
+white collar - tech. suport  |   7.097513   7.423723     1.87   0.061     .9136552    55.13533
+       white collar - other  |   5.501798   5.749944     1.63   0.103     .7094334    42.66754
+     blue collar - services  |    7.90828    8.22206     1.99   0.047      1.03064    60.68161
+  blue collar - agriculture  |   1.361091   2.068832     0.20   0.839     .0691953    26.77302
+     blue collar - artisans  |   19.00155   21.31326     2.63   0.009     2.108778     171.217
+       blue collar - equip.  |    8.85371   10.15925     1.90   0.057     .9341313    83.91559
+                  unskilled  |   13.86709   14.48071     2.52   0.012     1.791093    107.3625
+                             |
+                   parent_15 |   2.065518   .6078085     2.47   0.014     1.160248    3.677116
+                     married |   1.923196   .7129182     1.76   0.078     .9300101    3.977034
+           married_parent_15 |   .4828339   .2069096    -1.70   0.089      .208464    1.118316
+                    divorced |   .3005805   .1471448    -2.46   0.014     .1151509    .7846107
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   .6467985   .1686874    -1.67   0.095     .3879472    1.078364
+                       _cons |   .0079075   .0086861    -4.41   0.000     .0009184    .0680859
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est16 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 14 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,198
+                                                        Wald chi2(22) =  79.78
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -239035.18                       Pseudo R2     = 0.0640
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .4079076   .2060302    -1.78   0.076     .1515751     1.09773
+     extractive and energy.  |   .1526729   .0970297    -2.96   0.003     .0439328    .5305601
+         manufactures, sec.  |   .0682377   .0713351    -2.57   0.010      .008794    .5294971
+               construction  |   .6469751   .5191578    -0.54   0.587     .1342303    3.118348
+      hospitality and sales  |   .3880933   .1503574    -2.44   0.015     .1816179    .8293038
+ Transport, storage and IT.  |   .2492024   .1436951    -2.41   0.016     .0804882    .7715643
+  Financial and prof. serv.  |   .3971317   .1672717    -2.19   0.028     .1739438    .9066931
+   Education and healthcare  |   .3405393   .1363856    -2.69   0.007     .1553323    .7465735
+             Other services  |   .2362226   .0943577    -3.61   0.000     .1079727    .5168075
+                             |
+                         occ |
+       white collar - prof.  |   5.592295   5.824058     1.65   0.098     .7262933    43.05942
+white collar - tech. suport  |   5.697472   6.050739     1.64   0.101     .7107266    45.67324
+       white collar - other  |   6.500797   6.749055     1.80   0.071     .8496866    49.73642
+     blue collar - services  |   12.04251   12.51705     2.39   0.017     1.570269    92.35498
+  blue collar - agriculture  |   4.870669   6.445237     1.20   0.232      .364095    65.15723
+     blue collar - artisans  |   27.19645   30.76139     2.92   0.003     2.963017    249.6263
+       blue collar - equip.  |   13.79345    15.0311     2.41   0.016     1.629652    116.7484
+                  unskilled  |   18.93027   19.57655     2.84   0.004     2.493991    143.6874
+                             |
+                   parent_15 |   1.529525   .4316052     1.51   0.132     .8797567    2.659199
+                     married |   1.212118   .4668895     0.50   0.617     .5697377    2.578783
+           married_parent_15 |   .7176061   .3128164    -0.76   0.447     .3053749    1.686316
+                    divorced |   .8436039   .2833713    -0.51   0.613     .4367321    1.629529
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   .9019125   .1994768    -0.47   0.641       .58466    1.391315
+                       _cons |   .0108097   .0117623    -4.16   0.000     .0012811    .0912077
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est17 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 13 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,152
+                                                        Wald chi2(22) =  89.38
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -252609.01                       Pseudo R2     = 0.0646
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .1447217   .0802557    -3.49   0.000     .0488088    .4291105
+     extractive and energy.  |   .1864103   .1054832    -2.97   0.003       .06149    .5651133
+         manufactures, sec.  |   .2685277   .1837588    -1.92   0.055     .0702255    1.026794
+               construction  |   .3453136   .3236006    -1.13   0.257     .0550218    2.167167
+      hospitality and sales  |   .2860969    .103826    -3.45   0.001     .1404778    .5826645
+ Transport, storage and IT.  |   .3174504   .1838141    -1.98   0.048     .1020476    .9875276
+  Financial and prof. serv.  |   .2477869   .0986171    -3.51   0.000     .1135814    .5405669
+   Education and healthcare  |   .2825311   .1197208    -2.98   0.003     .1231331    .6482727
+             Other services  |   .1827387   .0735724    -4.22   0.000     .0830096    .4022838
+                             |
+                         occ |
+       white collar - prof.  |   2.175144   1.828187     0.92   0.355      .418853    11.29573
+white collar - tech. suport  |   1.857819   1.626911     0.71   0.479     .3338855    10.33735
+       white collar - other  |   1.934065   1.624774     0.79   0.432     .3727278    10.03576
+     blue collar - services  |   2.843085   2.424929     1.23   0.221     .5342952    15.12858
+  blue collar - agriculture  |     2.0624   2.458833     0.61   0.544     .1993213    21.33988
+     blue collar - artisans  |   7.851471   7.537089     2.15   0.032      1.19628     51.5311
+       blue collar - equip.  |     2.0965   1.948115     0.80   0.426      .339265    12.95539
+                  unskilled  |   5.901417   4.998773     2.10   0.036     1.121887    31.04298
+                             |
+                   parent_15 |   1.253546   .4059385     0.70   0.485     .6644982    2.364758
+                     married |   1.689057   .6329842     1.40   0.162     .8103104    3.520766
+           married_parent_15 |   .8000484    .345596    -0.52   0.606     .3431024    1.865558
+                    divorced |   1.223399   .4486535     0.55   0.582     .5962241    2.510307
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   1.005784   .2204668     0.03   0.979     .6545193    1.545565
+                       _cons |   .0432013    .040189    -3.38   0.001     .0069767    .2675135
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est18 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 12 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,095
+                                                        Wald chi2(22) = 105.31
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -285315.88                       Pseudo R2     = 0.0757
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .0906641   .0495591    -4.39   0.000     .0310563    .2646802
+     extractive and energy.  |   .2477855   .1666994    -2.07   0.038     .0662864    .9262484
+         manufactures, sec.  |   .1872607   .1699379    -1.85   0.065     .0316218    1.108937
+               construction  |   .3637629   .3307235    -1.11   0.266      .061225    2.161266
+      hospitality and sales  |    .292229   .1036016    -3.47   0.001     .1458658    .5854544
+ Transport, storage and IT.  |   .3704997   .2002795    -1.84   0.066     .1284273    1.068854
+  Financial and prof. serv.  |   .1569583   .0657691    -4.42   0.000     .0690417    .3568264
+   Education and healthcare  |   .2982425   .1152415    -3.13   0.002     .1398503     .636027
+             Other services  |   .1285531   .0508207    -5.19   0.000     .0592351    .2789886
+                             |
+                         occ |
+       white collar - prof.  |    2.49442   2.547866     0.89   0.371     .3369225    18.46755
+white collar - tech. suport  |   2.262374   2.411595     0.77   0.444     .2800398    18.27718
+       white collar - other  |   1.982077   2.054859     0.66   0.509     .2598143    15.12092
+     blue collar - services  |   4.702184   4.902307     1.48   0.138     .6093562    36.28507
+  blue collar - agriculture  |   7.362454   10.00084     1.47   0.142      .513791    105.5015
+     blue collar - artisans  |   5.877958   6.525356     1.60   0.111      .667227    51.78206
+       blue collar - equip.  |   5.174705   5.771362     1.47   0.141     .5814847    46.05034
+                  unskilled  |   9.762101    10.1581     2.19   0.029     1.270026    75.03672
+                             |
+                   parent_15 |   1.220363   .3259896     0.75   0.456     .7229554    2.059995
+                     married |    .721729   .2795486    -0.84   0.400     .3378133    1.541955
+           married_parent_15 |   1.572974   .6835742     1.04   0.297     .6711372     3.68665
+                    divorced |     1.1122   .3721253     0.32   0.751     .5772764    2.142802
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   1.354773   .3233603     1.27   0.203     .8485934    2.162884
+                       _cons |   .0418413    .046075    -2.88   0.004     .0048337    .3621878
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est19 stored)
+note: 4.act != 0 predicts failure perfectly;
+      4.act omitted and 48 obs not used.
+
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 12 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  4,028
+                                                        Wald chi2(21) =  93.42
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -247463.44                       Pseudo R2     = 0.0624
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .1874016   .1112271    -2.82   0.005     .0585552    .5997645
+     extractive and energy.  |   .1176329   .1016853    -2.48   0.013     .0216135    .6402243
+         manufactures, sec.  |   .0264419   .0288933    -3.32   0.001     .0031058    .2251162
+               construction  |          1  (empty)
+      hospitality and sales  |   .4687487   .2123733    -1.67   0.094     .1928817    1.139172
+ Transport, storage and IT.  |   .5207788    .309417    -1.10   0.272     .1625242     1.66874
+  Financial and prof. serv.  |   .2899326   .1393586    -2.58   0.010     .1130212    .7437629
+   Education and healthcare  |   .3053255   .1416589    -2.56   0.011     .1229814    .7580308
+             Other services  |   .4520206   .1994872    -1.80   0.072     .1903283    1.073528
+                             |
+                         occ |
+       white collar - prof.  |   1.334013   1.371896     0.28   0.779     .1777404    10.01231
+white collar - tech. suport  |   3.033762   3.218531     1.05   0.296     .3792609    24.26749
+       white collar - other  |   1.577975   1.624001     0.44   0.658     .2099284    11.86121
+     blue collar - services  |   1.994646   2.067196     0.67   0.505     .2616399    15.20644
+  blue collar - agriculture  |   2.133052   3.109696     0.52   0.603     .1224805    37.14805
+     blue collar - artisans  |   1.098029   1.373005     0.07   0.940     .0946779    12.73442
+       blue collar - equip.  |   4.999736     5.4856     1.47   0.142     .5821401    42.94046
+                  unskilled  |   4.168582   4.382317     1.36   0.174     .5310596    32.72152
+                             |
+                   parent_15 |   1.522532   .4673343     1.37   0.171     .8342457    2.778682
+                     married |    1.87738   .8511563     1.39   0.165     .7720385    4.565258
+           married_parent_15 |   .6592898   .3300509    -0.83   0.405     .2471448    1.758738
+                    divorced |   1.090935   .4311997     0.22   0.826     .5027536     2.36724
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   .9957389   .3064984    -0.01   0.989     .5446746    1.820346
+                       _cons |   .0384631   .0422002    -2.97   0.003     .0044786    .3303307
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est20 stored)
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  3,918
+                                                        Wald chi2(23) =  81.83
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -282649.19                       Pseudo R2     = 0.0588
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .4058749   .2176471    -1.68   0.093     .1418869    1.161026
+     extractive and energy.  |   .2037604   .1985804    -1.63   0.103     .0301688    1.376201
+         manufactures, sec.  |   .1624028   .1209819    -2.44   0.015      .037713    .6993522
+               construction  |   .4780463   .5569044    -0.63   0.526     .0487366    4.689051
+      hospitality and sales  |   .3402307    .152234    -2.41   0.016     .1415497    .8177831
+ Transport, storage and IT.  |   .3930981   .2258942    -1.62   0.104     .1274551    1.212397
+  Financial and prof. serv.  |   .3651413    .172105    -2.14   0.033      .144963    .9197393
+   Education and healthcare  |   .3127982   .1521604    -2.39   0.017     .1205585    .8115784
+             Other services  |   .4382718   .1960201    -1.84   0.065     .1824054    1.053051
+                             |
+                         occ |
+       white collar - prof.  |   1.899087   1.449127     0.84   0.401     .4256203    8.473587
+white collar - tech. suport  |   2.739097   2.168898     1.27   0.203     .5802309    12.93046
+       white collar - other  |   3.150477   2.396855     1.51   0.131     .7092341    13.99468
+     blue collar - services  |   5.559019   4.159121     2.29   0.022     1.282774    24.09052
+  blue collar - agriculture  |   8.886693   10.20382     1.90   0.057     .9362219     84.3532
+     blue collar - artisans  |   6.025481   5.429743     1.99   0.046     1.030263    35.23994
+       blue collar - equip.  |   4.275213   3.894123     1.60   0.111     .7171859    25.48495
+                  unskilled  |   8.959941   6.794124     2.89   0.004     2.027019    39.60522
+                             |
+                   parent_15 |   1.597913   .4449032     1.68   0.092      .925881    2.757727
+                     married |    1.53612   .5336649     1.24   0.217     .7775145    3.034883
+           married_parent_15 |   .5986028   .2497308    -1.23   0.219     .2642569    1.355973
+                    divorced |   1.920475   .6464695     1.94   0.053      .992836    3.714837
+                     widowed |   .6619274   .7166836    -0.38   0.703     .0792858    5.526185
+                         age |          1  (omitted)
+                     college |   1.562678   .3831191     1.82   0.069     .9664553     2.52672
+                       _cons |   .0218931   .0192658    -4.34   0.000     .0039017    .1228451
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est21 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 8 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  3,630
+                                                        Wald chi2(22) =  95.92
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -417156.64                       Pseudo R2     = 0.0579
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .5334637    .272034    -1.23   0.218     .1963559    1.449325
+     extractive and energy.  |   .5893328     .33451    -0.93   0.352     .1937366    1.792707
+         manufactures, sec.  |    .497792   .3084699    -1.13   0.260     .1477673    1.676939
+               construction  |   .4273845    .345736    -1.05   0.293     .0875453    2.086435
+      hospitality and sales  |   .9433116   .3340944    -0.16   0.869     .4711764    1.888543
+ Transport, storage and IT.  |   .7547781   .3575302    -0.59   0.553     .2982733     1.90996
+  Financial and prof. serv.  |   .3649411   .1503942    -2.45   0.014     .1627189    .8184791
+   Education and healthcare  |   .5989824   .2299858    -1.33   0.182     .2822188    1.271283
+             Other services  |   .5422044   .2070343    -1.60   0.109     .2565322    1.145999
+                             |
+                         occ |
+       white collar - prof.  |   5.381031   4.103428     2.21   0.027     1.207153    23.98659
+white collar - tech. suport  |   11.14327   8.658296     3.10   0.002     2.430141    51.09687
+       white collar - other  |   11.86854   9.011932     3.26   0.001     2.679596    52.56847
+     blue collar - services  |   14.59463   11.07722     3.53   0.000     3.297138    64.60246
+  blue collar - agriculture  |   11.26596   12.09854     2.26   0.024     1.372971    92.44333
+     blue collar - artisans  |    17.7889   15.85675     3.23   0.001     3.100283    102.0697
+       blue collar - equip.  |   22.45598   19.51283     3.58   0.000     4.089701    123.3027
+                  unskilled  |   24.82539   19.10927     4.17   0.000     5.491439    112.2292
+                             |
+                   parent_15 |   1.153862   .2549519     0.65   0.517     .7483011    1.779227
+                     married |   1.166072   .3780626     0.47   0.636     .6176604     2.20141
+           married_parent_15 |   .9253342   .3465184    -0.21   0.836     .4441619    1.927773
+                    divorced |   .7713886   .2277581    -0.88   0.379     .4324638    1.375931
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   1.009476   .1894039     0.05   0.960     .6988576    1.458154
+                       _cons |   .0118535   .0100241    -5.24   0.000     .0022595    .0621838
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est22 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 6 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  3,568
+                                                        Wald chi2(22) =  74.42
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -348773.89                       Pseudo R2     = 0.0555
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .3028661    .151986    -2.38   0.017      .113265    .8098516
+     extractive and energy.  |   .3326607    .202029    -1.81   0.070      .101171    1.093823
+         manufactures, sec.  |   .1625723   .1160221    -2.55   0.011     .0401397    .6584442
+               construction  |   .2277055    .197956    -1.70   0.089     .0414363    1.251314
+      hospitality and sales  |   .3920065   .1510841    -2.43   0.015     .1841746    .8343662
+ Transport, storage and IT.  |    .406955   .2068682    -1.77   0.077     .1502635    1.102146
+  Financial and prof. serv.  |   .2902681   .1171371    -3.07   0.002      .131613    .6401767
+   Education and healthcare  |   .3466653   .1381219    -2.66   0.008     .1587691    .7569284
+             Other services  |   .2721316   .1083695    -3.27   0.001     .1246836    .5939481
+                             |
+                         occ |
+       white collar - prof.  |   5.791981    6.03347     1.69   0.092     .7518582    44.61884
+white collar - tech. suport  |   10.78253   11.28954     2.27   0.023     1.385143     83.9357
+       white collar - other  |   10.00451   10.30743     2.24   0.025     1.328072    75.36504
+     blue collar - services  |    10.5325   10.89559     2.28   0.023     1.386711    79.99761
+  blue collar - agriculture  |   12.40305   16.10042     1.94   0.052     .9740522    157.9337
+     blue collar - artisans  |    9.79227   11.53673     1.94   0.053     .9728433    98.56525
+       blue collar - equip.  |   18.36143   20.13311     2.65   0.008     2.140787    157.4852
+                  unskilled  |    24.2247   25.01201     3.09   0.002     3.201789    183.2838
+                             |
+                   parent_15 |   1.039712   .2512364     0.16   0.872     .6474826    1.669543
+                     married |   .9096118   .3502983    -0.25   0.806     .4276141    1.934907
+           married_parent_15 |   1.067564   .4631019     0.15   0.880     .4561929    2.498269
+                    divorced |   .9456319   .3169031    -0.17   0.868     .4903033    1.823809
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   1.011028   .2093655     0.05   0.958     .6737439    1.517161
+                       _cons |   .0220762    .024031    -3.50   0.000     .0026143    .1864223
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est23 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 9 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  3,527
+                                                        Wald chi2(22) =  62.58
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -285848.75                       Pseudo R2     = 0.0576
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .8177163   .4506877    -0.37   0.715     .2776256    2.408496
+     extractive and energy.  |   .0537155   .0465333    -3.38   0.001     .0098336    .2934187
+         manufactures, sec.  |   .3289133    .250262    -1.46   0.144     .0740326    1.461301
+               construction  |   .3683802   .2756521    -1.33   0.182      .084988    1.596742
+      hospitality and sales  |    .924734   .3771902    -0.19   0.848     .4157381    2.056903
+ Transport, storage and IT.  |   .2961851   .1937295    -1.86   0.063     .0821878    1.067381
+  Financial and prof. serv.  |   .6241727   .2669613    -1.10   0.270     .2699245    1.443335
+   Education and healthcare  |   .4290957   .1897494    -1.91   0.056     .1803625     1.02085
+             Other services  |   .7637729   .3087744    -0.67   0.505     .3458156    1.686879
+                             |
+                         occ |
+       white collar - prof.  |   4.481005   4.768274     1.41   0.159     .5566793    36.06998
+white collar - tech. suport  |   6.493509   6.870851     1.77   0.077      .816233    51.65886
+       white collar - other  |    8.68393   9.037229     2.08   0.038     1.129495    66.76492
+     blue collar - services  |   8.323871   8.717521     2.02   0.043     1.068732    64.83084
+  blue collar - agriculture  |   5.658469   8.416212     1.17   0.244     .3066557    104.4111
+     blue collar - artisans  |   17.96786   20.03649     2.59   0.010     2.019747    159.8439
+       blue collar - equip.  |   19.77608    22.6652     2.60   0.009     2.092114    186.9369
+                  unskilled  |   12.48926   13.07165     2.41   0.016     1.605617    97.14739
+                             |
+                   parent_15 |   1.567746   .4375546     1.61   0.107     .9072087     2.70922
+                     married |   .8720337   .4153816    -0.29   0.774     .3428268    2.218154
+           married_parent_15 |   1.072143   .5667069     0.13   0.895      .380478    3.021174
+                    divorced |   1.117658   .4361173     0.29   0.776     .5201934    2.401338
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |      1.163   .2782443     0.63   0.528     .7276661    1.858776
+                       _cons |   .0091512   .0100607    -4.27   0.000     .0010609    .0789366
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est24 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 10 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  3,362
+                                                        Wald chi2(22) =  90.30
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -279723.01                       Pseudo R2     = 0.0863
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .2673391   .1718957    -2.05   0.040     .0758142    .9427021
+     extractive and energy.  |   .0644058   .0546631    -3.23   0.001     .0122035    .3399106
+         manufactures, sec.  |   .0813749   .0669744    -3.05   0.002     .0162152     .408375
+               construction  |   .2055873   .1553831    -2.09   0.036     .0467366    .9043473
+      hospitality and sales  |   .6312283   .2711126    -1.07   0.284     .2720166    1.464798
+ Transport, storage and IT.  |    .448353   .2805382    -1.28   0.200     .1315274    1.528354
+  Financial and prof. serv.  |   .4049064   .1895813    -1.93   0.053     .1617385    1.013668
+   Education and healthcare  |   .3327057   .1581789    -2.31   0.021     .1310304    .8447895
+             Other services  |   .3380744   .1487933    -2.46   0.014      .142686    .8010195
+                             |
+                         occ |
+       white collar - prof.  |   .9419694   .6492775    -0.09   0.931     .2439627    3.637057
+white collar - tech. suport  |   1.246491   .8714076     0.32   0.753     .3166827    4.906303
+       white collar - other  |   1.748605   1.162639     0.84   0.401     .4750419    6.436524
+     blue collar - services  |   1.551011   1.013476     0.67   0.502     .4309379    5.582325
+  blue collar - agriculture  |   .8162601   1.150481    -0.14   0.885     .0515347    12.92879
+     blue collar - artisans  |    .957866   .8409073    -0.05   0.961     .1714107    5.352685
+       blue collar - equip.  |     2.7783   2.266244     1.25   0.210     .5616407    13.74357
+                  unskilled  |   2.433623   1.592314     1.36   0.174     .6750162    8.773898
+                             |
+                   parent_15 |   1.350185   .4341299     0.93   0.350     .7189574    2.535614
+                     married |   1.926578   .7666212     1.65   0.099     .8832382    4.202382
+           married_parent_15 |   .8676293   .4135383    -0.30   0.766     .3408991    2.208221
+                    divorced |   1.256802   .4699329     0.61   0.541     .6039383    2.615417
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   .5677257   .1653129    -1.94   0.052     .3208351    1.004605
+                       _cons |   .0773537   .0585801    -3.38   0.001     .0175334    .3412693
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est25 stored)
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 27 obs not used.
+
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 9 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  3,099
+                                                        Wald chi2(21) =  82.75
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -225104.83                       Pseudo R2     = 0.0874
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   1.045985    .697095     0.07   0.946      .283298    3.861956
+     extractive and energy.  |   .4039391   .3413142    -1.07   0.283     .0771047    2.116172
+         manufactures, sec.  |   .3634674   .2921626    -1.26   0.208     .0752059    1.756624
+               construction  |   1.022165   .8531692     0.03   0.979     .1990901    5.247982
+      hospitality and sales  |   1.202911   .5635095     0.39   0.693     .4802687    3.012888
+ Transport, storage and IT.  |   1.055394   .7141653     0.08   0.936     .2801708    3.975636
+  Financial and prof. serv.  |   .7786993   .3818763    -0.51   0.610     .2978092    2.036111
+   Education and healthcare  |   .6856963    .357534    -0.72   0.469     .2467747    1.905299
+             Other services  |   .5236083   .3086611    -1.10   0.272     .1649047    1.662571
+                             |
+                         occ |
+       white collar - prof.  |   4.597892   4.692042     1.49   0.135     .6221962    33.97741
+white collar - tech. suport  |   3.052389   3.184954     1.07   0.285     .3948852     23.5944
+       white collar - other  |    3.10968   3.268475     1.08   0.280     .3963218    24.39965
+     blue collar - services  |   2.406925   2.401994     0.88   0.379     .3404118    17.01847
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   9.243167   10.60597     1.94   0.053     .9752569    87.60371
+       blue collar - equip.  |   2.490116   2.917151     0.78   0.436     .2506361    24.73975
+                  unskilled  |   9.402169   9.447571     2.23   0.026     1.311947    67.38138
+                             |
+                   parent_15 |   1.233351   .4634981     0.56   0.577     .5904751    2.576152
+                     married |   2.908161   1.153138     2.69   0.007     1.336909    6.326086
+           married_parent_15 |   .5074257   .2622979    -1.31   0.189     .1842343    1.397573
+                    divorced |   1.496588   .6663633     0.91   0.365     .6253172    3.581822
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   .5097227   .1852972    -1.85   0.064     .2499773    1.039363
+                       _cons |   .0126769     .01462    -3.79   0.000     .0013223    .1215311
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est26 stored)
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 26 obs not used.
+
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 6 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  2,980
+                                                        Wald chi2(21) =  95.94
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -203380.46                       Pseudo R2     = 0.1000
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .1029495   .0688137    -3.40   0.001     .0277756    .3815802
+     extractive and energy.  |   .0714865   .0643774    -2.93   0.003     .0122369    .4176156
+         manufactures, sec.  |   .0256395   .0297564    -3.16   0.002     .0026365    .2493362
+               construction  |   .2911465   .2589296    -1.39   0.165     .0509448    1.663885
+      hospitality and sales  |   .1477266   .0684847    -4.13   0.000     .0595455    .3664951
+ Transport, storage and IT.  |   .2071772   .1250837    -2.61   0.009     .0634493    .6764826
+  Financial and prof. serv.  |   .1823549    .088034    -3.53   0.000     .0707929    .4697264
+   Education and healthcare  |   .2100837    .094739    -3.46   0.001     .0868032    .5084506
+             Other services  |   .0753038   .0406842    -4.79   0.000      .026118    .2171168
+                             |
+                         occ |
+       white collar - prof.  |   2.396931   2.443596     0.86   0.391      .324999    17.67783
+white collar - tech. suport  |   1.094906   1.159496     0.09   0.932     .1373921    8.725532
+       white collar - other  |   1.479386     1.5365     0.38   0.706     .1932049    11.32778
+     blue collar - services  |   3.715866   3.602217     1.35   0.176     .5557663    24.84436
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   2.398491   2.941959     0.71   0.476      .216703    26.54674
+       blue collar - equip.  |    3.20691   3.777012     0.99   0.322      .318834    32.25588
+                  unskilled  |   4.408485   4.301073     1.52   0.128     .6513695    29.83674
+                             |
+                   parent_15 |   1.126844   .4202899     0.32   0.749     .5424786    2.340694
+                     married |   2.870259   1.283559     2.36   0.018     1.194731      6.8956
+           married_parent_15 |   .3886102    .215818    -1.70   0.089     .1308556    1.154081
+                    divorced |   .7487722   .4334007    -0.50   0.617     .2408027    2.328296
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   .5894702   .1638824    -1.90   0.057     .3418329    1.016506
+                       _cons |   .0971094   .1050803    -2.16   0.031     .0116464    .8097134
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est27 stored)
+note: 3.act != 0 predicts failure perfectly;
+      3.act omitted and 64 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  2,965
+                                                        Wald chi2(22) =  82.28
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -216462.42                       Pseudo R2     = 0.0695
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .1629817   .1211981    -2.44   0.015     .0379455     .700032
+     extractive and energy.  |   .0780457   .0661651    -3.01   0.003     .0148157    .4111263
+         manufactures, sec.  |          1  (empty)
+               construction  |   .4600995   .3373756    -1.06   0.290     .1093186    1.936464
+      hospitality and sales  |    .431452   .1710195    -2.12   0.034     .1983956    .9382808
+ Transport, storage and IT.  |   .1629931   .1074826    -2.75   0.006      .044757    .5935774
+  Financial and prof. serv.  |    .149641   .0813927    -3.49   0.000     .0515306     .434546
+   Education and healthcare  |   .2746347   .1329875    -2.67   0.008     .1063102    .7094735
+             Other services  |   .1959884   .0912842    -3.50   0.000     .0786633    .4883023
+                             |
+                         occ |
+       white collar - prof.  |    .956791   .6768458    -0.06   0.950     .2391479    3.827962
+white collar - tech. suport  |   2.157371   1.547921     1.07   0.284     .5286701    8.803692
+       white collar - other  |   1.232801   .8659119     0.30   0.766     .3111816    4.883957
+     blue collar - services  |   1.567475   1.022639     0.69   0.491     .4363821    5.630337
+  blue collar - agriculture  |   .5606888   .6876041    -0.47   0.637     .0506811    6.202947
+     blue collar - artisans  |   2.401915   2.203511     0.96   0.339     .3978027    14.50266
+       blue collar - equip.  |   .9408725   1.169094    -0.05   0.961     .0823869    10.74492
+                  unskilled  |   3.318067   2.175634     1.83   0.067     .9178213    11.99533
+                             |
+                   parent_15 |   1.377913   .5026839     0.88   0.380     .6740473    2.816782
+                     married |   .6344477   .2724336    -1.06   0.289     .2734561    1.471987
+           married_parent_15 |   1.483513   .7989992     0.73   0.464     .5162337    4.263208
+                    divorced |   .9577258   .5202211    -0.08   0.937       .33028    2.777155
+                     widowed |   3.545292   3.668838     1.22   0.221     .4664314    26.94736
+                         age |          1  (omitted)
+                     college |   1.014487   .3286795     0.04   0.965     .5376122    1.914361
+                       _cons |   .0854048   .0668098    -3.15   0.002     .0184336    .3956889
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est28 stored)
+note: 2.act != 0 predicts failure perfectly;
+      2.act omitted and 84 obs not used.
+
+note: 8.occ != 0 predicts failure perfectly;
+      8.occ omitted and 59 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  2,898
+                                                        Wald chi2(21) =  61.73
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -222931.76                       Pseudo R2     = 0.0615
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .1219146   .1023421    -2.51   0.012     .0235239    .6318336
+     extractive and energy.  |          1  (empty)
+         manufactures, sec.  |   .2913328   .2670478    -1.35   0.178     .0483217    1.756452
+               construction  |   .5102205   .4379994    -0.78   0.433     .0948512    2.744561
+      hospitality and sales  |   .6088756   .2855802    -1.06   0.290     .2428234    1.526745
+ Transport, storage and IT.  |   .5139686   .3705927    -0.92   0.356     .1250792    2.111972
+  Financial and prof. serv.  |   .2721712   .1524493    -2.32   0.020     .0907956    .8158672
+   Education and healthcare  |   .4269119   .2168527    -1.68   0.094     .1577483    1.155345
+             Other services  |   .3390143   .1689674    -2.17   0.030     .1276358    .9004583
+                             |
+                         occ |
+       white collar - prof.  |   1.412468   1.128679     0.43   0.666     .2949838     6.76331
+white collar - tech. suport  |   1.030496   .8165935     0.04   0.970     .2180371    4.870371
+       white collar - other  |   1.816301   1.388715     0.78   0.435     .4058565    8.128365
+     blue collar - services  |   2.385832   1.728518     1.20   0.230     .5767009    9.870273
+  blue collar - agriculture  |   .8213282   1.087946    -0.15   0.882     .0612351    11.01623
+     blue collar - artisans  |   2.081965   2.037109     0.75   0.454     .3059222    14.16889
+       blue collar - equip.  |          1  (empty)
+                  unskilled  |   5.575287   4.228975     2.27   0.023     1.260702    24.65596
+                             |
+                   parent_15 |   1.997037   .6813547     2.03   0.043     1.023224    3.897637
+                     married |     1.5699   .6782887     1.04   0.297     .6731367    3.661347
+           married_parent_15 |    .445455   .2301989    -1.56   0.118     .1617805    1.226539
+                    divorced |   .3649684   .1674593    -2.20   0.028     .1484898    .8970444
+                     widowed |   .7635263    .862322    -0.24   0.811     .0834607    6.984991
+                         age |          1  (omitted)
+                     college |   1.338511   .3809298     1.02   0.306     .7662606    2.338123
+                       _cons |   .0328334   .0291762    -3.84   0.000     .0057534    .1873721
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est29 stored)
+note: 2.act != 0 predicts failure perfectly;
+      2.act omitted and 73 obs not used.
+
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 19 obs not used.
+
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 6 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  2,837
+                                                        Wald chi2(20) =  37.92
+                                                        Prob > chi2   = 0.0090
+Log pseudolikelihood = -243847.8                        Pseudo R2     = 0.0434
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .2737609    .201385    -1.76   0.078     .0647452    1.157538
+     extractive and energy.  |          1  (empty)
+         manufactures, sec.  |   .1266748    .110955    -2.36   0.018     .0227572     .705117
+               construction  |   .3162373    .250948    -1.45   0.147     .0667648    1.497885
+      hospitality and sales  |   .3499137   .1704818    -2.16   0.031     .1346623    .9092342
+ Transport, storage and IT.  |   .0892903    .066022    -3.27   0.001     .0209613    .3803557
+  Financial and prof. serv.  |   .2622586   .1439946    -2.44   0.015     .0894072    .7692843
+   Education and healthcare  |   .2809746   .1466949    -2.43   0.015     .1009859    .7817602
+             Other services  |   .4868097   .2364627    -1.48   0.138     .1878871    1.261309
+                             |
+                         occ |
+       white collar - prof.  |   2.416638   2.552383     0.84   0.403      .304928    19.15252
+white collar - tech. suport  |   5.872771   6.368687     1.63   0.103      .701073    49.19522
+       white collar - other  |    6.23082   6.598976     1.73   0.084     .7817164    49.66394
+     blue collar - services  |   5.201853   5.312764     1.61   0.106     .7027608    38.50424
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   8.884788   10.85672     1.79   0.074     .8100766     97.4469
+       blue collar - equip.  |    3.74096   4.745402     1.04   0.298     .3113401    44.95013
+                  unskilled  |   5.894323   6.141499     1.70   0.089     .7647819    45.42869
+                             |
+                   parent_15 |   1.700203   .5790673     1.56   0.119     .8721524    3.314432
+                     married |   .6169889   .3224261    -0.92   0.355     .2215422    1.718298
+           married_parent_15 |   1.174896   .7070447     0.27   0.789     .3612036    3.821615
+                    divorced |   .7196906   .3746911    -0.63   0.528     .2594098    1.996665
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   1.291489    .368239     0.90   0.370      .738567    2.258352
+                       _cons |   .0300819   .0350079    -3.01   0.003     .0030741    .2943704
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est30 stored)
+note: 6.occ != 0 predicts failure perfectly;
+      6.occ omitted and 25 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  2,883
+                                                        Wald chi2(22) =  80.88
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -227232.18                       Pseudo R2     = 0.0792
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .2446396   .1851985    -1.86   0.063     .0554811    1.078719
+     extractive and energy.  |   .0117788   .0130314    -4.01   0.000     .0013471    .1029961
+         manufactures, sec.  |   .0559155   .0607661    -2.65   0.008     .0066449    .4705158
+               construction  |   .1655641   .1480393    -2.01   0.044     .0286988     .955144
+      hospitality and sales  |   .3119705   .1510963    -2.41   0.016     .1207403    .8060741
+ Transport, storage and IT.  |    .179716   .1137651    -2.71   0.007     .0519701      .62147
+  Financial and prof. serv.  |   .1242214   .0682169    -3.80   0.000     .0423404    .3644503
+   Education and healthcare  |   .2651791   .1307632    -2.69   0.007     .1008791    .6970718
+             Other services  |   .2610909   .1343756    -2.61   0.009     .0952147    .7159448
+                             |
+                         occ |
+       white collar - prof.  |   1.112706   .6830172     0.17   0.862     .3341058    3.705759
+white collar - tech. suport  |   .6474334   .4772429    -0.59   0.555     .1526682    2.745628
+       white collar - other  |   .5947612   .4437291    -0.70   0.486     .1378139    2.566802
+     blue collar - services  |   .7697759   .5407543    -0.37   0.710     .1942718    3.050133
+  blue collar - agriculture  |          1  (empty)
+     blue collar - artisans  |   1.379896   1.373047     0.32   0.746      .196277    9.701153
+       blue collar - equip.  |   1.187516    1.20139     0.17   0.865     .1634907     8.62553
+                  unskilled  |   1.920071   1.377907     0.91   0.363     .4703991    7.837325
+                             |
+                   parent_15 |   2.474391     .82903     2.70   0.007     1.283153    4.771538
+                     married |    1.73695   .7424725     1.29   0.196     .7515096    4.014578
+           married_parent_15 |   .3393721   .1725085    -2.13   0.034      .125313    .9190857
+                    divorced |   .5822307   .3581795    -0.88   0.379     .1743608    1.944202
+                     widowed |    11.1551   14.75479     1.82   0.068     .8348229    149.0571
+                         age |          1  (omitted)
+                     college |   .6232226    .197633    -1.49   0.136     .3347455    1.160304
+                       _cons |    .178313   .1524925    -2.02   0.044      .033361    .9530751
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est31 stored)
+note: widowed != 0 predicts failure perfectly;
+      widowed omitted and 3 obs not used.
+
+note: age omitted because of collinearity.
+
+Logistic regression                                     Number of obs =  2,826
+                                                        Wald chi2(22) =  50.65
+                                                        Prob > chi2   = 0.0005
+Log pseudolikelihood = -222613.36                       Pseudo R2     = 0.0642
+
+----------------------------------------------------------------------------------------------
+                             |               Robust
+                    inactive | Odds ratio   std. err.      z    P>|z|     [95% conf. interval]
+-----------------------------+----------------------------------------------------------------
+                         act |
+        manufactures, prim.  |   .3134025   .3059687    -1.19   0.235     .0462478    2.123801
+     extractive and energy.  |   .0640147   .0732033    -2.40   0.016     .0068061    .6020916
+         manufactures, sec.  |   .3456021   .3252983    -1.13   0.259     .0546238    2.186606
+               construction  |   .6293517   .7525903    -0.39   0.699     .0603964    6.558066
+      hospitality and sales  |   .7570173   .4128793    -0.51   0.610      .259931     2.20472
+ Transport, storage and IT.  |   .2115742   .1624056    -2.02   0.043     .0469976    .9524674
+  Financial and prof. serv.  |   .7715396   .4299973    -0.47   0.642     .2587995    2.300133
+   Education and healthcare  |   .4487402   .2648418    -1.36   0.175     .1411317    1.426807
+             Other services  |   .3672146   .2340719    -1.57   0.116     .1052792    1.280848
+                             |
+                         occ |
+       white collar - prof.  |   .8444522   .6633484    -0.22   0.830     .1811026    3.937543
+white collar - tech. suport  |   .6833406   .5784756    -0.45   0.653     .1300351    3.590988
+       white collar - other  |   .8962143    .744632    -0.13   0.895      .175865    4.567141
+     blue collar - services  |   .6763094   .5960891    -0.44   0.657     .1202012    3.805238
+  blue collar - agriculture  |   4.423111   5.400657     1.22   0.223     .4040206    48.42306
+     blue collar - artisans  |    .957319   1.200596    -0.03   0.972     .0819493    11.18325
+       blue collar - equip.  |   1.420328   1.503249     0.33   0.740     .1784399    11.30538
+                  unskilled  |   1.503423   1.328504     0.46   0.644     .2660202    8.496653
+                             |
+                   parent_15 |   .6823492   .2278875    -1.14   0.252     .3545902    1.313066
+                     married |    .940854   .3875336    -0.15   0.882     .4196778    2.109252
+           married_parent_15 |   1.911969   .9882889     1.25   0.210     .6942221    5.265789
+                    divorced |   2.465736   1.010132     2.20   0.028     1.104682    5.503717
+                     widowed |          1  (omitted)
+                         age |          1  (omitted)
+                     college |   .6396263   .2435583    -1.17   0.241     .3032522    1.349114
+                       _cons |    .111291   .1081522    -2.26   0.024     .0165678    .7475753
+----------------------------------------------------------------------------------------------
+Note: _cons estimates baseline odds.
+(est32 stored)
+(output written to prob_inac_stocks_w.tex)
+(output written to prob_inac_stocks_w_margins.tex)

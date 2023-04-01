@@ -1,0 +1,520 @@
+'/' not allowed in varlist
+r(198);
+
+. do "C:\Users\asruland\OneDrive - Istituto Universitario Europeo\Spanish_LFS_Cross\qtregs.do"
+
+. * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+. *
+. * Robustness Checks
+. *
+. * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+. clear all 
+
+. cd "C:\Users\asruland\OneDrive - Istituto Universitario Europeo\Spanish_LFS_Cross"
+C:\Users\asruland\OneDrive - Istituto Universitario Europeo\Spanish_LFS_Cross
+
+. 
+. 
+. use "./rawfiles/EPA_stocks20_parents.dta", clear
+
+. 
+. drop period_y
+
+. replace period_t = "t22" if (ciclo>=198)
+(129,048 real changes made)
+
+. encode period_t, generate(period_y)
+
+. 
+. drop if age<20
+(2,272,706 observations deleted)
+
+. drop if age>50
+(3,964,772 observations deleted)
+
+. 
+. keep permanent age act occ public_servant married parent parent_* divorced widowed part_time erte age college tenure ciclo mili woman factorel inactive wife_ten_y hub_t
+> en_y wife_ten_y2 hub_ten_y2 less_hs hub_age wife_age hub_se wife_se hub_college wife_college hub_less_hs wife_less_hs period_y mother mother_* employed father father_* 
+> wife husband sexo1 ten_y other_ten_y ttrend ttrend2 covid other_se other_college other_less_hs yd ocup1 married_parent married_parent_*
+
+. 
+. /*
+> save "./rawfiles/EPA_stocks20_parents_ready.dta", replace
+> use "./rawfiles/EPA_stocks20_parents_ready.dta", clear
+> */
+. 
+. * Add unemployment data
+. merge m:1 ciclo using "C:\Users\asruland\OneDrive - Istituto Universitario Europeo\Spanish_LFS_Cross/urate_spain.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                            75
+        from master                         0  (_merge==1)
+        from using                         75  (_merge==2)
+
+    Matched                         5,306,828  (_merge==3)
+    -----------------------------------------
+
+. drop _merge
+
+. 
+. gen age2550 = 0
+
+. replace age2550 = 1 if age>=25&age<50
+(3,831,398 real changes made)
+
+. 
+. gen age3045 = 0
+
+. replace age3045 = 1 if age>=30&age<45
+(2,338,049 real changes made)
+
+. 
+. gen age3035 = 0
+
+. replace age3035 = 1 if age>=30&age<35
+(654,588 real changes made)
+
+. 
+. gen age3540 = 0
+
+. replace age3540 = 1 if age>=35&age<40
+(793,598 real changes made)
+
+. 
+. gen age4045 = 0
+
+. replace age4045 = 1 if age>=40&age<45
+(889,863 real changes made)
+
+. 
+. gen age3040 = 0
+
+. replace age3040 = 1 if age>=30&age<40
+(1,448,186 real changes made)
+
+. 
+. gen age3050 = 0
+
+. replace age3050 = 1 if age>=30&age<50
+(3,238,438 real changes made)
+
+. 
+. gen age2530 = 0
+
+. replace age2530 = 1 if age>=25&age<30
+(592,960 real changes made)
+
+. 
+. *** Tenure bins
+. gen tenure_bin=.
+(5,306,903 missing values generated)
+
+. replace tenure_bin = 1 if tenure>=0&tenure<24
+(934,082 real changes made)
+
+. replace tenure_bin = 2 if tenure>=24&tenure<60
+(611,640 real changes made)
+
+. replace tenure_bin = 3 if tenure>=60&tenure<120
+(639,067 real changes made)
+
+. replace tenure_bin = 4 if tenure>=120&tenure<180
+(470,717 real changes made)
+
+. replace tenure_bin = 5 if tenure>=180&tenure<240
+(361,340 real changes made)
+
+. replace tenure_bin = 6 if tenure>=240&tenure<360
+(452,889 real changes made)
+
+. replace tenure_bin = 7 if tenure>=360&tenure!=.
+(110,335 real changes made)
+
+. 
+. gen other_ten_y_bin = .
+(5,306,903 missing values generated)
+
+. replace other_ten_y_bin = 1 if other_ten_y>=0&other_ten_y<2
+(405,503 real changes made)
+
+. replace other_ten_y_bin = 2 if other_ten_y>=2&other_ten_y<5
+(317,906 real changes made)
+
+. replace other_ten_y_bin = 3 if other_ten_y>=5&other_ten_y<10
+(399,121 real changes made)
+
+. replace other_ten_y_bin = 4 if other_ten_y>=10&other_ten_y<15
+(329,259 real changes made)
+
+. replace other_ten_y_bin = 5 if other_ten_y>=15&other_ten_y<20
+(263,626 real changes made)
+
+. replace other_ten_y_bin = 6 if other_ten_y>=20&other_ten_y<30
+(324,809 real changes made)
+
+. replace other_ten_y_bin = 7 if other_ten_y>=30&other_ten_y!=.
+(70,633 real changes made)
+
+. 
+. gen wife_ten_y_bin = .
+(5,306,903 missing values generated)
+
+. replace wife_ten_y_bin = 1 if wife_ten_y>=0&wife_ten_y<2
+(465,309 real changes made)
+
+. replace wife_ten_y_bin = 2 if wife_ten_y>=2&wife_ten_y<5
+(357,667 real changes made)
+
+. replace wife_ten_y_bin = 3 if wife_ten_y>=5&wife_ten_y<10
+(434,532 real changes made)
+
+. replace wife_ten_y_bin = 4 if wife_ten_y>=10&wife_ten_y<15
+(335,041 real changes made)
+
+. replace wife_ten_y_bin = 5 if wife_ten_y>=15&wife_ten_y<20
+(248,085 real changes made)
+
+. replace wife_ten_y_bin = 6 if wife_ten_y>=20&wife_ten_y<30
+(295,098 real changes made)
+
+. replace wife_ten_y_bin = 7 if wife_ten_y>=30&wife_ten_y!=.
+(70,635 real changes made)
+
+. 
+. gen hub_ten_y_bin = .
+(5,306,903 missing values generated)
+
+. replace hub_ten_y_bin = 1 if hub_ten_y>=0&hub_ten_y<2
+(475,113 real changes made)
+
+. replace hub_ten_y_bin = 2 if hub_ten_y>=2&hub_ten_y<5
+(374,451 real changes made)
+
+. replace hub_ten_y_bin = 3 if hub_ten_y>=5&hub_ten_y<10
+(480,177 real changes made)
+
+. replace hub_ten_y_bin = 4 if hub_ten_y>=10&hub_ten_y<15
+(417,564 real changes made)
+
+. replace hub_ten_y_bin = 5 if hub_ten_y>=15&hub_ten_y<20
+(359,481 real changes made)
+
+. replace hub_ten_y_bin = 6 if hub_ten_y>=20&hub_ten_y<30
+(545,841 real changes made)
+
+. replace hub_ten_y_bin = 7 if hub_ten_y>=30&hub_ten_y!=.
+(162,014 real changes made)
+
+. 
+. /*
+> Just to remember
+> gen hub_ten_y_bin = .
+> replace hub_ten_y_bin = 1 if hub_ten_y>=0&hub_ten_y<0.5
+> replace hub_ten_y_bin = 2 if hub_ten_y>=0.5&hub_ten_y<1
+> replace hub_ten_y_bin = 3 if hub_ten_y>=1&hub_ten_y<3
+> replace hub_ten_y_bin = 4 if hub_ten_y>=3&hub_ten_y<5
+> replace hub_ten_y_bin = 5 if hub_ten_y>=5&hub_ten_y<10
+> replace hub_ten_y_bin = 6 if hub_ten_y>=10&hub_ten_y<15
+> replace hub_ten_y_bin = 7 if hub_ten_y>=15&hub_ten_y<20
+> replace hub_ten_y_bin = 8 if hub_ten_y>=20&hub_ten_y<30
+> replace hub_ten_y_bin = 9 if hub_ten_y>=30&hub_ten_y!=.
+> */
+. 
+. *** Occupation groupscapture drop occgroup
+. capture drop occgroup
+
+. gen occgroup=.
+(5,306,903 missing values generated)
+
+. replace occgroup=1 if ocup1==1 | ocup1==2
+(822,374 real changes made)
+
+. replace occgroup=2 if ocup1==3 | ocup1==4
+(868,447 real changes made)
+
+. replace occgroup=3 if ocup1==5
+(868,660 real changes made)
+
+. replace occgroup=4 if ocup1==6 | ocup1==7 | ocup1==8
+(984,383 real changes made)
+
+. replace occgroup=5 if ocup1==9
+(594,594 real changes made)
+
+. 
+. gen season=0
+
+. gen count = 1
+
+. * Create seasonal dummy
+. forvalues i=130/201{ 
+  2.         replace season = count if ciclo==`i'
+  3.         replace count = count + 1
+  4.         replace count = 1 if count==5
+  5. }
+(151,956 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(74,781 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(72,591 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(72,859 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(75,099 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(77,936 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(76,921 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(77,219 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(79,307 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(80,032 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(79,860 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(79,711 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(80,203 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(80,389 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(79,758 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(79,275 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(79,094 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(78,964 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(83,253 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(83,190 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(82,815 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(81,447 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(81,074 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(80,728 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(81,011 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(80,265 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(79,295 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(77,714 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(79,566 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(79,462 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(78,669 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(78,599 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(78,528 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(78,787 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(78,434 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(77,925 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(77,970 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(77,162 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(76,202 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(75,755 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(74,961 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(73,846 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(72,552 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(71,887 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(71,009 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(70,297 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(69,944 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(68,876 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(69,135 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(68,703 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(68,517 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(68,340 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(69,041 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(68,803 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(68,604 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(69,133 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(69,713 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(69,205 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(68,578 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(68,033 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(65,951 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(62,131 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(61,541 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(61,242 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(59,118 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(56,704 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(53,835 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(53,881 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+(53,763 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(52,869 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(51,735 real changes made)
+(5,306,903 real changes made)
+(0 real changes made)
+(51,075 real changes made)
+(5,306,903 real changes made)
+(5,306,903 real changes made)
+
+. 
+. drop woman
+
+. gen woman = sexo1==1
+
+. 
+. global age_group "age3035 age3540 age4045 age3040 age3045" 
+
+. 
+. *global age_group "age3035" 
+. 
+. *global parent_string "parent_5 parent_10 parent_15"
+. 
+. global parent_string "parent_5 parent_10 parent_15"
+
+. 
+. 
+. **# Regressions * * * * * * * * * 
+. 
+. * Table 2 & 4 different age groups (parents and children) excluding the last two quarters of 2022 * * * * * * * * * * * * * * * * * * * *
+. drop if ciclo==200|ciclo==201
+(102,810 observations deleted)
+
+. global parent_string_short "_5 _10 _15"
+
+. foreach ag of global age_group{
+  2. foreach par of global parent_string_short {
+  3. log using "./tables/sqtreg_table_simple_`ag'_`par'_1sthalf22.log", replace nomsg
+  4. sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate i.covid##i.sexo1 ///
+>                 if ((mother`par'==1&wife==1)|(father`par'==1&husband==1))&employed&`ag'==1, ///
+>                 q(.25 .5 .75)
+  5. log close
+  6. 
+. log using "./tables/sqtreg_table_advanced_simple_`ag'_`par'_1sthalf22.log", replace nomsg
+  7. sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate i.occgroup i.covid##i.sexo1#i.occgroup ///
+>                if ((mother`par'==1&wife==1)|(father`par'==1&husband==1))&employed&`ag'==1, ///
+>                  q(.25 .5 .75)                                  
+  8. log close       
+  9. }
+ 10. }
+log file already open
+r(604);
+
+end of do-file
+
+r(604);
+
+. log close
