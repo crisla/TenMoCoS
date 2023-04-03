@@ -27,41 +27,111 @@ global parent_string "10 15"
 * Table 1 for different age groups * * * * * * * * * * * * * * * * * * * *
 capture log close _all
 foreach ag of global age_group{
-	foreach par of global parent_string {
 	
 	* Counterfactuals
-	log using "./descriptive_stats/stocks_not_mothers_`ag'_`par'.log", replace nomsg
-	tab ciclo state if mother_`par'==0&wife==1&`ag'==1&sexo1==1
+	log using "./descriptive_stats/stocks_not_mothers_`ag'.log", replace nomsg
+	tab ciclo state if mother==0&wife==1&`ag'==1&sexo1==1
 	log close
 
-	log using "./descriptive_stats/stocks_not_fathers_`ag'_`par'.log", replace nomsg
-	tab ciclo state if father_`par'==0&husband==1&`ag'==1&sexo1==0
+	log using "./descriptive_stats/stocks_not_fathers_`ag'.log", replace nomsg
+	tab ciclo state if father==0&husband==1&`ag'==1&sexo1==0
 	log close
 
-	log using "./descriptive_stats/stocks_not_mothers_`ag'_`par'_w.log", replace nomsg
-	tab ciclo state if mother_`par'==0&wife==1&`ag'==1&sexo1==1 [fweight=facexp]
+	log using "./descriptive_stats/stocks_not_mothers_`ag'_w.log", replace nomsg
+	tab ciclo state if mother==0&wife==1&`ag'==1&sexo1==1 [fweight=facexp]
 	log close
 
-	log using "./descriptive_stats/stocks_not_fathers_`ag'_`par'_w.log", replace nomsg
-	tab ciclo state if father_`par'==0&husband==1&`ag'==1&sexo1==0 [fweight=facexp]
+	log using "./descriptive_stats/stocks_not_fathers_`ag'_w.log", replace nomsg
+	tab ciclo state if father==0&husband==1&`ag'==1&sexo1==0 [fweight=facexp]
 	log close
 	
-	log using "./descriptive_stats/stocks_mothers_`ag'_`par'.log", replace nomsg
-	tab ciclo state if mother_`par'==1&`ag'==1
+	* singles
+	log using "./descriptive_stats/stocks_single_women_`ag'.log", replace nomsg
+	tab ciclo state if mother==0&wife==0&`ag'==1&sexo1==1
 	log close
 
-	log using "./descriptive_stats/stocks_fathers_`ag'_`par'.log", replace nomsg
-	tab ciclo state if father_`par'==1&`ag'==1
+	log using "./descriptive_stats/stocks_single_men_`ag'.log", replace nomsg
+	tab ciclo state if father==0&husband==0&`ag'==1&sexo1==0
 	log close
 
-	log using "./descriptive_stats/stocks_mothers_`ag'_`par'_w.log", replace nomsg
-	tab ciclo state if mother_`par'==1&`ag'==1 [fweight=facexp]
+	log using "./descriptive_stats/stocks_single_women_`ag'_w.log", replace nomsg
+	tab ciclo state if mother==0&wife==0&`ag'==1&sexo1==1 [fweight=facexp]
 	log close
 
-	log using "./descriptive_stats/stocks_fathers_`ag'_`par'_w.log", replace nomsg
-	tab ciclo state if father_`par'==1&`ag'==1 [fweight=facexp]
+	log using "./descriptive_stats/stocks_single_men_`ag'_w.log", replace nomsg
+	tab ciclo state if father==0&husband==0&`ag'==1&sexo1==0 [fweight=facexp]
 	log close
 	
+// 	foreach par of global parent_string {
+//	
+// 		log using "./descriptive_stats/stocks_mothers_`ag'_`par'.log", replace nomsg
+// 		tab ciclo state if mother_`par'==1&`ag'==1
+// 		log close
+//
+// 		log using "./descriptive_stats/stocks_fathers_`ag'_`par'.log", replace nomsg
+// 		tab ciclo state if father_`par'==1&`ag'==1
+// 		log close
+//
+// 		log using "./descriptive_stats/stocks_mothers_`ag'_`par'_w.log", replace nomsg
+// 		tab ciclo state if mother_`par'==1&`ag'==1 [fweight=facexp]
+// 		log close
+//
+// 		log using "./descriptive_stats/stocks_fathers_`ag'_`par'_w.log", replace nomsg
+// 		tab ciclo state if father_`par'==1&`ag'==1 [fweight=facexp]
+// 		log close
+//	
+//	
+// 	}
+}
+
+* Descriptive stats by age groups
+
+gen woman_status = "couple_0k" if mother==0&wife==1&sexo1==1
+gen man_status = "couple_0k" if father==0&husband==1&sexo1==0
+
+replace woman_status = "couple_k" if mother==1&wife==1&sexo1==1
+replace man_status = "couple_k" if father==1&husband==1&sexo1==0
+
+replace woman_status = "single" if mother==0&wife==0&sexo1==1
+replace man_status = "single" if father==0&husband==0&sexo1==0
+
+replace woman_status = "other" if woman_status==""&sexo1==1
+replace man_status = "other" if man_status==""&sexo1==0
+
+capture log close
+foreach ag of global age_group{
+	log using "./descriptive_stats/women_status_`ag'.log", replace nomsg
+	tab woman_status if `ag'==1&sexo1==1
+	log close
 	
-	}
+	log using "./descriptive_stats/men_status_`ag'.log", replace nomsg
+	tab man_status if `ag'==1&sexo1==0
+	log close
+	
+	log using "./descriptive_stats/women_status_`ag'_w.log", replace nomsg
+	tab woman_status if `ag'==1&sexo1==1 [fweight=facexp]
+	log close
+	
+	log using "./descriptive_stats/men_status_`ag'_w.log", replace nomsg
+	tab man_status if `ag'==1&sexo1==0 [fweight=facexp]
+	log close
+}
+
+* Time series
+foreach ag of global age_group{
+	log using "./descriptive_stats/women_status_ciclo_`ag'.log", replace nomsg
+	tab ciclo woman_status if `ag'==1&sexo1==1
+	log close
+	
+	log using "./descriptive_stats/men_status_ciclo_`ag'.log", replace nomsg
+	tab ciclo man_status if `ag'==1&sexo1==0
+	log close
+	
+	log using "./descriptive_stats/women_status_ciclo_`ag'_w.log", replace nomsg
+	tab ciclo woman_status if `ag'==1&sexo1==1 [fweight=facexp]
+	log close
+	
+	log using "./descriptive_stats/men_status_ciclo_`ag'_w.log", replace nomsg
+	tab ciclo man_status if `ag'==1&sexo1==0 [fweight=facexp]
+	log close
 }
