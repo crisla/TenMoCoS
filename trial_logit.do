@@ -13,6 +13,26 @@ clear all
 
 use "./formatting/rawfiles/EPA_stocks20_parents.dta", clear
 
+gen age3040 = 0
+replace age3040 = 1 if age>=30&age<40
+
+capture log close
+log using "./descriptive_stats/rznotb_w_age3040_w.log", replace nomsg
+tab ciclo rznotb if age3040&woman [fweight=facexp]
+log close
+
+log using "./descriptive_stats/rznotb_m_age3040_w.log", replace nomsg
+tab ciclo rznotb if age3040&woman==0 [fweight=facexp]
+log close
+
+log using "./descriptive_stats/rznotb_w_age3040_10_w.log", replace nomsg
+tab ciclo rznotb if age3040&woman&mother_10 [fweight=facexp]
+log close
+
+log using "./descriptive_stats/rznotb_m_age3040_10_w.log", replace nomsg
+tab ciclo rznotb if age3040&woman==0&father_10 [fweight=facexp]
+log close
+
 **# Variable adaptation * * * * * * * * * 
 drop period_y
 replace period_t = "t22" if (ciclo>=198)
@@ -46,9 +66,6 @@ replace age3540 = 1 if age>=35&age<40
 
 gen age4045 = 0
 replace age4045 = 1 if age>=40&age<45
-
-gen age3040 = 0
-replace age3040 = 1 if age>=30&age<40
 
 gen age3050 = 0
 replace age3050 = 1 if age>=30&age<50
@@ -162,6 +179,40 @@ global parent_string "parent_5 parent_10 parent_15"
 * age = age
 log using "./regtabs/prob_perm_trial_3040_cohab.log", replace nomsg
 forvalues i=170/201{
-logistic permanent parent_10 if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
 }
 log close
+
+log using "./regtabs/prob_perm_trial_3040_cohab_restrict.log", replace nomsg
+forvalues i=170/201{
+logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0))&act!=. [pw=factorel], vce(robust)
+}
+log close
+
+log using "./regtabs/prob_perm_trial_inds_3040_cohab.log", replace nomsg
+forvalues i=170/201{
+logistic permanent parent_10 i.age i.act if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+}
+log close
+
+* Men - robustness * * * * * * * * * * * * * * * * * * * *
+
+log using "./regtabs/prob_perm_trial_m_3040_cohab.log", replace nomsg
+forvalues i=170/201{
+logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+}
+log close
+
+log using "./regtabs/prob_perm_trial_3040_m_cohab_restrict.log", replace nomsg
+forvalues i=170/201{
+logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0))&act!=. [pw=factorel], vce(robust)
+}
+log close
+
+log using "./regtabs/prob_perm_trial_inds_3040_m_cohab.log", replace nomsg
+forvalues i=170/201{
+logistic permanent parent_10 i.age i.act if ciclo==`i'&mili==0&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+}
+log close
+
+// i.act i.occ public_servant parent_10  part_time college erte i.age
