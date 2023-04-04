@@ -1,0 +1,567 @@
+
+. forvalues i=170/201{
+  2. logit permanent parent_10 if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&p
+> arent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+  3. }
+
+Iteration 0:   log pseudolikelihood = -1703081.9  
+Iteration 1:   log pseudolikelihood = -1697267.2  
+Iteration 2:   log pseudolikelihood = -1697267.1  
+
+Logistic regression                                     Number of obs =  7,040
+                                                        Wald chi2(1)  =  18.38
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1697267.1                       Pseudo R2     = 0.0034
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3176286   .0740825    -4.29   0.000    -.4628277   -.1724295
+       _cons |   .0909755   .0657836     1.38   0.167    -.0379579    .2199089
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1688970.7  
+Iteration 1:   log pseudolikelihood = -1683764.2  
+Iteration 2:   log pseudolikelihood = -1683764.1  
+
+Logistic regression                                     Number of obs =  6,890
+                                                        Wald chi2(1)  =  16.49
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1683764.1                       Pseudo R2     = 0.0031
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.2989573   .0736225    -4.06   0.000    -.4432548   -.1546599
+       _cons |   .0591805   .0650944     0.91   0.363    -.0684021    .1867631
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1649134.5  
+Iteration 1:   log pseudolikelihood = -1642162.4  
+Iteration 2:   log pseudolikelihood = -1642162.1  
+Iteration 3:   log pseudolikelihood = -1642162.1  
+
+Logistic regression                                     Number of obs =  6,562
+                                                        Wald chi2(1)  =  22.35
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1642162.1                       Pseudo R2     = 0.0042
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3549512   .0750806    -4.73   0.000    -.5021065    -.207796
+       _cons |   .0678419   .0665293     1.02   0.308     -.062553    .1982368
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1631650.2  
+Iteration 1:   log pseudolikelihood =   -1628060  
+Iteration 2:   log pseudolikelihood = -1628059.9  
+
+Logistic regression                                     Number of obs =  6,609
+                                                        Wald chi2(1)  =  12.04
+                                                        Prob > chi2   = 0.0005
+Log pseudolikelihood = -1628059.9                       Pseudo R2     = 0.0022
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.2562352   .0738452    -3.47   0.001     -.400969   -.1115013
+       _cons |   .0065427   .0653195     0.10   0.920    -.1214812    .1345666
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1605954.1  
+Iteration 1:   log pseudolikelihood = -1603120.1  
+Iteration 2:   log pseudolikelihood =   -1603120  
+
+Logistic regression                                     Number of obs =  6,507
+                                                        Wald chi2(1)  =   9.71
+                                                        Prob > chi2   = 0.0018
+Log pseudolikelihood = -1603120                         Pseudo R2     = 0.0018
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |   -.227074   .0728836    -3.12   0.002    -.3699233   -.0842247
+       _cons |  -.0227428   .0642768    -0.35   0.723     -.148723    .1032374
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1583755.6  
+Iteration 1:   log pseudolikelihood = -1579973.8  
+Iteration 2:   log pseudolikelihood = -1579973.6  
+
+Logistic regression                                     Number of obs =  6,438
+                                                        Wald chi2(1)  =  13.48
+                                                        Prob > chi2   = 0.0002
+Log pseudolikelihood = -1579973.6                       Pseudo R2     = 0.0024
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |   -.264992   .0721868    -3.67   0.000    -.4064756   -.1235084
+       _cons |    .009064     .06369     0.14   0.887    -.1157662    .1338941
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1574077.9  
+Iteration 1:   log pseudolikelihood = -1568876.8  
+Iteration 2:   log pseudolikelihood = -1568876.6  
+Iteration 3:   log pseudolikelihood = -1568876.6  
+
+Logistic regression                                     Number of obs =  6,368
+                                                        Wald chi2(1)  =  18.84
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1568876.6                       Pseudo R2     = 0.0033
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3083305   .0710351    -4.34   0.000    -.4475568   -.1691041
+       _cons |   .0373947   .0623025     0.60   0.548     -.084716    .1595054
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1579153.1  
+Iteration 1:   log pseudolikelihood = -1571918.8  
+Iteration 2:   log pseudolikelihood = -1571918.6  
+Iteration 3:   log pseudolikelihood = -1571918.6  
+
+Logistic regression                                     Number of obs =  6,340
+                                                        Wald chi2(1)  =  26.01
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1571918.6                       Pseudo R2     = 0.0046
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3585069   .0702907    -5.10   0.000    -.4962741   -.2207397
+       _cons |   .0941991    .061363     1.54   0.125    -.0260701    .2144683
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1564852.2  
+Iteration 1:   log pseudolikelihood = -1556461.1  
+Iteration 2:   log pseudolikelihood = -1556460.9  
+Iteration 3:   log pseudolikelihood = -1556460.9  
+
+Logistic regression                                     Number of obs =  6,381
+                                                        Wald chi2(1)  =  30.83
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1556460.9                       Pseudo R2     = 0.0054
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3886465   .0699969    -5.55   0.000    -.5258378   -.2514551
+       _cons |   .1177089   .0609441     1.93   0.053    -.0017393    .2371572
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1539397.8  
+Iteration 1:   log pseudolikelihood = -1531756.8  
+Iteration 2:   log pseudolikelihood = -1531756.6  
+Iteration 3:   log pseudolikelihood = -1531756.6  
+
+Logistic regression                                     Number of obs =  6,185
+                                                        Wald chi2(1)  =  27.37
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1531756.6                       Pseudo R2     = 0.0050
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3745517   .0715963    -5.23   0.000    -.5148778   -.2342256
+       _cons |    .107068   .0624892     1.71   0.087    -.0154086    .2295446
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1529477.9  
+Iteration 1:   log pseudolikelihood = -1525741.9  
+Iteration 2:   log pseudolikelihood = -1525741.9  
+
+Logistic regression                                     Number of obs =  6,081
+                                                        Wald chi2(1)  =  13.32
+                                                        Prob > chi2   = 0.0003
+Log pseudolikelihood = -1525741.9                       Pseudo R2     = 0.0024
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.2612349   .0715901    -3.65   0.000     -.401549   -.1209208
+       _cons |   .0250847   .0623842     0.40   0.688    -.0971861    .1473554
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1521256.2  
+Iteration 1:   log pseudolikelihood = -1518303.3  
+Iteration 2:   log pseudolikelihood = -1518303.3  
+
+Logistic regression                                     Number of obs =  6,097
+                                                        Wald chi2(1)  =  10.62
+                                                        Prob > chi2   = 0.0011
+Log pseudolikelihood = -1518303.3                       Pseudo R2     = 0.0019
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.2363603   .0725221    -3.26   0.001    -.3785011   -.0942195
+       _cons |  -.0059909   .0636445    -0.09   0.925    -.1307318      .11875
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1494314.9  
+Iteration 1:   log pseudolikelihood = -1489504.9  
+Iteration 2:   log pseudolikelihood = -1489504.8  
+Iteration 3:   log pseudolikelihood = -1489504.8  
+
+Logistic regression                                     Number of obs =  6,084
+                                                        Wald chi2(1)  =  17.75
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1489504.8                       Pseudo R2     = 0.0032
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3041827   .0721896    -4.21   0.000    -.4456717   -.1626937
+       _cons |    .041257   .0633113     0.65   0.515    -.0828309    .1653449
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1472611.9  
+Iteration 1:   log pseudolikelihood = -1467054.4  
+Iteration 2:   log pseudolikelihood = -1467054.4  
+
+Logistic regression                                     Number of obs =  6,020
+                                                        Wald chi2(1)  =  20.46
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1467054.4                       Pseudo R2     = 0.0038
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3287066   .0726619    -4.52   0.000    -.4711213   -.1862919
+       _cons |   .1152447   .0638337     1.81   0.071    -.0098671    .2403565
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1466935.9  
+Iteration 1:   log pseudolikelihood =   -1458845  
+Iteration 2:   log pseudolikelihood = -1458844.8  
+Iteration 3:   log pseudolikelihood = -1458844.8  
+
+Logistic regression                                     Number of obs =  5,909
+                                                        Wald chi2(1)  =  29.23
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1458844.8                       Pseudo R2     = 0.0055
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |   -.390489   .0722278    -5.41   0.000    -.5320529   -.2489251
+       _cons |   .1237133    .062864     1.97   0.049     .0005021    .2469245
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1465830.3  
+Iteration 1:   log pseudolikelihood = -1458817.2  
+Iteration 2:   log pseudolikelihood = -1458817.1  
+
+Logistic regression                                     Number of obs =  6,047
+                                                        Wald chi2(1)  =  26.29
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1458817.1                       Pseudo R2     = 0.0048
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3641162   .0710116    -5.13   0.000    -.5032965    -.224936
+       _cons |   .1588952   .0616076     2.58   0.010     .0381466    .2796438
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1448557.5  
+Iteration 1:   log pseudolikelihood = -1443971.4  
+Iteration 2:   log pseudolikelihood = -1443971.4  
+
+Logistic regression                                     Number of obs =  6,059
+                                                        Wald chi2(1)  =  17.16
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1443971.4                       Pseudo R2     = 0.0032
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.2937711   .0709171    -4.14   0.000     -.432766   -.1547761
+       _cons |   .0758057   .0613917     1.23   0.217    -.0445198    .1961313
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1437833.5  
+Iteration 1:   log pseudolikelihood =   -1431595  
+Iteration 2:   log pseudolikelihood =   -1431595  
+
+Logistic regression                                     Number of obs =  5,959
+                                                        Wald chi2(1)  =  23.03
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1431595                         Pseudo R2     = 0.0043
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3461096   .0721153    -4.80   0.000     -.487453   -.2047662
+       _cons |   .1137963   .0625461     1.82   0.069    -.0087918    .2363845
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1415233.4  
+Iteration 1:   log pseudolikelihood = -1408470.6  
+Iteration 2:   log pseudolikelihood = -1408470.6  
+
+Logistic regression                                     Number of obs =  5,753
+                                                        Wald chi2(1)  =  24.11
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1408470.6                       Pseudo R2     = 0.0048
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3626041   .0738538    -4.91   0.000    -.5073549   -.2178533
+       _cons |   .1460896   .0641971     2.28   0.023     .0202656    .2719137
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood =   -1405591  
+Iteration 1:   log pseudolikelihood = -1396539.7  
+Iteration 2:   log pseudolikelihood = -1396539.6  
+
+Logistic regression                                     Number of obs =  5,635
+                                                        Wald chi2(1)  =  31.60
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1396539.6                       Pseudo R2     = 0.0064
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.4191941   .0745684    -5.62   0.000    -.5653455   -.2730427
+       _cons |   .1816556   .0647851     2.80   0.005     .0546791     .308632
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood =   -1387009  
+Iteration 1:   log pseudolikelihood = -1383362.9  
+Iteration 2:   log pseudolikelihood = -1383362.8  
+
+Logistic regression                                     Number of obs =  5,414
+                                                        Wald chi2(1)  =  12.31
+                                                        Prob > chi2   = 0.0005
+Log pseudolikelihood = -1383362.8                       Pseudo R2     = 0.0026
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.2687566   .0765954    -3.51   0.000    -.4188809   -.1186323
+       _cons |   .0144838   .0664376     0.22   0.827    -.1157316    .1446991
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1359790.3  
+Iteration 1:   log pseudolikelihood = -1356144.3  
+Iteration 2:   log pseudolikelihood = -1356144.1  
+Iteration 3:   log pseudolikelihood = -1356144.1  
+
+Logistic regression                                     Number of obs =  4,988
+                                                        Wald chi2(1)  =  11.31
+                                                        Prob > chi2   = 0.0008
+Log pseudolikelihood = -1356144.1                       Pseudo R2     = 0.0027
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |   -.269751   .0801943    -3.36   0.001    -.4269288   -.1125731
+       _cons |  -.0716359   .0695474    -1.03   0.303    -.2079462    .0646745
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood =   -1340280  
+Iteration 1:   log pseudolikelihood = -1338212.1  
+Iteration 2:   log pseudolikelihood =   -1338212  
+
+Logistic regression                                     Number of obs =  4,834
+                                                        Wald chi2(1)  =   6.30
+                                                        Prob > chi2   = 0.0121
+Log pseudolikelihood = -1338212                         Pseudo R2     = 0.0015
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.2062933   .0822127    -2.51   0.012    -.3674274   -.0451593
+       _cons |  -.0646568   .0714141    -0.91   0.365    -.2046258    .0753123
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1331380.1  
+Iteration 1:   log pseudolikelihood = -1325519.4  
+Iteration 2:   log pseudolikelihood = -1325519.1  
+Iteration 3:   log pseudolikelihood = -1325519.1  
+
+Logistic regression                                     Number of obs =  4,769
+                                                        Wald chi2(1)  =  17.74
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1325519.1                       Pseudo R2     = 0.0044
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3500606   .0831113    -4.21   0.000    -.5129556   -.1871655
+       _cons |   .0456345   .0719894     0.63   0.526    -.0954622    .1867311
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1313744.5  
+Iteration 1:   log pseudolikelihood = -1307314.7  
+Iteration 2:   log pseudolikelihood = -1307314.4  
+Iteration 3:   log pseudolikelihood = -1307314.4  
+
+Logistic regression                                     Number of obs =  4,489
+                                                        Wald chi2(1)  =  17.45
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1307314.4                       Pseudo R2     = 0.0049
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.3641517   .0871719    -4.18   0.000    -.5350055   -.1932979
+       _cons |   .0609929   .0754879     0.81   0.419    -.0869605    .2089464
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1281321.8  
+Iteration 1:   log pseudolikelihood = -1278658.5  
+Iteration 2:   log pseudolikelihood = -1278658.4  
+
+Logistic regression                                     Number of obs =  4,257
+                                                        Wald chi2(1)  =   6.78
+                                                        Prob > chi2   = 0.0092
+Log pseudolikelihood = -1278658.4                       Pseudo R2     = 0.0021
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.2392435   .0918797    -2.60   0.009    -.4193245   -.0591625
+       _cons |  -.0431965   .0799362    -0.54   0.589    -.1998686    .1134757
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1277062.1  
+Iteration 1:   log pseudolikelihood = -1268046.8  
+Iteration 2:   log pseudolikelihood = -1268046.6  
+Iteration 3:   log pseudolikelihood = -1268046.6  
+
+Logistic regression                                     Number of obs =  3,972
+                                                        Wald chi2(1)  =  20.57
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1268046.6                       Pseudo R2     = 0.0071
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.4416767   .0973798    -4.54   0.000    -.6325375   -.2508158
+       _cons |    .154199   .0852347     1.81   0.070     -.012858     .321256
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1270478.1  
+Iteration 1:   log pseudolikelihood = -1258559.5  
+Iteration 2:   log pseudolikelihood = -1258559.2  
+Iteration 3:   log pseudolikelihood = -1258559.2  
+
+Logistic regression                                     Number of obs =  4,013
+                                                        Wald chi2(1)  =  25.83
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1258559.2                       Pseudo R2     = 0.0094
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.5050754   .0993697    -5.08   0.000    -.6998364   -.3103144
+       _cons |   .1966454   .0880112     2.23   0.025     .0241467    .3691441
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1267942.7  
+Iteration 1:   log pseudolikelihood =   -1250247  
+Iteration 2:   log pseudolikelihood = -1250246.1  
+Iteration 3:   log pseudolikelihood = -1250246.1  
+
+Logistic regression                                     Number of obs =  4,016
+                                                        Wald chi2(1)  =  40.09
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1250246.1                       Pseudo R2     = 0.0140
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.6074608   .0959425    -6.33   0.000    -.7955046    -.419417
+       _cons |   .2433202   .0843575     2.88   0.004     .0779825    .4086579
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1281282.7  
+Iteration 1:   log pseudolikelihood = -1256179.9  
+Iteration 2:   log pseudolikelihood = -1256176.6  
+Iteration 3:   log pseudolikelihood = -1256176.6  
+
+Logistic regression                                     Number of obs =  4,065
+                                                        Wald chi2(1)  =  57.83
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1256176.6                       Pseudo R2     = 0.0196
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.7109877   .0934976    -7.60   0.000    -.8942396   -.5277358
+       _cons |   .4322524   .0815142     5.30   0.000     .2724875    .5920172
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood = -1262166.5  
+Iteration 1:   log pseudolikelihood = -1239638.1  
+Iteration 2:   log pseudolikelihood = -1239630.5  
+Iteration 3:   log pseudolikelihood = -1239630.5  
+
+Logistic regression                                     Number of obs =  3,932
+                                                        Wald chi2(1)  =  53.11
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1239630.5                       Pseudo R2     = 0.0179
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.6769116    .092885    -7.29   0.000    -.8589629   -.4948603
+       _cons |   .5079572   .0806332     6.30   0.000      .349919    .6659953
+------------------------------------------------------------------------------
+
+Iteration 0:   log pseudolikelihood =   -1252923  
+Iteration 1:   log pseudolikelihood = -1236450.1  
+Iteration 2:   log pseudolikelihood = -1236444.4  
+Iteration 3:   log pseudolikelihood = -1236444.4  
+
+Logistic regression                                     Number of obs =  3,864
+                                                        Wald chi2(1)  =  40.17
+                                                        Prob > chi2   = 0.0000
+Log pseudolikelihood = -1236444.4                       Pseudo R2     = 0.0132
+
+------------------------------------------------------------------------------
+             |               Robust
+   permanent | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   parent_10 |  -.5825216   .0919044    -6.34   0.000    -.7626509   -.4023922
+       _cons |   .4997079   .0796534     6.27   0.000     .3435901    .6558256
+------------------------------------------------------------------------------
+
+. log close

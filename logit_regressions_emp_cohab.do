@@ -162,47 +162,137 @@ global parent_string "parent_5 parent_10 parent_15"
 * age = age
 foreach ag of global age_group {
 foreach par of global parent_string {
-* Women
-log using "./regtabs/prob_perm_stocks_w_`ag'_`par'_cohab.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant `par' part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==1&wife==1 [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_`ag'_`par'_cohab_cohab.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_margins_`ag'_`par'_cohab.csv", se margin mtitles replace
-log close
-eststo clear
+* Women, permanent
+	* 5 or less
+	log using "./regtabs/prob_perm_stocks_w_`ag'_parent_5_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic permanent i.act i.occ public_servant parent_5 part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==1&wife==1&(parent_5==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_`ag'_parent_5_cohab_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_margins_`ag'_parent_5_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
+	
+	
+	* 10 or less
+	log using "./regtabs/prob_perm_stocks_w_`ag'_parent_10_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic permanent i.act i.occ public_servant parent_10 part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_`ag'_parent_10_cohab_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_margins_`ag'_parent_10_cohab.csv", se margin mtitles replace
+	log close
+	
+	* 15 or less
+	eststo clear
+	log using "./regtabs/prob_perm_stocks_w_`ag'_parent_15_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic permanent i.act i.occ public_servant parent_15 part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==1&wife==1 [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_`ag'_parent_15_cohab_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_margins_`ag'_parent_15_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
 
-* Men
-log using "./regtabs/prob_perm_stocks_m_`ag'_`par'_cohab.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant `par' part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==0&husband==1&husband==1 [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_`ag'_`par'_cohab.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_margins_`ag'_`par'_cohab.csv", se margin mtitles replace
-log close
-eststo clear
 
-* Women
-log using "./regtabs/prob_inac_stocks_w_`ag'_`par'_cohab.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic inactive i.act i.occ `par'  college if mili==0&woman==1&wife==1&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_`ag'_`par'_cohab.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_margins_`ag'_`par'_cohab.csv", se margin mtitles replace
-log close
-eststo clear
+* Men, permanent
+	* 5 or less
+	log using "./regtabs/prob_perm_stocks_m_`ag'_parent_5_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic permanent i.act i.occ public_servant parent_5 part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==0&husband==1&(parent_5==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_`ag'_parent_5_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_margins_`ag'_parent_5_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
 
-* Men
-log using "./regtabs/prob_inac_stocks_m_`ag'_`par'_cohab.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic inactive i.act i.occ `par' college if mili==0&woman==0&husband==1&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
+	* 10 or less
+	log using "./regtabs/prob_perm_stocks_m_`ag'_parent_10_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic permanent i.act i.occ public_servant parent_10 part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_`ag'_parent_10_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_margins_`ag'_parent_10_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
+	
+	* 15 or less
+	log using "./regtabs/prob_perm_stocks_m_`ag'_parent_15_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic permanent i.act i.occ public_servant parent_15 part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==0&husband==1 [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_`ag'_parent_15_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_margins_`ag'_parent_15_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
+
+* Women, inactivity * * * * * * * * * * * * * * * * * * * * * * * * * 
+	* less than 5
+	log using "./regtabs/prob_inac_stocks_w_`ag'_parent_5_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic inactive i.act i.occ parent_5 college if mili==0&woman==1&wife==1&`ag'==1&ciclo==`i'&(parent_5==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_`ag'_parent_5_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_margins_`ag'_parent_5_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
+	
+	* less than 10
+	log using "./regtabs/prob_inac_stocks_w_`ag'_parent_10_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic inactive i.act i.occ parent_10 college if mili==0&woman==1&wife==1&`ag'==1&ciclo==`i'&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_`ag'_parent_10_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_margins_`ag'_parent_10_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
+	
+* less than 15
+	log using "./regtabs/prob_inac_stocks_w_`ag'_parent_15_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic inactive i.act i.occ parent_15 college if mili==0&woman==1&wife==1&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_`ag'_parent_15_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_margins_`ag'_parent_15_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
+
+* Men, inactivity * * * * * * * * * * * * * * * * * * * * * * * * * 
+	* less than 5
+	log using "./regtabs/prob_inac_stocks_m_`ag'_parent_5_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic inactive i.act i.occ parent_5 college if mili==0&woman==0&husband==1&`ag'==1&ciclo==`i'&(parent_5==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_`ag'_parent_5_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_margins_`ag'_parent_5_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
+
+	* less than 10
+	log using "./regtabs/prob_inac_stocks_m_`ag'_parent_10_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic inactive i.act i.occ parent_10 college if mili==0&woman==0&husband==1&`ag'==1&ciclo==`i'&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_`ag'_parent_10_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_margins_`ag'_parent_10_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
+	
+	* less than 15
+	log using "./regtabs/prob_inac_stocks_m_`ag'_parent_15_cohab.log", replace nomsg
+		forvalues i=130/201{ 
+			eststo m`i': logistic inactive i.act i.occ parent_15 college if mili==0&woman==0&husband==1&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
+		}
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_`ag'_parent_15_cohab.csv", se eform replace
+	esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_margins_`ag'_parent_15_cohab.csv", se margin mtitles replace
+	log close
+	eststo clear
+	
 }
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_`ag'_`par'_cohab.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_margins_`ag'_`par'_cohab.csv", se margin mtitles replace
-log close
-eststo clear
 }
-}
+
+* Same, but export table to latex
+//
 
 foreach ag of global age_group {
 foreach par of global parent_string {
