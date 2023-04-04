@@ -26,6 +26,7 @@ gen age2065 = 0
 replace age2065 = 1 if age>=20&age<=60
 
 global age_group "age3040 age3045 age3035 age3050 age2065"
+global age_group "age3540"
 
 global parent_string "10 15"
 

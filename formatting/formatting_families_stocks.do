@@ -36,6 +36,11 @@ gen npadre_help = npadre
 replace nmadre = 0 if edad5>18
 replace npadre = 0 if edad5>18
 
+* More than two mothers in the houshold - OUT
+egen moms_in_house = nvals(nmadre), by(ciclo nvivi)
+replace moms_in_house = moms_in_house-1
+drop if moms_in_house>1
+
 sort ciclo nvivi npers
 
 gen child_dummy = (edad5<=16)
