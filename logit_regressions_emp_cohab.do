@@ -337,8 +337,8 @@ log using "./regtabs/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.log", rep
 forvalues i=130/201{ 
 	eststo m`i': logistic permanent i.act i.occ public_servant parent_10  part_time college erte i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1 [pw=factorel], vce(robust)
 }
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_margins_age3040_parent_10_agefix_cohab.csv", se margin mtitles replace
+esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.tex", se eform label replace
+esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_margins.tex", se margin mtitles label replace
 log close
 eststo clear
 
@@ -347,8 +347,8 @@ log using "./regtabs/prob_perm_stocks_m_age3040_parent_10_agefix_cohab.log", rep
 forvalues i=130/201{ 
 	eststo m`i': logistic permanent i.act i.occ public_servant parent_10  part_time college erte i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1 [pw=factorel], vce(robust)
 }
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_age3040_parent_10_agefix_cohab.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_margins_age3040_parent_10_agefix_cohab.csv", se margin mtitles replace
+esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_age3040_parent_10_agefix_cohab.tex", se eform label replace
+esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_age3040_parent_10_agefix_cohab_margins.tex", se margin mtitles label replace
 log close
 eststo clear
 
@@ -357,8 +357,8 @@ log using "./regtabs/prob_inac_stocks_w_age3040_parent_10_agefix_cohab.log", rep
 forvalues i=130/201{ 
 	eststo m`i': logistic inactive i.act i.occ parent_10  college i.age if mili==0&woman==1&wife==1&age3040==1&ciclo==`i' [pw=factorel], vce(robust)
 }
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_margins_age3040_parent_10_agefix_cohab.csv", se margin mtitles replace
+esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab.tex", se eform label replace
+esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab_margins.tex", se margin mtitles label replace
 log close
 eststo clear
 
@@ -367,8 +367,8 @@ log using "./regtabs/prob_inac_stocks_m_age3040_parent_10_agefix_cohab.log", rep
 forvalues i=130/201{ 
 	eststo m`i': logistic inactive i.act i.occ parent_10  college i.age if mili==0&woman==0&husband==1&age3040==1&ciclo==`i' [pw=factorel], vce(robust)
 }
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix_cohab.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_margins_age3040_parent_10_agefix_cohab.csv", se margin mtitles replace
+esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix_cohab.tex", se eform label replace
+esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix_cohab_margins.tex", se margin mtitles label replace
 log close
 eststo clear
 

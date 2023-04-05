@@ -164,6 +164,8 @@ global year_0522 "m2005 m2006 m2007 m2008 m2009 m2010 m2011 m2012 m2013 m2014 m2
 global q1922 "m186 m187 m188 m189 m190 m191 m192 m193 m194 m195 m196 m197 m198 m199 m200 m201"
 global q0522 "m130 m131 m132 m133 m134 m135 m136 m137 m138 m139 m140 m141 m142 m143 m144 m145 m146 m147 m148 m149 m150 m151 m152 m153 m154 m155 m156 m157 m158 m159 m160 m161 m162 m163 m164 m165 m166 m167 m168 m169 m170 m171 m172 m173 m174 m175 m176 m177 m178 m179 m180 m181 m182 m183 m184 m185 m186 m187 m188 m189 m190 m191 m192 m193 m194 m195 m196 m197 m198 m199 m200 m201"
 
+global q1522 "m170 m171 m172 m173 m174 m175 m176 m177 m178 m179 m180 m181 m182 m183 m184 m185 m186 m187 m188 m189 m190 m191 m192 m193 m194 m195 m196 m197 m198 m199 m200 m201"
+
 *global age_group "age3035 age3540 age4045 age3040 age3045" 
 
 global age_group "age3035 age3540 age3040" 
@@ -179,40 +181,52 @@ global parent_string "parent_5 parent_10 parent_15"
 * age = age
 log using "./regtabs/prob_perm_trial_3040_cohab.log", replace nomsg
 forvalues i=170/201{
-logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+	eststo m`i': logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
 }
+esttab `q1522' using "./regtabs/tex/prob_perm_stocks_mwage3040_parent_10_agefix_cohab_age_only.csv", se eform replace
 log close
+eststo clear
 
 log using "./regtabs/prob_perm_trial_3040_cohab_restrict.log", replace nomsg
 forvalues i=170/201{
-logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0))&act!=. [pw=factorel], vce(robust)
+	eststo m`i': logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0))&act!=. [pw=factorel], vce(robust)
 }
+esttab `q1522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_age_r.csv", se eform replace
 log close
+eststo clear
 
 log using "./regtabs/prob_perm_trial_inds_3040_cohab.log", replace nomsg
 forvalues i=170/201{
-logistic permanent parent_10 i.age i.act if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+	eststo m`i':logistic permanent parent_10 i.age i.act if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
 }
+esttab `q1522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_ind.csv", se eform replace
 log close
+eststo clear
 
 * Men - robustness * * * * * * * * * * * * * * * * * * * *
 
 log using "./regtabs/prob_perm_trial_m_3040_cohab.log", replace nomsg
 forvalues i=170/201{
-logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+	eststo m`i': logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
 }
+esttab `q1522' using "./regtabs/tex/prob_perm_stocks_m_age3040_parent_10_agefix_cohab_age_only.csv", se eform replace
 log close
+eststo clear
 
 log using "./regtabs/prob_perm_trial_3040_m_cohab_restrict.log", replace nomsg
 forvalues i=170/201{
-logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0))&act!=. [pw=factorel], vce(robust)
+	eststo m`i': logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0))&act!=. [pw=factorel], vce(robust)
 }
 log close
+esttab `q1522' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix_cohab_age_r.csv", se eform replace
+log close
+eststo clear
 
 log using "./regtabs/prob_perm_trial_inds_3040_m_cohab.log", replace nomsg
 forvalues i=170/201{
-logistic permanent parent_10 i.age i.act if ciclo==`i'&mili==0&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+	eststo m`i': logistic permanent parent_10 i.age i.act if ciclo==`i'&mili==0&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
 }
+esttab `q1522' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix_cohab_ind.csv", se eform replace
 log close
-
+eststo clear
 // i.act i.occ public_servant parent_10  part_time college erte i.age
