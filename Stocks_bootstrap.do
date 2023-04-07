@@ -4,7 +4,7 @@
 *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 
-// use "formatting/rawfiles/EPA_stocks20_parents.dta", clear
+use "formatting/rawfiles/EPA_stocks20_parents.dta", clear
 
 
 gen age3040 = 0
@@ -41,6 +41,10 @@ log using "./regtabs/bootstrap/boot_perm_w_3040_10_trial_0k_svy.log", replace no
 svy: mean permanent if age3040&wife&(parent_10==0&parent_15==0&parent_5==0),over(ciclo)
 log close
 
+log using "./regtabs/bootstrap/boot_perm_w_3040_10_trial_00k_svy.log", replace nomsg
+svy: mean permanent if age3040&(parent_10==0&parent_15==0&parent_5==0),over(ciclo)
+log close
+
 * Men
 log using "./regtabs/bootstrap/boot_perm_m_3040_10_trial_svy.log", replace nomsg
 svy: mean permanent if age3040&husband&father_10,over(ciclo)
@@ -48,6 +52,10 @@ log close
 
 log using "./regtabs/bootstrap/boot_perm_m_3040_10_trial_0k_svy.log", replace nomsg
 svy: mean permanent if age3040&husband&(parent_10==0&parent_15==0&parent_5==0),over(ciclo)
+log close
+
+log using "./regtabs/bootstrap/boot_perm_m_3040_10_trial_00k_svy.log", replace nomsg
+svy: mean permanent if age3040&(parent_10==0&parent_15==0&parent_5==0),over(ciclo)
 log close
 
 * Singles
@@ -64,29 +72,51 @@ log close
 capture log close
 log using "./regtabs/bootstrap/boot_perm_w_3040_10_trial.log", replace nomsg
 mean permanent if age3040&wife&parent_10==1,over(ciclo) vce(bootstrap)
-log_close
+log close
 
 log using "./regtabs/bootstrap/boot_perm_w_3040_10_trial_0k.log", replace nomsg
 mean permanent if age3040&wife&(parent_10==0&parent_15==0&parent_5==0),over(ciclo) vce(bootstrap)
-log_close
+log close
 
 * Men
 log using "./regtabs/bootstrap/boot_perm_m_3040_10_trial.log", replace nomsg
 mean permanent if age3040&husband&parent_10==1,over(ciclo) vce(bootstrap)
-log_close
+log close
 
 log using "./regtabs/bootstrap/boot_perm_m_3040_10_trial_0k.log", replace nomsg
 mean permanent if age3040&husband&(parent_10==0&parent_15==0&parent_5==0),over(ciclo) vce(bootstrap)
-log_close
+log close
 
 **# Part 3: Old school bootstrap
 * Women
-capture log close
-log using "./regtabs/bootstrap/boot_perm_w_3040_10_trial.log", replace nomsg
+// capture log close
+// log using "./regtabs/bootstrap/boot_perm_w_3040_10_trial.log", replace nomsg
 forvalues i=130/201{ 
-bootstrap mean=r(mean), reps(100) seed(42) saving("./regtabs/bootstrap/boot_perm_w_3040_10_trial_`i'",replace): summarize permanent if age3040&wife&mother_10&ciclo==`i'
+	preserve
+	keep if age3040&wife&mother_10&ciclo==`i' 
+	bootstrap mean=r(mean), reps(100) seed(42) saving("./regtabs/bootstrap/boot_perm_w_3040_10_trial_`i'",replace): summarize permanent 
+	restore
 }
-log close
-
-bootstrap mean=r(mean), reps(100) seed(42) saving("./regtabs/bootstrap/boot_perm_w_3040_10_trial_0k",replace): summarize permanent if age3040&wife&(parent_10==0&parent_15==0&parent_5==0) 
+// log close
+* Women, no kids (pulling singles together with women in couples wiht no kids)
+forvalues i=130/201{ 
+	preserve
+	keep if age3040&woman==1&(parent_10==0&parent_15==0&parent_5==0)&ciclo==`i'
+	bootstrap mean=r(mean), reps(100) seed(42) saving(		"./regtabs/bootstrap/boot_perm_w_3040_10_trial_0k_`i'",replace): summarize permanent
+	restore
+}
+* Men, kids
+forvalues i=130/201{ 
+	preserve
+	keep if age3040&husband&father_10&ciclo==`i'
+	bootstrap mean=r(mean), reps(100) seed(42) saving("./regtabs/bootstrap/boot_perm_m_3040_10_trial_`i'",replace): summarize permanent
+	restore
+}
+* Men, no kids (pulling singles together with women in couples wiht no kids)
+forvalues i=130/201{ 
+	preserve
+	keep if age3040&woman==0&(parent_10==0&parent_15==0&parent_5==0)&ciclo==`i'
+	bootstrap mean=r(mean), reps(100) seed(42) saving("./regtabs/bootstrap/boot_perm_m_3040_10_trial_0k_`i'",replace): summarize permanent
+	restore
+}
 

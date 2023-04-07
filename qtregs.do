@@ -305,13 +305,13 @@ log close
 }
 
 
-log using "./results/sqtreg_mothers_age3040__10_agefix.log", replace nomsg
+log using "./results/sqtreg_mothers_age3040_10_agefix.log", replace nomsg
 sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs ///
 		i.period_y i.age if mother_10==1&wife==1&employed&age3040==1, q(.25 .5 .75) 
 log close
 
-log using "./results/sqtreg_fathers_age3040__10_agefix.log", replace nomsg
+log using "./results/sqtreg_fathers_age3040_10_agefix.log", replace nomsg
 sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
 		i.period_y i.age if father_10==1&husband==1&employed&age3040==1, q(.25 .5 .75) 
@@ -419,8 +419,8 @@ log close
 }
 */
 
-/*
-log using "./results/sqtreg_age3040__10_hemp_time_int_diff_agefix.log", replace nomsg
+**# Official figure 6
+log using "./results/sqtreg_age3040_10_hemp_time_int_diff_agefix.log", replace nomsg
 sqreg ten_y other_ten_y ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.covid##i.sexo1 ///
                  part_time#i.sexo1 college#i.sexo1 less_hs#i.sexo1 ///
                  other_se#i.sexo1 other_college#i.sexo1 other_less_hs#i.sexo1 i.age ///
@@ -433,10 +433,11 @@ log using "./results/sqtreg_age3040_hemp_time_int_diff_0k_agefix.log", replace n
 sqreg ten_y other_ten_y ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.covid##i.sexo1 ///
                  part_time#i.sexo1 college#i.sexo1 less_hs#i.sexo1 ///
                  other_se#i.sexo1 other_college#i.sexo1 other_less_hs#i.sexo1 i.age ///
-                 if ((mother_20==0&wife==1)|(father_20==0&husband==1))&employed&age3040==1, ///
+                 if ((mother_10==0&wife==1)|(father_10==0&husband==1))&employed&age3040==1, ///
                  q(.25 .5 .75)
 log close
-*/
+
+* figure 6 with partner's tenure in bins
 /*
 log using "./results/sqtreg_age3040__10_hemp_time_int_diff_agefixtenbin.log", replace nomsg
 sqreg ten_y other_ten_y_bin ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.covid##i.sexo1 ///

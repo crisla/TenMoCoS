@@ -1,6 +1,0 @@
-
-. mean permanent if age3040&wife&parent_10==1,over(ciclo) vce(bootstrap)
-(running mean on estimation sample)
-
-Bootstrap replications (50)
-----+--- 1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5 
