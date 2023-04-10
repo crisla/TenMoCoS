@@ -14,9 +14,10 @@ cd $path
 
 use "./formatting/rawfiles/EPA_stocks20_parents.dta", clear
 
-drop period_y
-replace period_t = "t22" if (ciclo>=198)
-encode period_t, generate(period_y)
+* If not using 2022
+// drop period_y
+// replace period_t = "t22" if (ciclo>=200)
+// encode period_t, generate(period_y)
 
 drop if age<20
 drop if age>50
