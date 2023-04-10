@@ -13,8 +13,7 @@ clear all
 
 use "./formatting/rawfiles/EPA_stocks20_parents.dta", clear
 
-gen age3040 = 0
-replace age3040 = 1 if age>=30&age<40
+gen age3040 = (age>=30&age<40)
 
 capture log close
 log using "./descriptive_stats/rznotb_w_age3040_w.log", replace nomsg
@@ -176,18 +175,18 @@ global parent_string "parent_5 parent_10 parent_15"
 
 
 **# Regressions * * * * * * * * * 
-* Figure 2 & 3 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
+* Figure 2 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
 * 130 - 201 = 2005Q1 = 2022Q4
 * age = age
-log using "./regtabs/prob_perm_trial_3040_cohab.log", replace nomsg
+log using "./regtabs/prob_perm_trial_3040_w_cohab_age_only.log", replace nomsg
 forvalues i=170/201{
 	eststo m`i': logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
 }
-esttab `q1522' using "./regtabs/tex/prob_perm_stocks_mwage3040_parent_10_agefix_cohab_age_only.csv", se eform replace
+esttab `q1522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_age_only.csv", se eform replace
 log close
 eststo clear
 
-log using "./regtabs/prob_perm_trial_3040_cohab_restrict.log", replace nomsg
+log using "./regtabs/prob_perm_trial_3040_w_cohab_restrict.log", replace nomsg
 forvalues i=170/201{
 	eststo m`i': logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0))&act!=. [pw=factorel], vce(robust)
 }
@@ -195,7 +194,7 @@ esttab `q1522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_
 log close
 eststo clear
 
-log using "./regtabs/prob_perm_trial_inds_3040_cohab.log", replace nomsg
+log using "./regtabs/prob_perm_trial_inds_304_w_cohab.log", replace nomsg
 forvalues i=170/201{
 	eststo m`i':logistic permanent parent_10 i.age i.act if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
 }
@@ -205,7 +204,7 @@ eststo clear
 
 * Men - robustness * * * * * * * * * * * * * * * * * * * *
 
-log using "./regtabs/prob_perm_trial_m_3040_cohab.log", replace nomsg
+log using "./regtabs/prob_perm_trial_m_3040_cohab_age_only.log", replace nomsg
 forvalues i=170/201{
 	eststo m`i': logistic permanent parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
 }
@@ -230,3 +229,60 @@ esttab `q1522' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix_
 log close
 eststo clear
 // i.act i.occ public_servant parent_10  part_time college erte i.age
+
+
+**# Figure 3 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
+* 130 - 201 = 2005Q1 = 2022Q4
+* age = age
+
+log using "./regtabs/prob_inac_trial_3040_w_cohab_age_only.log", replace nomsg
+forvalues i=170/201{
+	eststo m`i': logistic inactive parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+}
+esttab `q1522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_age_only.csv", se eform replace
+log close
+eststo clear
+
+log using "./regtabs/inac_perm_trial_3040_w_cohab_restrict.log", replace nomsg
+forvalues i=170/201{
+	eststo m`i': logistic inactive parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0))&act!=. [pw=factorel], vce(robust)
+}
+esttab `q1522' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab_age_r.csv", se eform replace
+log close
+eststo clear
+
+log using "./regtabs/prob_inac_trial_inds_3040_w_cohab.log", replace nomsg
+forvalues i=170/201{
+	eststo m`i':logistic inactive parent_10 i.age i.act if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+}
+esttab `q1522' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab_ind.csv", se eform replace
+log close
+eststo clear
+
+* Men - robustness * * * * * * * * * * * * * * * * * * * *
+capture log close
+log using "./regtabs/prob_inac_trial_3040_m_cohab_age.log", replace nomsg
+forvalues i=170/201{
+	eststo m`i': logistic inactive parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+}
+esttab `q1522' using "./regtabs/tex/prob_perm_stocks_m_age3040_parent_10_agefix_cohab_age.csv", se eform replace
+log close
+eststo clear
+
+log using "./regtabs/prob_inac_trial_3040_m_cohab_restrict.log", replace nomsg
+forvalues i=170/201{
+	eststo m`i': logistic inactive parent_10 i.age if ciclo==`i'&mili==0&age3040==1&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0))&act!=. [pw=factorel], vce(robust)
+}
+esttab `q1522' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix_cohab_age_r.csv", se eform replace
+log close
+eststo clear
+
+log using "./regtabs/prob_inac_trial_inds_3040_m_cohab.log", replace nomsg
+forvalues i=170/201{
+	eststo m`i': logistic inactive parent_10 i.age i.act if ciclo==`i'&mili==0&woman==0&husband==1&(parent_10==1|(parent_10==0&parent_15==0&parent_5==0)) [pw=factorel], vce(robust)
+}
+esttab `q1522' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix_cohab_ind.csv", se eform replace
+log close
+eststo clear
+// i.act i.occ public_servant parent_10  part_time college erte i.age
+

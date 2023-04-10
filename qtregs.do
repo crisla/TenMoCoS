@@ -174,9 +174,36 @@ global age_group "age3035 age3540 age3040"
 global parent_string "parent_5 parent_10 parent_15"
 
 
-**# Regressions * * * * * * * * * 
+
+**# Table 2 & 4 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
+
+capture log close
+log using "./results/sqtreg_mothers_age3040_10_agefix.log", replace nomsg
+sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+		college less_hs hub_age hub_se hub_college hub_less_hs ///
+		i.period_y i.age if mother_10==1&wife==1&employed&age3040==1, q(.25 .5 .75) 
+log close
+
+log using "./results/sqtreg_mothers_0k_age3040_10_agefix.log", replace nomsg
+sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+		college less_hs hub_age hub_se hub_college hub_less_hs ///
+		i.period_y i.age if mother_15==0&wife==1&employed&age3040==1, q(.25 .5 .75) 
+log close
+
+
+log using "./results/sqtreg_fathers_age3040_10_agefix.log", replace nomsg
+sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+		college less_hs wife_age wife_se wife_college wife_less_hs ///
+		i.period_y i.age if father_10==1&husband==1&employed&age3040==1, q(.25 .5 .75) 
+log close
+
+log using "./results/sqtreg_fathers_0k_age3040_10_agefix.log", replace nomsg
+sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+		college less_hs wife_age wife_se wife_college wife_less_hs ///
+		i.period_y i.age if father_15==0&husband==1&employed&age3040==1, q(.25 .5 .75) 
+
+		
 /*
-* Table 2 & 4 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
 global parent_string_short "_5 _10 _15"
 foreach ag of global age_group{
 foreach par of global parent_string_short {
@@ -218,7 +245,6 @@ sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate i.sexo1##i.age i.occgroup i.
                  q(.25 .5 .75)  				
 log close
 */
-* Figure 5 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
 global child_string "_5 _10 _15"
 
 /*
@@ -249,6 +275,34 @@ sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time ///
 log close
 }
 */
+
+
+
+capture log close
+log using "./results/sqtreg_mothers_age3040_10_occ_agefix.log", replace nomsg
+sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+		college less_hs hub_age hub_se hub_college hub_less_hs ///
+		i.period_y i.occgroup i.age if mother_10==1&wife==1&employed&age3040==1, q(.25 .5 .75) 
+log close
+
+log using "./results/sqtreg_mothers_0k_age3040_10_occ_agefix.log", replace nomsg
+sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+		college less_hs hub_age hub_se hub_college hub_less_hs ///
+		i.period_y i.occgroup i.age if mother_15==0&wife==1&employed&age3040==1, q(.25 .5 .75) 
+log close
+
+
+log using "./results/sqtreg_fathers_age3040_10_occ_agefix.log", replace nomsg
+sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+		college less_hs wife_age wife_se wife_college wife_less_hs ///
+		i.period_y i.occgroup i.age if father_10==1&husband==1&employed&age3040==1, q(.25 .5 .75) 
+log close
+
+log using "./results/sqtreg_fathers_0k_age3040_10_occ_agefix.log", replace nomsg
+sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+		college less_hs wife_age wife_se wife_college wife_less_hs ///
+		i.period_y i.occgroup i.age if father_15==0&husband==1&employed&age3040==1, q(.25 .5 .75) 
+log close
 
 /*
 foreach ag of global age_group {
@@ -346,7 +400,7 @@ log close
 log using "./results/sqtreg_fathers_age3040__10_agefixtenbin.log", replace nomsg
 sqreg hub_ten_y i.wife_ten_y_bin part_time /// 
 		college less_hs i.wife_age wife_se wife_college wife_less_hs ///
-		i.period_y i.age i.age if father_10==1&husband==1&employed&age3040==1, q(.25 .5 .75) 
+		i.period_y i.age if father_10==1&husband==1&employed&age3040==1, q(.25 .5 .75) 
 log close
 
 log using "./results/sqtreg_fathers_0k_age3040__10_agefixtenbin.log", replace nomsg
@@ -457,7 +511,7 @@ sqreg ten_y other_ten_y_bin ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.
 log close
 */
 
-* Figure 2 & 3 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
+**# Figure 2 & 3 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
 * 130 - 201 = 2005Q1 = 2022Q4
 * age = age
 foreach ag of global age_group {
@@ -611,7 +665,7 @@ esttab `q1922' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix.
 esttab `q1922' using "./regtabs/tex/prob_inac_stocks_m_margins_age3040_parent_10_agefix.tex", se margin mtitles label replace
 eststo clear
 
-* Figure 8 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
+**# Figure 8 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
 foreach ag of global age_group {
 foreach par of global parent_string {
 log using "./regtabs/prob_perm_stocks_w_year_`ag'_`par'.log", replace nomsg
