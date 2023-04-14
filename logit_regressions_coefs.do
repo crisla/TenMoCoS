@@ -149,7 +149,7 @@ global q0522 "m130 m131 m132 m133 m134 m135 m136 m137 m138 m139 m140 m141 m142 m
 
 *global age_group "age3035 age3540 age4045 age3040 age3045" 
 
-global age_group "age3035 age3540 age3040" 
+global age_group "age3035 age3540 age3040 age4045" 
 
 *global parent_string "parent_5 parent_10 parent_15"
 
@@ -160,6 +160,7 @@ global parent_string "parent_5 parent_10 parent_15"
 * Figure 2 & 3 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
 * 130 - 201 = 2005Q1 = 2022Q4
 * age = age
+global age_group "age4045"
 foreach ag of global age_group {
 // foreach par of global parent_string {
 * Women, permanent

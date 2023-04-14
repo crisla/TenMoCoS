@@ -246,6 +246,15 @@ sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate i.sexo1##i.age i.occgroup i.
                  q(.25 .5 .75)  				
 log close
 */
+
+* Industry tenure qunatile regression for 30-40 with age fixed affects
+capture log close
+log using "./tables/sqtreg_table_industry_age3040_10_agefix.log", replace nomsg
+	eststo: sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate i.act1 i.covid##i.sexo1#i.act1 i.age ///
+               if ((mother_10==1&wife==1)|(father_10==1&husband==1))&employed&age3040==1, q(.25 .5 .75)  				
+log close
+esttab using "./regtabs/tex/sqtreg_table_industry_age3040_10_agefix.tex", se eform label replace
+
 global child_string "_5 _10 _15"
 
 /*
