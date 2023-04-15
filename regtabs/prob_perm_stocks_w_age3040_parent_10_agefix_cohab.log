@@ -2957,11 +2957,12 @@ white collar - tech. suport  |   1.490019    .484416     1.23   0.220     .78787
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
 
-. esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.csv", se eform replace
-(output written to ./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.csv)
+. esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.tex", se eform label r
+> eplace
+(output written to ./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.tex)
 
-. esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_margins_age3040_parent_10_agefix_cohab.csv", se margi
-> n mtitles replace
-(output written to ./regtabs/tex/prob_perm_stocks_w_margins_age3040_parent_10_agefix_cohab.csv)
+. esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_margins.tex", se margi
+> n mtitles label replace
+(output written to ./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_margins.tex)
 
 . log close

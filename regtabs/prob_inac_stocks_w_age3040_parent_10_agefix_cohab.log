@@ -2731,11 +2731,14 @@ white collar - tech. suport  |   .7953527   .5535024    -0.33   0.742     .20332
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
 
-. esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab.csv", se eform replace
-(output written to ./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab.csv)
+. esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab.tex", se eform label r
+> eplace
+(file ./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab.tex not found)
+(output written to ./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab.tex)
 
-. esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_margins_age3040_parent_10_agefix_cohab.csv", se margi
-> n mtitles replace
-(output written to ./regtabs/tex/prob_inac_stocks_w_margins_age3040_parent_10_agefix_cohab.csv)
+. esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab_margins.tex", se margi
+> n mtitles label replace
+(file ./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab_margins.tex not found)
+(output written to ./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix_cohab_margins.tex)
 
 . log close

@@ -110,7 +110,6 @@ by ciclo nvivi: gen Lwife = (sexo1==1&((relpp1==1&relpp1[_n+1]==2&sexo1[_n+1]==1
 by ciclo nvivi: gen Ghusband = (sexo1==0&((relpp1==1&relpp1[_n+1]==2&sexo1[_n+1]==0)|(relpp1==2&relpp1[_n-1]==1&sexo1[_n-1]==0)))
 
 * Age restriction
-
 replace Lwife = 0 if wife==1&(edad5<20|edad5>50)
 replace Ghusband = 0 if husband==1&(edad5<20|edad5>50)
 
