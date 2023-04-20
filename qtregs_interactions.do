@@ -150,5 +150,31 @@ log using "./results/sqtreg_fathers_3035_hemp_time_int_0k.log", replace nomsg
 sqreg hub_ten_y wife_ten_y i.period_y#c.wife_ten_y part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
 		i.period_y  if father==0&husband==1&employed&age>=30&age<35, q(.25 .5 .75) 
+		
+* More year detail interactions - ages 30-40 * * * * * * * * * * * * * * * * * * * * * * 
+log close _all
+log using "./results/sqtreg_mothers_3040_hemp_time_int.log", replace nomsg
+sqreg wife_ten_y hub_ten_y i.period_y#c.hub_ten_y part_time /// 
+		college less_hs hub_age hub_se hub_college hub_less_hs ///
+		i.period_y i.age if mother_10==1&wife==1&employed&age>=30&age<40, q(.25 .5 .75) 
+log close
+
+log using "./results/sqtreg_mothers_3040_hemp_time_int_0k.log", replace nomsg
+sqreg wife_ten_y hub_ten_y i.period_y#c.hub_ten_y part_time /// 
+		college less_hs hub_age hub_se hub_college hub_less_hs ///
+		i.period_y i.age if mother_15==0&wife==1&employed&age>=30&age<40, q(.25 .5 .75) 
+log close
+
+
+log using "./results/sqtreg_fathers_3040_hemp_time_int.log", replace nomsg
+sqreg hub_ten_y wife_ten_y i.period_y#c.wife_ten_y part_time /// 
+		college less_hs wife_age wife_se wife_college wife_less_hs ///
+		i.period_y i.age if father_10==1&husband==1&employed&age>=30&age<40, q(.25 .5 .75) 
+log close
+
+log using "./results/sqtreg_fathers_3040_hemp_time_int_0k.log", replace nomsg
+sqreg hub_ten_y wife_ten_y i.period_y#c.wife_ten_y part_time /// 
+		college less_hs wife_age wife_se wife_college wife_less_hs ///
+		i.period_y i.age if father_15==0&husband==1&employed&age>=30&age<40, q(.25 .5 .75) 
 
 

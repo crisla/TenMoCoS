@@ -806,21 +806,21 @@ sqreg wife_ten_y hub_ten_y part_time ///
 log close
 
 log using "./results/sqtreg_mothers_3040_hemp_yy_agefix_0k.log", replace nomsg
-sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+sqreg wife_ten_y hub_ten_y part_time /// 
 		college less_hs hub_age hub_se hub_college hub_less_hs i.age ///
 		i.yd  if mother_15==0&wife==1&employed&age>=30&age<40, q(.25 .5 .75) 
 log close
 
 
 log using "./results/sqtreg_fathers_3040_hemp_yy_agefix.log", replace nomsg
-sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+sqreg hub_ten_y wife_ten_y part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs i.age ///
 		i.yd  if father_10==1&husband==1&employed&age>=30&age<40, q(.25 .5 .75) 
 log close
 
 
 log using "./results/sqtreg_fathers_3040_hemp_yy_agefix_0k.log", replace nomsg
-sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+sqreg hub_ten_y wife_ten_y part_time /// 
 		college less_hs wife_age wife_se wife_college wife_less_hs i.age ///
 		i.yd  if father_15==0&husband==1&employed&age>=30&age<40, q(.25 .5 .75) 
 log close
