@@ -5,3 +5,5 @@ __pycache__/f_detrend.cpython-39.pyc
 .ipynb_checkpoints/TablesQuantReg-checkpoint.ipynb
 descriptive_stats/tenure_dist.csv
 descriptive_stats_old.zip
+legacy_code/descriptive_stats/tenure_dist.csv
+legacy_code/descriptive_stats/tenure_dist.zip
