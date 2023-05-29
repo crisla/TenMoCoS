@@ -5,9 +5,7 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 clear all 
 
-* Astrid's version
-// global path "C:\Users\asruland\OneDrive - Istituto Universitario Europeo\Spanish_LFS_Cross"
-* Cristina's version
+* Insert here the path to your local repo folder
 global path "C:\Users\lafuentemart\Documents\TenMoCoS\"
 
 cd $path
@@ -19,24 +17,23 @@ use "./formatting/rawfiles/EPA_stocks20_parents.dta", clear
 // replace period_t = "t22" if (ciclo>=200)
 // encode period_t, generate(period_y)
 
+* Age restrictions
 drop if age<20
 drop if age>50
 
+* State indicators
 gen temporary = state=="T"
 gen self_emp = state=="A"
 gen unemployed = state=="U"
 
+* Make dataset lighter
 keep permanent temporary self_emp unemployed age act occ public_servant married parent parent_* divorced widowed part_time erte age college tenure ciclo mili woman factorel inactive wife_ten_y hub_ten_y wife_ten_y2 hub_ten_y2 less_hs hub_age wife_age hub_se wife_se hub_college wife_college hub_less_hs wife_less_hs period_y mother mother_* employed father father_* wife husband sexo1 ten_y other_ten_y ttrend ttrend2 covid other_se other_college other_less_hs yd ocup1 married_parent married_parent_* act1
-
-/*
-save "./rawfiles/EPA_stocks20_parents_ready.dta", replace
-use "./rawfiles/EPA_stocks20_parents_ready.dta", clear
-*/
 
 * Add unemployment data
 merge m:1 ciclo using "./other_data/urate_spain.dta"
 drop _merge
 
+* Age range indicators
 gen age2550 = 0
 replace age2550 = 1 if age>=25&age<50
 
@@ -61,7 +58,7 @@ replace age3050 = 1 if age>=30&age<50
 gen age2530 = 0
 replace age2530 = 1 if age>=25&age<30
 
-*** Tenure bins
+* Tenure bins
 gen tenure_bin=.
 replace tenure_bin = 1 if tenure>=0&tenure<24
 replace tenure_bin = 2 if tenure>=24&tenure<60
@@ -98,21 +95,7 @@ replace hub_ten_y_bin = 5 if hub_ten_y>=15&hub_ten_y<20
 replace hub_ten_y_bin = 6 if hub_ten_y>=20&hub_ten_y<30
 replace hub_ten_y_bin = 7 if hub_ten_y>=30&hub_ten_y!=.
 
-/*
-Just to remember
-gen hub_ten_y_bin = .
-replace hub_ten_y_bin = 1 if hub_ten_y>=0&hub_ten_y<0.5
-replace hub_ten_y_bin = 2 if hub_ten_y>=0.5&hub_ten_y<1
-replace hub_ten_y_bin = 3 if hub_ten_y>=1&hub_ten_y<3
-replace hub_ten_y_bin = 4 if hub_ten_y>=3&hub_ten_y<5
-replace hub_ten_y_bin = 5 if hub_ten_y>=5&hub_ten_y<10
-replace hub_ten_y_bin = 6 if hub_ten_y>=10&hub_ten_y<15
-replace hub_ten_y_bin = 7 if hub_ten_y>=15&hub_ten_y<20
-replace hub_ten_y_bin = 8 if hub_ten_y>=20&hub_ten_y<30
-replace hub_ten_y_bin = 9 if hub_ten_y>=30&hub_ten_y!=.
-*/
-
-*** Occupation groupscapture drop occgroup
+* Occupation groups
 capture drop occgroup
 gen occgroup=.
 replace occgroup=1 if ocup1==1 | ocup1==2
@@ -130,10 +113,11 @@ forvalues i=130/201{
 	replace count = 1 if count==5
 }
 
+* Redine gender dummy
 drop woman
 gen woman = sexo1==1
 
-*** Occupations for summary statistics
+* Occupations for summary statistics
 gen occ_0 = ocup1==0
 gen occ_1 = ocup1==1
 gen occ_2 = ocup1==2
@@ -145,7 +129,7 @@ gen occ_7 = ocup1==7
 gen occ_8 = ocup1==8
 gen occ_9 = ocup1==9
 
-*** Industry for summary statistics
+* Industry for summary statistics
 gen act_0 = act==0
 gen act_1 = act==1
 gen act_2 = act==2
@@ -156,10 +140,6 @@ gen act_6 = act==6
 gen act_7 = act==7
 gen act_8 = act==8
 gen act_9 = act==9
-
-
-drop if age<30
-drop if age>40
 
 * Save estimation stings 
 global year_0522 "m2005 m2006 m2007 m2008 m2009 m2010 m2011 m2012 m2013 m2014 m2015 m2016 m2017 m2018 m2019 m2020 m2021 m2022"
@@ -176,7 +156,7 @@ global parent_string "parent_5 parent_10 parent_15"
 
 
 
-**# Table 2 & 4 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
+**# Quantile regressions: Figure 9 * * * * * * * * * * * * * * * * * * * *
 
 capture log close
 log using "./results/sqtreg_mothers_age3040_10_agefix.log", replace nomsg
@@ -203,7 +183,7 @@ sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time ///
 		college less_hs wife_age wife_se wife_college wife_less_hs ///
 		i.period_y i.age if father_15==0&husband==1&employed&age3040==1, q(.25 .5 .75) 
 
-		
+* Robustness: other age groups (uncomment)	
 /*
 global parent_string_short "_5 _10 _15"
 foreach ag of global age_group{
@@ -234,6 +214,7 @@ log close
 }
 }
 
+* Robustness: fewer controls
 log using "./tables/sqtreg_table_simple_age3040__10_agefix.log", replace nomsg
 sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate i.sexo1##i.age i.covid##i.sexo1 ///
                 if ((mother_10==1&wife==1)|(father_10==1&husband==1))&employed&age3040==1, ///
@@ -255,39 +236,7 @@ log using "./tables/sqtreg_table_industry_age3040_10_agefix.log", replace nomsg
 log close
 esttab using "./regtabs/tex/sqtreg_table_industry_age3040_10_agefix.tex", se eform label replace
 
-global child_string "_5 _10 _15"
-
-/*
-foreach ag of global age_group {
-foreach par of global child_string {
-log using "./results/sqtreg_mothers_`ag'_`par'.log", replace nomsg
-sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
-		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		i.period_y  if mother`par'==1&wife==1&employed&`ag'==1, q(.25 .5 .75) 
-log close
-
-log using "./results/sqtreg_fathers_`ag'_`par'.log", replace nomsg
-sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
-		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		i.period_y  if father`par'==1&husband==1&employed&`ag'==1, q(.25 .5 .75) 
-log close
-}
-log using "./results/sqtreg_mothers_0k_`ag'.log", replace nomsg		
-sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
-		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		i.period_y if mother_20==0&wife==1&employed&`ag'==1, q(.25 .5 .75) 
-log close
-
-log using "./results/sqtreg_fathers_0k_`ag'.log", replace nomsg
-sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
-		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		i.period_y  if father_20==0&husband==1&employed&`ag'==1, q(.25 .5 .75) 
-log close
-}
-*/
-
-
-
+* Regressions with occupation controls
 capture log close
 log using "./results/sqtreg_mothers_age3040_10_occ_agefix.log", replace nomsg
 sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
@@ -315,6 +264,7 @@ sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time ///
 log close
 
 /*
+* Regressions with occupation and industry controls
 foreach ag of global age_group {
 foreach par of global child_string {
 log using "./results/sqtreg_mothers_`ag'_`par'_occ.log", replace nomsg
@@ -367,34 +317,10 @@ sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time ///
 log close
 
 }
-
-
-log using "./results/sqtreg_mothers_age3040_10_agefix.log", replace nomsg
-sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
-		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		i.period_y i.age if mother_10==1&wife==1&employed&age3040==1, q(.25 .5 .75) 
-log close
-
-log using "./results/sqtreg_fathers_age3040_10_agefix.log", replace nomsg
-sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
-		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		i.period_y i.age if father_10==1&husband==1&employed&age3040==1, q(.25 .5 .75) 
-log close
-
-log using "./results/sqtreg_mothers_0k_age3040_agefix.log", replace nomsg		
-sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
-		college less_hs hub_age hub_se hub_college hub_less_hs ///
-		i.period_y i.age if mother_20==0&wife==1&employed&age3040==1, q(.25 .5 .75) 
-log close
-
-log using "./results/sqtreg_fathers_0k_age3040_agefix.log", replace nomsg
-sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
-		college less_hs wife_age wife_se wife_college wife_less_hs ///
-		i.period_y i.age if father_20==0&husband==1&employed&age3040==1, q(.25 .5 .75) 
-log close
 */
 
 /*
+* Regressions with tneure of the partner in bins
 log using "./results/sqtreg_mothers_age3040__10_agefixtenbin.log", replace nomsg
 sqreg wife_ten_y i.hub_ten_y_bin part_time /// 
 		college less_hs i.hub_age hub_se hub_college hub_less_hs ///
@@ -420,7 +346,7 @@ sqreg hub_ten_y i.wife_ten_y_bin part_time ///
 log close
 */
 /*
-* Figure 6 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
+* Figure 9 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
 foreach ag of global age_group {
 foreach par of global child_string {
 log using "./results/sqtreg_`ag'_`par'_hemp_time_int_diff.log", replace nomsg
@@ -440,7 +366,39 @@ sqreg ten_y other_ten_y ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.covi
                  q(.25 .5 .75)
 log close
 }
+
 */
+/*
+* Not conditioning on whether the husband is employed or not
+global child_string "_5 _10 _15"
+foreach ag of global age_group {
+foreach par of global child_string {
+log using "./results/sqtreg_mothers_`ag'_`par'.log", replace nomsg
+sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+		college less_hs hub_age hub_se hub_college hub_less_hs ///
+		i.period_y  if mother`par'==1&wife==1&employed&`ag'==1, q(.25 .5 .75) 
+log close
+
+log using "./results/sqtreg_fathers_`ag'_`par'.log", replace nomsg
+sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+		college less_hs wife_age wife_se wife_college wife_less_hs ///
+		i.period_y  if father`par'==1&husband==1&employed&`ag'==1, q(.25 .5 .75) 
+log close
+}
+log using "./results/sqtreg_mothers_0k_`ag'.log", replace nomsg		
+sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+		college less_hs hub_age hub_se hub_college hub_less_hs ///
+		i.period_y if mother_20==0&wife==1&employed&`ag'==1, q(.25 .5 .75) 
+log close
+
+log using "./results/sqtreg_fathers_0k_`ag'.log", replace nomsg
+sqreg hub_ten_y wife_ten_y wife_ten_y2 part_time /// 
+		college less_hs wife_age wife_se wife_college wife_less_hs ///
+		i.period_y  if father_20==0&husband==1&employed&`ag'==1, q(.25 .5 .75) 
+log close
+}
+*/
+
 /*
 global age_group_short "age3040"
 global child_string_short "_10"
@@ -483,7 +441,7 @@ log close
 }
 */
 
-**# Official figure 6
+**# Official figure 9
 log using "./results/sqtreg_age3040_10_hemp_time_int_diff_agefix.log", replace nomsg
 sqreg ten_y other_ten_y ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.covid##i.sexo1 ///
                  part_time#i.sexo1 college#i.sexo1 less_hs#i.sexo1 ///
@@ -501,7 +459,7 @@ sqreg ten_y other_ten_y ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.covi
                  q(.25 .5 .75)
 log close
 
-* figure 6 with partner's tenure in bins
+* figure 9 with partner's tenure in bins
 /*
 log using "./results/sqtreg_age3040__10_hemp_time_int_diff_agefixtenbin.log", replace nomsg
 sqreg ten_y other_ten_y_bin ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.covid##i.sexo1 ///
@@ -520,238 +478,6 @@ sqreg ten_y other_ten_y_bin ttrend ttrend2 i.sexo1#c.ttrend i.sexo1#c.ttrend2 i.
                  q(.25 .5 .75)
 log close
 */
-
-**# Figure 2 & 3 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
-* 130 - 201 = 2005Q1 = 2022Q4
-* age = age
-foreach ag of global age_group {
-foreach par of global parent_string {
-* Women
-log using "./regtabs/prob_perm_stocks_w_`ag'_`par'.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant `par' married married_`par' divorced widowed part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==1 [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_`ag'_`par'.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_margins_`ag'_`par'.csv", se margin mtitles replace
-log close
-eststo clear
-
-* Men
-log using "./regtabs/prob_perm_stocks_m_`ag'_`par'.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant `par' married married_`par' divorced widowed part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==0 [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_`ag'_`par'.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_margins_`ag'_`par'.csv", se margin mtitles replace
-log close
-eststo clear
-
-* Women
-log using "./regtabs/prob_inac_stocks_w_`ag'_`par'.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic inactive i.act i.occ `par' married married_`par' divorced widowed college if mili==0&woman==1&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_`ag'_`par'.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_margins_`ag'_`par'.csv", se margin mtitles replace
-log close
-eststo clear
-
-* Men
-log using "./regtabs/prob_inac_stocks_m_`ag'_`par'.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic inactive i.act i.occ `par' married married_`par' divorced widowed college if mili==0&woman==0&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_`ag'_`par'.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_margins_`ag'_`par'.csv", se margin mtitles replace
-log close
-eststo clear
-}
-}
-
-foreach ag of global age_group {
-foreach par of global parent_string {
-* Women
-forvalues i=186/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant `par' married married_`par' divorced widowed part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==1 [pw=factorel], vce(robust)
-}
-esttab `q1922' using "./regtabs/tex/prob_perm_stocks_w_`ag'_`par'.tex", se eform label replace
-esttab `q1922' using "./regtabs/tex/prob_perm_stocks_w_margins_`ag'_`par'.tex", se margin mtitles label replace
-eststo clear
-
-* Men
-forvalues i=186/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant `par' married married_`par' divorced widowed part_time college erte if ciclo==`i'&mili==0&`ag'==1&woman==0 [pw=factorel], vce(robust)
-}
-esttab `q1922' using "./regtabs/tex/prob_perm_stocks_m_`ag'_`par'.tex", se eform label replace
-esttab `q1922' using "./regtabs/tex/prob_perm_stocks_m_margins_`ag'_`par'.tex", se margin mtitles label replace
-eststo clear
-
-* Women
-forvalues i=186/201{ 
-	eststo m`i': logistic inactive i.act i.occ `par' married married_`par' divorced widowed college if mili==0&woman==1&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
-}
-esttab `q1922' using "./regtabs/tex/prob_inac_stocks_w_`ag'_`par'.tex", se eform label replace
-esttab `q1922' using "./regtabs/tex/prob_inac_stocks_w_margins_`ag'_`par'.tex", se margin mtitles label replace
-eststo clear
-
-* Men
-forvalues i=186/201{ 
-	eststo m`i': logistic inactive i.act i.occ `par' married married_`par' divorced widowed college if mili==0&woman==0&`ag'==1&ciclo==`i' [pw=factorel], vce(robust)
-}
-esttab `q1922' using "./regtabs/tex/prob_inac_stocks_m_`ag'_`par'.tex", se eform label replace
-esttab `q1922' using "./regtabs/tex/prob_inac_stocks_m_margins_`ag'_`par'.tex", se margin mtitles label replace
-eststo clear
-}
-}
-
-
-log using "./regtabs/prob_perm_stocks_w_age3040_parent_10_agefix.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant parent_10 married married_parent_10 divorced widowed part_time college erte i.age if ciclo==`i'&mili==0&age3040==1&woman==1 [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_margins_age3040_parent_10_agefix.csv", se margin mtitles replace
-log close
-eststo clear
-
-* Men
-log using "./regtabs/prob_perm_stocks_m_age3040_parent_10_agefix.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant parent_10 married married_parent_10 divorced widowed part_time college erte i.age if ciclo==`i'&mili==0&age3040==1&woman==0 [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_age3040_parent_10_agefix.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_perm_stocks_m_margins_age3040_parent_10_agefix.csv", se margin mtitles replace
-log close
-eststo clear
-
-* Women
-log using "./regtabs/prob_inac_stocks_w_age3040_parent_10_agefix.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic inactive i.act i.occ parent_10 married married_parent_10 divorced widowed college i.age if mili==0&woman==1&age3040==1&ciclo==`i' [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_w_margins_age3040_parent_10_agefix.csv", se margin mtitles replace
-log close
-eststo clear
-
-* Men
-log using "./regtabs/prob_inac_stocks_m_age3040_parent_10_agefix.log", replace nomsg
-forvalues i=130/201{ 
-	eststo m`i': logistic inactive i.act i.occ parent_10 married married_parent_10 divorced widowed college i.age if mili==0&woman==0&age3040==1&ciclo==`i' [pw=factorel], vce(robust)
-}
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix.csv", se eform replace
-esttab `q0522' using "./regtabs/tex/prob_inac_stocks_m_margins_age3040_parent_10_agefix.csv", se margin mtitles replace
-log close
-eststo clear
-
-forvalues i=186/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant parent_10 married married_parent_10 divorced widowed part_time college erte i.age if ciclo==`i'&mili==0&age3040==1&woman==1 [pw=factorel], vce(robust)
-}
-esttab `q1922' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix.tex", se eform label replace
-esttab `q1922' using "./regtabs/tex/prob_perm_stocks_w_margins_age3040_parent_10_agefix.tex", se margin mtitles label replace
-eststo clear
-
-* Men
-forvalues i=186/201{ 
-	eststo m`i': logistic permanent i.act i.occ public_servant parent_10 married married_parent_10 divorced widowed part_time college erte i.age if ciclo==`i'&mili==0&age3040==1&woman==0 [pw=factorel], vce(robust)
-}
-esttab `q1922' using "./regtabs/tex/prob_perm_stocks_m_age3040_parent_10_agefix.tex", se eform label replace
-esttab `q1922' using "./regtabs/tex/prob_perm_stocks_m_margins_age3040_parent_10_agefix.tex", se margin mtitles label replace
-eststo clear
-
-* Women
-forvalues i=186/201{ 
-	eststo m`i': logistic inactive i.act i.occ parent_10 married married_parent_10 divorced widowed college i.age if mili==0&woman==1&age3040==1&ciclo==`i' [pw=factorel], vce(robust)
-}
-esttab `q1922' using "./regtabs/tex/prob_inac_stocks_w_age3040_parent_10_agefix.tex", se eform label replace
-esttab `q1922' using "./regtabs/tex/prob_inac_stocks_w_margins_age3040_parent_10_agefix.tex", se margin mtitles label replace
-eststo clear
-
-* Men
-forvalues i=186/201{ 
-	eststo m`i': logistic inactive i.act i.occ parent_10 married married_parent_10 divorced widowed college i.age if mili==0&woman==0&age3040==1&ciclo==`i' [pw=factorel], vce(robust)
-}
-esttab `q1922' using "./regtabs/tex/prob_inac_stocks_m_age3040_parent_10_agefix.tex", se eform label replace
-esttab `q1922' using "./regtabs/tex/prob_inac_stocks_m_margins_age3040_parent_10_agefix.tex", se margin mtitles label replace
-eststo clear
-
-**# Figure 8 different age groups (parents and children) * * * * * * * * * * * * * * * * * * * *
-foreach ag of global age_group {
-foreach par of global parent_string {
-log using "./regtabs/prob_perm_stocks_w_year_`ag'_`par'.log", replace nomsg
-forval t=2005/2022 { 
-eststo m`t': logistic permanent i.act i.occ public_servant `par' married married_`par' divorced widowed part_time erte college if yd==`t'&mili==0&`ag'==1&woman==1 [pw=factorel], vce(robust)
-}
-log close
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_`ag'_`par'.tex", se eform label replace
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_`ag'_`par'.tex", se margin mtitles label replace
-eststo clear
-
-log using "./regtabs/prob_perm_stocks_m_year_`ag'_`par'.log", replace nomsg
-forval t=2005/2022 { 
-eststo m`t': logistic permanent i.act i.occ public_servant `par' married married_`par' divorced widowed part_time erte college if yd==`t'&mili==0&`ag'==1&woman==0 [pw=factorel], vce(robust)
-}
-log close
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_`ag'_`par'.tex", se eform label replace
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_`ag'_`par'.tex", se margin mtitles label replace
-eststo clear
-
-log using "./regtabs/prob_inac_stocks_w_year_`ag'_`par'.log", replace nomsg
-forval t=2005/2022 { 
-eststo m`t': logistic inactive i.act i.occ public_servant `par' married married_`par' divorced widowed college if yd==`t'&mili==0&`ag'==1&woman==1 [pw=factorel], vce(robust)
-}
-log close
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_`ag'_`par'.tex", se eform label replace
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_`ag'_`par'.tex", se margin mtitles label replace
-eststo clear
-
-log using "./regtabs/prob_inac_stocks_m_year_`ag'_`par'.log", replace nomsg
-forval t=2005/2022 { 
-eststo m`t': logistic inactive i.act i.occ public_servant `par' married married_`par' divorced widowed college if yd==`t'&mili==0&`ag'==1&woman==0 [pw=factorel], vce(robust)
-}
-log close
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_`ag'_`par'.tex", se eform label replace
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_`ag'_`par'.tex", se margin mtitles label replace
-eststo clear
-}
-}
-
-log using "./regtabs/prob_perm_stocks_w_year_age3040_parent_10_agefix.log", replace nomsg
-forval t=2005/2022 { 
-eststo m`t': logistic permanent i.act i.occ public_servant parent_10 married married_parent_10 divorced widowed part_time erte college i.age if yd==`t'&mili==0&age3040==1&woman==1 [pw=factorel], vce(robust)
-}
-log close
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_age3040_parent_10_agefix.tex", se eform label replace
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_age3040_parent_10_agefix.tex", se margin mtitles label replace
-eststo clear
-
-log using "./regtabs/prob_perm_stocks_m_year_`ag'_`par'.log", replace nomsg
-forval t=2005/2022 { 
-eststo m`t': logistic permanent i.act i.occ public_servant parent_10 married married_parent_10 divorced widowed part_time erte college i.age if yd==`t'&mili==0&age3040==1&woman==0 [pw=factorel], vce(robust)
-}
-log close
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_age3040_parent_10_agefix.tex", se eform label replace
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_age3040_parent_10_agefix.tex", se margin mtitles label replace
-eststo clear
-
-log using "./regtabs/prob_inac_stocks_w_year_`ag'_`par'.log", replace nomsg
-forval t=2005/2022 { 
-eststo m`t': logistic inactive i.act i.occ public_servant parent_10 married married_parent_10 divorced widowed college i.age if yd==`t'&mili==0&age3040==1&woman==1 [pw=factorel], vce(robust)
-}
-log close
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_age3040_parent_10_agefix.tex", se eform label replace
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_age3040_parent_10_agefix.tex", se margin mtitles label replace
-eststo clear
-
-log using "./regtabs/prob_inac_stocks_m_year_`ag'_`par'.log", replace nomsg
-forval t=2005/2022 { 
-eststo m`t': logistic inactive i.act i.occ public_servant parent_10 married married_parent_10 divorced widowed college i.age if yd==`t'&mili==0&age3040==1&woman==0 [pw=factorel], vce(robust)
-}
-log close
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_age3040_parent_10_agefix.tex", se eform label replace
-esttab `year_0522' using "./regtabs/tex/prob_perm_stocks_w_year_age3040_parent_10_agefix.tex", se margin mtitles label replace
-eststo clear
-
 
 * Table 2 & 4 different age groups (parents and children) excluding the last two quarters of 2022 * * * * * * * * * * * * * * * * * * * *
 drop if ciclo==200|ciclo==201

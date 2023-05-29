@@ -13,7 +13,7 @@ tab age mother_10 if woman
 tab age mother_15 if woman
 log close
 
-
+**# Export tenure dataset to be formatted in python
 export delimited sexo1 edad5 ciclo yd state act1 wife husband mother mother_5 mother_10  ///
 mother_15 father father_5 father_10 father_15 father_state hub_state hub_ten_y ///
 tenure ten_y wife_state wife_ten disc part_time facexp if employed==1&edad5>=20&edad5<60 ///
@@ -39,7 +39,7 @@ log using "./descriptive_stats/tenure_3040_not_fathers.log", replace nomsg
 tab ciclo if husband==1&father_10==0&age3040==1 [fweight=facexp], sum(ten_y )
 log close
 
-
+**# Industry not missing
 
 gen non_missing_ind = (acta!=.|act1!=.)
 

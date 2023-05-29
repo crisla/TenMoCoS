@@ -1,0 +1,17 @@
+
+. sqreg wife_ten_y hub_ten_y hub_ten_y2 part_time /// 
+>                 college less_hs hub_age hub_se hub_college hub_less_hs ///
+>                 i.period_y i.age if mother_10==1&wife==1&employed&age3040==1, q(.25 .5 .75) 
+(fitting base model)
+
+Bootstrap replications (20)
+----+--- 1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5 
+...........--Break--
+r(1);
+
+end of do-file
+
+--Break--
+r(1);
+
+. exit, clear
