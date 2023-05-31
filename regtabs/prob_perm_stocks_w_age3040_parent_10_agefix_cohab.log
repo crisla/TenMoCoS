@@ -1,7 +1,7 @@
 
 . forvalues i=130/201{ 
-  2.         eststo m`i': logistic permanent i.act i.occ public_servant parent_10  part_time college less_hs e
-> rte i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1 [pw=factorel], vce(robust)
+  2.         eststo m`i': logistic permanent i.act i.occ public_servant parent_10  part_time college less_hs er
+> te i.age if ciclo==`i'&mili==0&age3040==1&woman==1&wife==1 [pw=factorel], vce(robust)
   3. }
 note: erte omitted because of collinearity.
 
@@ -3029,12 +3029,12 @@ white collar - tech. suport  |   1.469546   .4792554     1.18   0.238     .77550
 ----------------------------------------------------------------------------------------------
 Note: _cons estimates baseline odds.
 
-. esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.tex", se eform label r
-> eplace
+. esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.tex", se eform label re
+> place
 (output written to ./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab.tex)
 
-. esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_margins.tex", se margi
-> n mtitles label replace
+. esttab `q0522' using "./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_margins.tex", se margin
+>  mtitles label replace
 (output written to ./regtabs/tex/prob_perm_stocks_w_age3040_parent_10_agefix_cohab_margins.tex)
 
 . log close

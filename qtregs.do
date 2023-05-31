@@ -26,6 +26,10 @@ gen temporary = state=="T"
 gen self_emp = state=="A"
 gen unemployed = state=="U"
 
+// by ciclo nvivi: replace disc = sum(disc)
+// by ciclo nvivi: replace disc = disc[_N]
+// drop if disc>0
+
 * Make dataset lighter
 keep permanent temporary self_emp unemployed age act occ public_servant married parent parent_* divorced widowed part_time erte age college tenure ciclo mili woman factorel inactive wife_ten_y hub_ten_y wife_ten_y2 hub_ten_y2 less_hs hub_age wife_age hub_se wife_se hub_college wife_college hub_less_hs wife_less_hs period_y mother mother_* employed father father_* wife husband sexo1 ten_y other_ten_y ttrend ttrend2 covid other_se other_college other_less_hs yd ocup1 married_parent married_parent_* act1
 
@@ -141,19 +145,9 @@ gen act_7 = act==7
 gen act_8 = act==8
 gen act_9 = act==9
 
-* Save estimation stings 
-global year_0522 "m2005 m2006 m2007 m2008 m2009 m2010 m2011 m2012 m2013 m2014 m2015 m2016 m2017 m2018 m2019 m2020 m2021 m2022"
-global q1922 "m186 m187 m188 m189 m190 m191 m192 m193 m194 m195 m196 m197 m198 m199 m200 m201"
-global q0522 "m130 m131 m132 m133 m134 m135 m136 m137 m138 m139 m140 m141 m142 m143 m144 m145 m146 m147 m148 m149 m150 m151 m152 m153 m154 m155 m156 m157 m158 m159 m160 m161 m162 m163 m164 m165 m166 m167 m168 m169 m170 m171 m172 m173 m174 m175 m176 m177 m178 m179 m180 m181 m182 m183 m184 m185 m186 m187 m188 m189 m190 m191 m192 m193 m194 m195 m196 m197 m198 m199 m200 m201"
-
-*global age_group "age3035 age3540 age4045 age3040 age3045" 
-
+* Choose age groups for parents and children
 global age_group "age3035 age3540 age3040" 
-
-*global parent_string "parent_5 parent_10 parent_15"
-
 global parent_string "parent_5 parent_10 parent_15"
-
 
 
 **# Quantile regressions: Figure 9 * * * * * * * * * * * * * * * * * * * *
@@ -228,7 +222,7 @@ sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate i.sexo1##i.age i.occgroup i.
 log close
 */
 
-* Industry tenure qunatile regression for 30-40 with age fixed affects
+* Industry tenure quantile regression for 30-40 with age fixed affects
 capture log close
 log using "./tables/sqtreg_table_industry_age3040_10_agefix.log", replace nomsg
 	eststo: sqreg ten_y ttrend i.sexo1#c.ttrend i.sexo1#c.urate i.act1 i.covid##i.sexo1#i.act1 i.age ///
@@ -524,29 +518,29 @@ log close
 
 **# Year-by-year results
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-log close
-log using "./results/sqtreg_mothers_3040_hemp_yy_agefix.log", replace nomsg
-sqreg wife_ten_y hub_ten_y part_time /// 
-		college less_hs hub_age hub_se hub_college hub_less_hs i.age ///
-		i.yd  if mother_10==1&wife==1&employed&age>=30&age<40, q(.25 .5 .75) 
-log close
-
-log using "./results/sqtreg_mothers_3040_hemp_yy_agefix_0k.log", replace nomsg
-sqreg wife_ten_y hub_ten_y part_time /// 
-		college less_hs hub_age hub_se hub_college hub_less_hs i.age ///
-		i.yd  if mother_15==0&wife==1&employed&age>=30&age<40, q(.25 .5 .75) 
-log close
-
-
-log using "./results/sqtreg_fathers_3040_hemp_yy_agefix.log", replace nomsg
-sqreg hub_ten_y wife_ten_y part_time /// 
-		college less_hs wife_age wife_se wife_college wife_less_hs i.age ///
-		i.yd  if father_10==1&husband==1&employed&age>=30&age<40, q(.25 .5 .75) 
-log close
-
-
-log using "./results/sqtreg_fathers_3040_hemp_yy_agefix_0k.log", replace nomsg
-sqreg hub_ten_y wife_ten_y part_time /// 
-		college less_hs wife_age wife_se wife_college wife_less_hs i.age ///
-		i.yd  if father_15==0&husband==1&employed&age>=30&age<40, q(.25 .5 .75) 
-log close
+// log close
+// log using "./results/sqtreg_mothers_3040_hemp_yy_agefix.log", replace nomsg
+// sqreg wife_ten_y hub_ten_y part_time /// 
+// 		college less_hs hub_age hub_se hub_college hub_less_hs i.age ///
+// 		i.yd  if mother_10==1&wife==1&employed&age>=30&age<40, q(.25 .5 .75) 
+// log close
+//
+// log using "./results/sqtreg_mothers_3040_hemp_yy_agefix_0k.log", replace nomsg
+// sqreg wife_ten_y hub_ten_y part_time /// 
+// 		college less_hs hub_age hub_se hub_college hub_less_hs i.age ///
+// 		i.yd  if mother_15==0&wife==1&employed&age>=30&age<40, q(.25 .5 .75) 
+// log close
+//
+//
+// log using "./results/sqtreg_fathers_3040_hemp_yy_agefix.log", replace nomsg
+// sqreg hub_ten_y wife_ten_y part_time /// 
+// 		college less_hs wife_age wife_se wife_college wife_less_hs i.age ///
+// 		i.yd  if father_10==1&husband==1&employed&age>=30&age<40, q(.25 .5 .75) 
+// log close
+//
+//
+// log using "./results/sqtreg_fathers_3040_hemp_yy_agefix_0k.log", replace nomsg
+// sqreg hub_ten_y wife_ten_y part_time /// 
+// 		college less_hs wife_age wife_se wife_college wife_less_hs i.age ///
+// 		i.yd  if father_15==0&husband==1&employed&age>=30&age<40, q(.25 .5 .75) 
+// log close
