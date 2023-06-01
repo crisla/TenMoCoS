@@ -1,0 +1,243 @@
+
+. sqreg wife_ten_y i.hub_ten_y_binprec part_time /// 
+>                 college less_hs hub_age hub_se hub_college hub_less_hs ///
+>                 i.period_y i.age if mother_10==1&wife==1&employed&age3040==1&hub_ten_y_bin<=15, q(.25 .5 .75) 
+(fitting base model)
+
+Bootstrap replications (20)
+----+--- 1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5 
+convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x..convergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.
+
+Simultaneous quantile regression                    Number of obs =    183,470
+  bootstrap(20) SEs                                 .25 Pseudo R2 =     0.0537
+                                                    .50 Pseudo R2 =     0.0770
+                                                    .75 Pseudo R2 =     0.0750
+
+-----------------------------------------------------------------------------------
+                  |              Bootstrap
+       wife_ten_y | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+------------------+----------------------------------------------------------------
+q25               |
+hub_ten_y_binprec |
+               2  |   .1712964   .0472685     3.62   0.000     .0786512    .2639416
+               3  |   .4120371   .0338612    12.17   0.000     .3456699    .4784044
+               4  |   .7175927   .0392381    18.29   0.000     .6406869    .7944985
+               5  |   1.111111   .0446642    24.88   0.000      1.02357    1.198652
+               6  |   1.527778   .0419098    36.45   0.000     1.445636     1.60992
+               7  |   1.560185   .0630663    24.74   0.000     1.436577    1.683794
+                  |
+        part_time |  -.9212962   .0302181   -30.49   0.000    -.9805231   -.8620694
+          college |    1.37963   .0361853    38.13   0.000     1.308707    1.450552
+          less_hs |  -.4120371   .0517784    -7.96   0.000    -.5135215   -.3105527
+          hub_age |   -.012963   .0019238    -6.74   0.000    -.0167336   -.0091923
+           hub_se |   .0277778   .0331217     0.84   0.402      -.03714    .0926955
+      hub_college |   .5324073   .0445934    11.94   0.000     .4450052    .6198094
+      hub_less_hs |   -.351852   .0439275    -8.01   0.000    -.4379488   -.2657552
+                  |
+         period_y |
+          t08_11  |   .2546296   .0362092     7.03   0.000     .1836604    .3255989
+          t11_14  |   1.018518   .0440469    23.12   0.000     .9321875    1.104849
+          t14_17  |   1.097222   .0741062    14.81   0.000     .9519757    1.242469
+          t17_20  |   .3657407   .0445797     8.20   0.000     .2783655    .4531159
+             t20  |   .2916666   .0725425     4.02   0.000      .149485    .4338481
+             t21  |   .0462963   .0444856     1.04   0.298    -.0408945    .1334871
+             t22  |  -.0046296    .079526    -0.06   0.954    -.1604987    .1512394
+                  |
+           35.age |   .7777777    .018363    42.36   0.000     .7417866    .8137688
+            _cons |   .6296293   .0788703     7.98   0.000     .4750454    .7842132
+------------------+----------------------------------------------------------------
+q50               |
+hub_ten_y_binprec |
+               2  |   .3333343   .0919802     3.62   0.000     .1530553    .5136134
+               3  |   .7261898    .080922     8.97   0.000     .5675846    .8847951
+               4  |   .9880951   .0808112    12.23   0.000     .8297071    1.146483
+               5  |   1.869047   .0677371    27.59   0.000     1.736283     2.00181
+               6  |   2.785714   .0646455    43.09   0.000     2.659011    2.912418
+               7  |   3.392857   .0859022    39.50   0.000     3.224491    3.561224
+                  |
+        part_time |  -1.404763   .0486483   -28.88   0.000    -1.500112   -1.309413
+          college |   1.749999   .0464507    37.67   0.000     1.658957    1.841041
+          less_hs |   -1.34524   .1015281   -13.25   0.000    -1.544233   -1.146248
+          hub_age |  -.0214285   .0040893    -5.24   0.000    -.0294434   -.0134136
+           hub_se |    .214286   .0371618     5.77   0.000     .1414498    .2871222
+      hub_college |   .3809532   .0431795     8.82   0.000     .2963225     .465584
+      hub_less_hs |  -.9880949   .0500739   -19.73   0.000    -1.086239   -.8899512
+                  |
+         period_y |
+          t08_11  |    -.02381   .0538495    -0.44   0.658    -.1293539    .0817338
+          t11_14  |     .72619   .0524879    13.84   0.000     .6233149     .829065
+          t14_17  |   1.321428   .0792404    16.68   0.000     1.166119    1.476738
+          t17_20  |   1.309524    .062439    20.97   0.000     1.187145    1.431903
+             t20  |   .8214293   .0947532     8.67   0.000     .6357151    1.007143
+             t21  |   .1428562   .1073686     1.33   0.183    -.0675838    .3532962
+             t22  |  -.2023805   .1130168    -1.79   0.073    -.4238909    .0191299
+                  |
+           35.age |   1.964285   .0368942    53.24   0.000     1.891973    2.036597
+            _cons |   3.059523   .1425855    21.46   0.000     2.780059    3.338987
+------------------+----------------------------------------------------------------
+q75               |
+hub_ten_y_binprec |
+               2  |   .4012337    .120109     3.34   0.001     .1658229    .6366445
+               3  |   .8621388   .0890182     9.68   0.000     .6876653    1.036612
+               4  |   .8621398   .0904961     9.53   0.000     .6847694     1.03951
+               5  |   1.440329   .0632817    22.76   0.000     1.316298     1.56436
+               6  |   2.199588   .0695964    31.60   0.000     2.063181    2.335995
+               7  |   3.289094   .0951114    34.58   0.000     3.102678    3.475511
+                  |
+        part_time |  -1.048354   .0343965   -30.48   0.000     -1.11577   -.9809375
+          college |   .0576131   .0327602     1.76   0.079    -.0065961    .1218223
+          less_hs |  -2.962963   .1785585   -16.59   0.000    -3.312933   -2.612992
+          hub_age |   .0473251   .0033323    14.20   0.000     .0407939    .0538563
+           hub_se |   .1728393   .0449533     3.84   0.000     .0847318    .2609467
+      hub_college |  -.0421807   .0387962    -1.09   0.277    -.1182204    .0338589
+      hub_less_hs |  -1.773663    .107476   -16.50   0.000    -1.984313   -1.563013
+                  |
+         period_y |
+          t08_11  |  -.3487658   .0686302    -5.08   0.000    -.4832793   -.2142523
+          t11_14  |  -.1440334    .051096    -2.82   0.005    -.2441805   -.0438864
+          t14_17  |   .3621398    .076105     4.76   0.000     .2129758    .5113038
+          t17_20  |   .6450619   .0744387     8.67   0.000     .4991638      .79096
+             t20  |   .8302466   .0959159     8.66   0.000     .6422537     1.01824
+             t21  |   .3940329   .1136677     3.47   0.001     .1712468    .6168191
+             t22  |   .0185182   .1075997     0.17   0.863    -.1923746    .2294111
+                  |
+           35.age |   3.004115    .034988    85.86   0.000      2.93554    3.072691
+            _cons |   6.031893   .1097858    54.94   0.000     5.816716    6.247071
+-----------------------------------------------------------------------------------
+
+. log close

@@ -29,3 +29,163 @@ xconvergence not achieved
 xconvergence not achieved
 xconvergence not achieved
 xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x..convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x..convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+x.convergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x..convergence not achieved
+x.convergence not achieved
+x.convergence not achieved
+xconvergence not achieved
+x..convergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+xconvergence not achieved
+x.
+
+Simultaneous quantile regression                    Number of obs =    182,984
+  bootstrap(20) SEs                                 .25 Pseudo R2 =     0.0638
+                                                    .50 Pseudo R2 =     0.0914
+                                                    .75 Pseudo R2 =     0.0903
+
+------------------------------------------------------------------------------
+             |              Bootstrap
+  wife_ten_y | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+q25          |
+   hub_ten_y |   .1544009   .0032324    47.77   0.000     .1480656    .1607362
+  hub_ten_y2 |  -.0044483    .000206   -21.59   0.000    -.0048521   -.0040445
+   part_time |  -.7065555   .0238569   -29.62   0.000    -.7533144   -.6597965
+     college |   .4618444   .0353588    13.06   0.000      .392542    .5311468
+     less_hs |   -.198655   .0394299    -5.04   0.000    -.2759367   -.1213734
+     hub_age |  -.0070923    .002854    -2.49   0.013     -.012686   -.0014986
+      hub_se |  -.1137567   .0306755    -3.71   0.000    -.1738799   -.0536334
+ hub_college |   .2141508   .0401387     5.34   0.000     .1354799    .2928217
+ hub_less_hs |  -.2133013    .047779    -4.46   0.000     -.306947   -.1196556
+             |
+    period_y |
+     t08_11  |   .1958835   .0335706     5.83   0.000      .130086    .2616811
+     t11_14  |   .9086836   .0372435    24.40   0.000     .8356873      .98168
+     t14_17  |   1.010798   .0432761    23.36   0.000     .9259778    1.095618
+     t17_20  |   .2922537   .0464071     6.30   0.000     .2012968    .3832105
+        t20  |   .1822883   .0620405     2.94   0.003     .0606903    .3038862
+        t21  |  -.0468123   .0550666    -0.85   0.395    -.1547416    .0611169
+        t22  |  -.0932118   .0714986    -1.30   0.192    -.2333474    .0469238
+             |
+    occgroup |
+          2  |  -.8131037   .0606277   -13.41   0.000    -.9319326   -.6942748
+          3  |  -1.720223   .0555236   -30.98   0.000    -1.829048   -1.611398
+          4  |  -2.115244   .0664486   -31.83   0.000    -2.245482   -1.985007
+          5  |  -2.456193   .0630878   -38.93   0.000    -2.579844   -2.332543
+             |
+      35.age |   .7299944   .0247262    29.52   0.000     .6815316    .7784571
+       _cons |   2.495704   .1241648    20.10   0.000     2.252344    2.739065
+-------------+----------------------------------------------------------------
+q50          |
+   hub_ten_y |   .2654651    .005662    46.89   0.000     .2543677    .2765624
+  hub_ten_y2 |  -.0058058   .0003108   -18.68   0.000     -.006415   -.0051966
+   part_time |  -.9181546   .0436496   -21.03   0.000    -1.003707   -.8326025
+     college |   .4331761   .0658414     6.58   0.000     .3041285    .5622237
+     less_hs |  -.7241808   .0645796   -11.21   0.000    -.8507553   -.5976062
+     hub_age |  -.0038875   .0041816    -0.93   0.353    -.0120834    .0043084
+      hub_se |  -.0001097   .0518446    -0.00   0.998     -.101724    .1015046
+ hub_college |   .0778869   .0353942     2.20   0.028     .0085151    .1472588
+ hub_less_hs |  -.6522474   .0865474    -7.54   0.000    -.8218783   -.4826166
+             |
+    period_y |
+     t08_11  |  -.0426269   .0447721    -0.95   0.341    -.1303792    .0451254
+     t11_14  |   .6170225   .0477267    12.93   0.000     .5234793    .7105657
+     t14_17  |   1.220324   .0409843    29.78   0.000     1.139996    1.300652
+     t17_20  |    1.22615   .0609133    20.13   0.000     1.106761    1.345539
+        t20  |   .8238326   .0903622     9.12   0.000     .6467247     1.00094
+        t21  |   .1625099   .1447921     1.12   0.262    -.1212792     .446299
+        t22  |   -.270259    .120512    -2.24   0.025    -.5064598   -.0340583
+             |
+    occgroup |
+          2  |  -.3188322   .0596306    -5.35   0.000    -.4357067   -.2019576
+          3  |  -1.642196   .0500117   -32.84   0.000    -1.740218   -1.544174
+          4  |  -1.819329   .1250345   -14.55   0.000    -2.064393   -1.574264
+          5  |    -3.7521   .0831072   -45.15   0.000    -3.914988   -3.589211
+             |
+      35.age |   1.891093   .0396037    47.75   0.000     1.813471    1.968716
+       _cons |   4.669945   .1609979    29.01   0.000     4.354393    4.985497
+-------------+----------------------------------------------------------------
+q75          |
+   hub_ten_y |   .1709757   .0068732    24.88   0.000     .1575043     .184447
+  hub_ten_y2 |  -.0016222   .0003289    -4.93   0.000    -.0022668   -.0009775
+   part_time |  -.6987634   .0394093   -17.73   0.000    -.7760047    -.621522
+     college |  -.6930393   .0628156   -11.03   0.000    -.8161566   -.5699221
+     less_hs |  -1.698009   .1615042   -10.51   0.000    -2.014554   -1.381465
+     hub_age |   .0489169   .0043791    11.17   0.000      .040334    .0574999
+      hub_se |   .0519324   .0467043     1.11   0.266     -.039607    .1434718
+ hub_college |  -.2362733   .0323826    -7.30   0.000    -.2997424   -.1728041
+ hub_less_hs |  -1.253195   .1187262   -10.56   0.000    -1.485896   -1.020495
+             |
+    period_y |
+     t08_11  |  -.3875775   .0547227    -7.08   0.000    -.4948328   -.2803222
+     t11_14  |  -.2172191   .0516639    -4.20   0.000    -.3184791   -.1159591
+     t14_17  |   .3488261   .0657517     5.31   0.000     .2199543    .4776978
+     t17_20  |   .6071457   .0739268     8.21   0.000     .4622509    .7520405
+        t20  |   .6906867   .1095885     6.30   0.000     .4758957    .9054777
+        t21  |   .3436098   .0692163     4.96   0.000     .2079475     .479272
+        t22  |  -.0019137   .1248664    -0.02   0.988     -.246649    .2428216
+             |
+    occgroup |
+          2  |   .1651066   .0499898     3.30   0.001     .0671277    .2630854
+          3  |  -.4934953   .0629052    -7.85   0.000     -.616788   -.3702025
+          4  |  -.4501739   .1118171    -4.03   0.000    -.6693329    -.231015
+          5  |  -4.104091   .0742349   -55.29   0.000     -4.24959   -3.958593
+             |
+      35.age |   2.981196    .032368    92.10   0.000     2.917756    3.044637
+       _cons |    7.28135   .1390068    52.38   0.000       7.0089      7.5538
+------------------------------------------------------------------------------
+
+. log close
